@@ -1,0 +1,24 @@
+E80274 màu chữ
+nút bấm : E80274, 7D0D6A
+Trạng thái 2 nút NFT maketplayce : F40074, 08021C 0%
+Trạng thái 1 nút NFT maketplayce : FFFFFF, FFFFFF 10%
+núc buy now: 780D69, EC0174 
+hình dưới enterkayword: 502D9F, 08021C 0%
+enterkayword: FFFFFF 19%, 8F79D9 56%
+Search :502D9F, F40074
+khung buy now : stroke F40074, 451242 hai cái 50% , nền 140E25 50%\
+$ FFFFFF, FCDAE1, D285AD chuyển sắc
+Features: stroke 6A3181, nền 502D9, 09031E 1.28%
+Drop shadow: ffff 40%, blur: 20%
+
+Với 115.36deg, tương đương với 325.36rad.
+
+Để tính locations tương ứng, ta có thể sử dụng công thức:
+
+locations = [(360 - angle) / 360, angle / 360]
+
+Áp dụng cho trường hợp này, ta có:
+
+locations = [(360 - 115.36) / 360, 115.36 / 360] = [0.3191, 0.6809]
+
+Vậy locations sẽ là [0.3191, 0.6809] cho hướng gradient là 115.36deg.
