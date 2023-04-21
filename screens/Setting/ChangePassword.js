@@ -18,7 +18,7 @@ const ChangePassword = ({ navigation }) => {
                 style={styles.content}
             >
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>
-                    <IconX  />
+                    <IconX />
                 </TouchableOpacity>
                 <Text style={styles.text}>Change Password</Text>
                 <View style={styles.form}>
@@ -45,13 +45,14 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
-        width: WIDTH.width100,
+        width: 332 * WIDTH.widthScale,
+        height: 292 * WIDTH.widthScale,
         paddingHorizontal: 20,
     },
     close: {
         position: 'absolute',
         right: 3,
-        padding:9,
+        padding: 9,
     },
     text: {
         fontSize: SIZES.medium,
@@ -67,12 +68,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#FFFFFF80',
-        height: 40,
+        height: 40 * WIDTH.widthScale,
         fontSize: 14,
     },
     button: {
-        height: 38.44,
-        width: 153.12,
+        height: 38.44 * WIDTH.widthScale,
+        width: 153.12 * WIDTH.widthScale,
         marginBottom: 7,
         marginTop: 9,
     },

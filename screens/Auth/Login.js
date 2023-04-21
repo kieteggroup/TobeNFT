@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Dimensions, ImageBackground, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
+import Logo from '../../assets/imageSvg/ImageSVG';
 
 const { width, height } = Dimensions.get('window');
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(false);
-    const Logo = icons.logo;
     const navigation = useNavigation();
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <ImageBackground style={styles.wrapper} source={images.login} resizeMode="stretch">
                 <View style={styles.logo}>
-                    <Image source={icons.logoLogin} />
+                    <Logo />
                 </View>
                 <Text style={styles.title}>Log In</Text>
                 <View style={styles.form}>
@@ -75,14 +75,12 @@ const styles = StyleSheet.create({
         // height: height,
     },
     logo: {
-        marginTop: 80,
+        marginTop: 36,
         // marginTop: 36,
     },
     title: {
-        color: COLORS.white,
         fontSize: SIZES.xLarge,
-        fontWeight: 600,
-        fontFamily: FONTS.medium
+        ...TEXTS.textMedium
     },
     form: {
         alignItems: 'center',
@@ -101,9 +99,7 @@ const styles = StyleSheet.create({
     },
     textForgot: {
         color: COLORS.white,
-       
         marginTop: 23,
-        height: 50,
     },
     noAccount: {
         marginTop: 195,

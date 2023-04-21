@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground } from 'react-native';
 
-import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from '../../CustomComponent';
-
-const { width, height } = Dimensions.get('window');
+import Logo from '../../assets/imageSvg/ImageSVG';
 
 const ForgotPassword = (props) => {
     const [email, setEmail] = useState('');
     return (
         <ImageBackground source={images.signup} style={styles.wrapper} resizeMode="stretch">
             <View style={styles.logo}>
-                <Image source={icons.logoLogin} />
+                <Logo />
             </View>
             <Text style={styles.title}>Forgot password</Text>
             <View style={styles.form}>
@@ -26,7 +25,7 @@ const ForgotPassword = (props) => {
                         placeholderTextColor="#fff"
                     />
                 </View>
-                <ButtonCustom buttonStyle={{ marginTop: 10 }} text="Submit" />
+                <ButtonCustom buttonStyle={{ marginTop: 7 }} text="Submit" />
             </View>
         </ImageBackground>
     );
@@ -39,21 +38,19 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     logo: {
-        marginTop: 80,
+        marginTop: 36,
         // marginTop: 36,
     },
     title: {
-        color: COLORS.white,
         fontSize: SIZES.xLarge,
-        fontWeight: 600,
-        fontFamily: FONTS.medium,
+        ...TEXTS.textMedium,
     },
     form: {
         alignItems: 'center',
         marginTop: 82,
     },
     formGroup: {
-        marginBottom: 13,
+        marginBottom: 16.5,
         justifyContent: 'center',
         width: WIDTH.width100,
     },

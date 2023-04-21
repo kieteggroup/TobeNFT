@@ -7,7 +7,6 @@ const WIDTH = {
 const COLORS = {
     primary: '#E80274',
     body: '#08021C',
-
     white: '#fff',
 };
 

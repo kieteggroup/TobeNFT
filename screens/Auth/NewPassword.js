@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Dimensions, ImageBackground, Image } from 'react-native';
 
-import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from '../../CustomComponent';
 
 const { width, height } = Dimensions.get('window');
@@ -52,21 +52,19 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     logo: {
-        marginTop: 80,
+        marginTop: 36,
         // marginTop: 36,
     },
     title: {
-        color: COLORS.white,
         fontSize: SIZES.xLarge,
-        fontWeight: 600,
-        fontFamily: FONTS.medium
+        ...TEXTS.textMedium,
     },
     form: {
         alignItems: 'center',
         marginTop: 82,
     },
     formGroup: {
-        marginBottom: 13,
+        marginBottom: 16.5,
         justifyContent: 'center',
         width: WIDTH.width100,
     },

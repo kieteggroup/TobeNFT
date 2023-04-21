@@ -25,7 +25,7 @@ const Account = ({ navigation }) => {
                                 <Text style={styles.tokenHeading}>Wallet</Text>
                                 <View style={styles.infoContent}>
                                     <View style={styles.info}>
-                                        <Image source={images.bnb} />
+                                        <Image source={images.bnb} style={styles.img} />
                                         <LinearGradient
                                             colors={['#502D9F66', '#08021C00']}
                                             start={{ x: 0, y: 0 }}
@@ -37,7 +37,7 @@ const Account = ({ navigation }) => {
                                         </LinearGradient>
                                     </View>
                                     <View style={styles.info}>
-                                        <Image source={images.Usdt} />
+                                        <Image source={images.Usdt} style={styles.img} />
                                         <LinearGradient
                                             colors={['#502D9F66', '#08021C00']}
                                             start={{ x: 0, y: 0 }}
@@ -60,7 +60,7 @@ const Account = ({ navigation }) => {
                             <Text style={styles.tokenHeading}>Commission</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
-                                    <Image source={images.bnb} />
+                                    <Image source={images.bnb} style={styles.img} />
                                     <Text style={styles.tokenName}>Direct</Text>
 
                                     <LinearGradient
@@ -74,7 +74,7 @@ const Account = ({ navigation }) => {
                                     </LinearGradient>
                                 </View>
                                 <View style={styles.info}>
-                                    <Image source={images.bnb} />
+                                    <Image source={images.bnb} style={styles.img} />
                                     <Text style={styles.tokenName}>Indirect</Text>
 
                                     <LinearGradient
@@ -98,7 +98,7 @@ const Account = ({ navigation }) => {
                             <Text style={styles.tokenHeading}>Balance</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
-                                    <Image source={images.bnb} />
+                                    <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
                                         start={{ x: 0, y: 0 }}
@@ -110,7 +110,7 @@ const Account = ({ navigation }) => {
                                     </LinearGradient>
                                 </View>
                                 <View style={styles.info}>
-                                    <Image source={images.bnb} />
+                                    <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
                                         start={{ x: 0, y: 0 }}
@@ -132,7 +132,7 @@ const Account = ({ navigation }) => {
                             <Text style={styles.tokenHeading}>Interest</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
-                                    <Image source={images.bnb} />
+                                    <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
                                         start={{ x: 0, y: 0 }}
@@ -144,7 +144,7 @@ const Account = ({ navigation }) => {
                                     </LinearGradient>
                                 </View>
                                 <View style={styles.info}>
-                                    <Image source={images.Usdt} />
+                                    <Image source={images.Usdt} style={styles.img} />
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
                                         start={{ x: 0, y: 0 }}
@@ -166,7 +166,7 @@ const Account = ({ navigation }) => {
                             <Text style={styles.tokenHeading}>Sale</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
-                                    <Image source={images.Usdt} />
+                                    <Image source={images.Usdt} style={styles.img} />
                                     <Text style={styles.tokenName}>Direct</Text>
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
@@ -179,7 +179,7 @@ const Account = ({ navigation }) => {
                                     </LinearGradient>
                                 </View>
                                 <View style={styles.info}>
-                                    <Image source={images.Usdt} />
+                                    <Image source={images.Usdt} style={styles.img} />
                                     <Text style={styles.tokenName}>System</Text>
 
                                     <LinearGradient
@@ -202,15 +202,20 @@ const Account = ({ navigation }) => {
                         >
                             <Text style={styles.tokenHeading}>NOW</Text>
                             <View style={styles.infoContent}>
-      
-                                <View style={{ ...styles.info, flexDirection: 'row',}}>
-                                    <Image source={images.bnb} />
+                                <View style={{ ...styles.info, flexDirection: 'row' }}>
+                                    <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
                                         colors={['#502D9F66', '#08021C00']}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3191, 0.6809]}
-                                        style={{ ...styles.token, width: 196, height: 27, marginTop: 0, marginLeft: 8 }}
+                                        style={{
+                                            ...styles.token,
+                                            width: 196 * WIDTH.widthScale,
+                                            height: 27 * WIDTH.widthScale,
+                                            marginTop: 0,
+                                            marginLeft: 8,
+                                        }}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
                                     </LinearGradient>
@@ -244,7 +249,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     infoToken: {
-        // height: 125,
+        width: 350 * WIDTH.widthScale,
         borderRadius: 20,
         padding: 10,
         alignItems: 'center',
@@ -256,10 +261,13 @@ const styles = StyleSheet.create({
     infoContent: {
         flexDirection: 'row',
         columnGap: 51,
-
     },
     info: {
         alignItems: 'center',
+    },
+    img: {
+        width: 50 * WIDTH.widthScale,
+        height: 50 * WIDTH.widthScale,
     },
     tokenName: {
         fontSize: 16,
@@ -268,7 +276,7 @@ const styles = StyleSheet.create({
     },
     token: {
         paddingHorizontal: 15,
-        height: 22,
+        height: 22 * WIDTH.widthScale,
         justifyContent: 'center',
         borderRadius: 22.5,
         marginTop: 8,

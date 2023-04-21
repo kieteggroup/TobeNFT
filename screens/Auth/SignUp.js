@@ -3,7 +3,7 @@ import { StyleSheet, Text, Image, View, TouchableOpacity, ImageBackground, Scrol
 import CheckBox from 'react-native-check-box';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 
 const SignUp = (props) => {
@@ -152,11 +152,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        marginTop: 84,
-        color: COLORS.white,
+        marginTop: 40,
         fontSize: SIZES.xLarge,
-        fontWeight: 600,
-        fontFamily: FONTS.medium,
+        ...TEXTS.textMedium,
     },
     form: {
         marginTop: 40,
@@ -177,29 +175,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
-        height: 54,
+        height: 54 * WIDTH.widthScale,
     },
 
     textCheckbox: {
-        color: COLORS.white,
         marginLeft: 15.87,
-        width: 310,
+        width: 310 * WIDTH.widthScale,
         fontSize: SIZES.small,
-        fontFamily: FONTS.regular,
+        ...TEXTS.textRegular,
     },
     textLink: {
+        ...TEXTS.textBold,
         color: COLORS.primary,
-        fontFamily: FONTS.bold,
-        fontWeight: 700,
     },
 
     footer: {
-        marginTop: 25,
+        marginTop: 24,
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // height: 90,
-        marginBottom:26,
     },
     footerLeft: {
         alignItems: 'center',

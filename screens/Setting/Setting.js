@@ -93,18 +93,19 @@ const Setting = ({ navigation }) => {
                             text="Referral link"
                             backgroundColorBtn="#E8127C"
                             buttonStyle={{
-                                width: 150,
-                                height: 36,
+                                width: 150 * WIDTH.widthScale,
+                                height: 36 * WIDTH.widthScale,
                                 borderRadius: 5,
                                 borderWidth: 0,
                             }}
                         />
                         <ButtonCustom
                             text="Referral code"
+                            onPress={() => navigation.navigate('AuthCode')}
                             backgroundColorBtn="#E8127C"
                             buttonStyle={{
-                                width: 150,
-                                height: 36,
+                                width: 150 * WIDTH.widthScale,
+                                height: 36 * WIDTH.widthScale,
                                 borderRadius: 5,
                                 borderWidth: 0,
                             }}
@@ -144,10 +145,10 @@ const Setting = ({ navigation }) => {
                     <ButtonCustom
                         text="LOGOUT"
                         buttonStyle={{
-                            width: 332,
-                            height: 39,
+                            width: 332 * WIDTH.widthScale,
+                            height: 39 * WIDTH.widthScale,
                         }}
-                        buttonStyleText={{ fontSize: SIZES.xLarge, ...TEXTS.textRegular, fontWeight: 500 }}
+                        buttonStyleText={{ fontSize: SIZES.xLarge, ...TEXTS.textRegular, fontWeight: 500}}
                     />
                 </View>
             </View>
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
     },
     settingItem: {
-        height: 45,
+        height: 47 * WIDTH.widthScale,
         borderBottomWidth: 1,
         borderColor: '#FFFFFF',
         borderStyle: 'solid',
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     socialitem: {
-        height: 45,
+        height: 50 * WIDTH.widthScale,
         alignItems: 'center',
         flexDirection: 'row',
         borderBottomWidth: 1,

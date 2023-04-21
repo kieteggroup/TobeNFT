@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     dropdownArea: {
         width: WIDTH.width100,
         height: 'auto',
-        maxHeight: 300,
+        maxHeight: 300 * WIDTH.widthScale,
         borderRadius: 10,
         // marginTop: 10,
         backgroundColor: '#FFFFFF1A',

@@ -18,7 +18,7 @@ const AccountTwo = ({ navigation }) => {
                     {/* totalCoins */}
                     <View style={styles.totalCoins}>
                         <View style={styles.coinBox}>
-                            <Image source={images.bnb} style={{ marginVertical: 15 }} />
+                            <Image source={images.bnb} style={styles.boxImg} />
                             <Text style={styles.coin}>1 986 086.06</Text>
                             <LinearGradient
                                 colors={['#F4007466', '#25135166']}
@@ -31,7 +31,7 @@ const AccountTwo = ({ navigation }) => {
                             </LinearGradient>
                         </View>
                         <View style={styles.coinBox}>
-                            <Image source={images.bnb} style={{ marginVertical: 15 }} />
+                            <Image source={images.bnb} style={styles.boxImg} />
                             <Text style={styles.coin}>1 986 086.06</Text>
                             <LinearGradient
                                 colors={['#F4007466', '#25135166']}
@@ -105,6 +105,9 @@ const AccountTwo = ({ navigation }) => {
                                 </LinearGradient>
                                 <Text style={styles.text}>System sales</Text>
                             </View>
+
+                            <View style={styles.line1}></View>
+                            <View style={styles.line2}></View>
                         </View>
 
                         <LinearGradient
@@ -121,21 +124,13 @@ const AccountTwo = ({ navigation }) => {
                                 locations={[0.3191, 0.6809]}
                                 style={styles.totalProfit}
                             >
-                                <View
-                                    style={{
-                                        marginLeft: 'auto',
-                                        alignItems: 'center',
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-between',
-                                        width: '100%',
-                                    }}
-                                >
+                                <View style={styles.total}>
                                     <Text style={styles.text}>System sales</Text>
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </View>
                                 <Image
                                     source={images.bnb}
-                                    style={{ position: 'absolute', left: 0, width: 42.44, height: 42.44 }}
+                                    style={{ position: 'absolute', left: 0, ...styles.boxImg }}
                                 />
                             </LinearGradient>
                         </LinearGradient>
@@ -151,7 +146,7 @@ const AccountTwo = ({ navigation }) => {
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             locations={[0.3392, 0.6809]}
-                            style={{...styles.totalRow,height:40.88}}
+                            style={{ ...styles.totalRow, height: 40.88 * WIDTH.widthScale }}
                         >
                             <Text style={styles.text}>Total locations purchased</Text>
                             <Text style={styles.coin}>436 785</Text>
@@ -165,7 +160,7 @@ const AccountTwo = ({ navigation }) => {
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             locations={[0.3392, 0.6809]}
-                            style={{...styles.totalRow,height:40.88}}
+                            style={{ ...styles.totalRow, height: 40.88 * WIDTH.widthScale }}
                         >
                             <Text style={styles.text}>Total Virtual Machine</Text>
                             <Text style={styles.coin}>97</Text>
@@ -177,8 +172,13 @@ const AccountTwo = ({ navigation }) => {
                     </View>
 
                     {/* History Commission */}
-                    <View style={{   width: WIDTH.width100,}}>
-                        <Table heading="History Commission" rightIcon={<IconDropDown height="15" width="15"  style={{ transform: [{ rotate: '-90deg' }] }}/>}/>
+                    <View style={{ width: WIDTH.width100 }}>
+                        <Table
+                            heading="History Commission"
+                            rightIcon={
+                                <IconDropDown height="15" width="15" style={{ transform: [{ rotate: '-90deg' }] }} />
+                            }
+                        />
                     </View>
                 </View>
             </View>
@@ -199,7 +199,8 @@ const styles = StyleSheet.create({
     content: {
         alignItems: 'center',
         flex: 1,
-        rowGap: 30,
+        rowGap: 28,
+        marginTop: 23,
     },
     totalCoins: {
         flexDirection: 'row',
@@ -207,14 +208,20 @@ const styles = StyleSheet.create({
         columnGap: 24,
     },
     coinBox: {
-        // height: 177,
-        width: 153,
+        width: 153 * WIDTH.widthScale,
+        height: 178 * WIDTH.widthScale,
         alignItems: 'center',
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
         overflow: 'hidden',
+    },
+    boxImg: {
+        marginTop: 15,
+        marginBottom: 13.56,
+        height: 42.44 * WIDTH.widthScale,
+        width: 42.44 * WIDTH.widthScale,
     },
     coin: {
         fontSize: SIZES.medium,
@@ -226,7 +233,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     coinFooter: {
-        height: 62,
+        height: 62 * WIDTH.widthScale,
         width: WIDTH.width100,
         justifyContent: 'center',
         borderWidth: 2,
@@ -234,14 +241,15 @@ const styles = StyleSheet.create({
         borderColor: '#6A318133',
         borderRadius: 15,
 
-        marginTop: 28,
+        marginTop: 'auto',
     },
     totalProfitContainer: {
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
-        width: WIDTH.width100,
+        width: 336 * WIDTH.widthScale,
+        height: 316 * WIDTH.widthScale,
         overflow: 'hidden',
     },
     totalProfitInfo: {
@@ -250,37 +258,56 @@ const styles = StyleSheet.create({
     },
     profitInfo: {
         width: '50%',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#F9D6DE33',
-        
         // paddingHorizontal: 10,
-        height: 124,
+        height: 123.5 * WIDTH.widthScale,
         alignItems: 'center',
         justifyContent: 'center',
     },
     profitCoin: {
-        height: 36,
-        width: '90%',
+        height: 36 * WIDTH.widthScale,
+        width: 147 * WIDTH.widthScale,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 18,
         marginBottom: 5,
     },
+
+    line1: {
+        position: 'absolute',
+        width: '100%',
+        height: 1,
+        backgroundColor: '#F9D6DE33',
+        top: '50%',
+    },
+    line2: {
+        position: 'absolute',
+        width: 1,
+        height: '100%',
+        backgroundColor: '#F9D6DE33',
+        left: '50%',
+    },
+
     profitFooter: {
-        height: 69,
+        flex: 1,
         paddingHorizontal: 12,
         alignItems: 'center',
         justifyContent: 'center',
     },
     totalProfit: {
         flexDirection: 'row',
-        height: 36,
         width: WIDTH.width100,
         borderRadius: 18,
         alignItems: 'center',
         paddingRight: 13,
         paddingLeft: 55,
+        width: 305 * WIDTH.widthScale,
+        height: 36 * WIDTH.widthScale,
+    },
+    total: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: WIDTH.width100,
     },
     totalTable: {
         borderWidth: 1,
@@ -288,16 +315,18 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF1A',
         width: WIDTH.width100,
         borderRadius: 18,
-        paddingVertical:3,
-        backgroundColor:"#FFFFFF1A"
+        paddingVertical: 3,
+        backgroundColor: '#FFFFFF1A',
+        height: 193 * WIDTH.widthScale,
+        width: 336 * WIDTH.widthScale,
     },
     totalRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 18,
-       
-        height: 35,
+
+        height: 35 * WIDTH.widthScale,
     },
 });
 export default AccountTwo;

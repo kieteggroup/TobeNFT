@@ -35,9 +35,9 @@ const InputCustom = ({
 };
 const styles = StyleSheet.create({
     input: {
-        width:WIDTH.width100,
+        width: 334 * WIDTH.widthScale,
         maxWidth: WIDTH.width100,
-        height: 50,
+        height: 50 * WIDTH.widthScale,
         borderRadius: 10,
         backgroundColor: '#FFFFFF33',
         paddingHorizontal: SIZES.small,
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         borderColor: '#ffffff29',
         fontSize: SIZES.small,
         ...TEXTS.textRegular,
-        
     },
 });
 

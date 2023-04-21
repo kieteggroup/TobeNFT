@@ -2,19 +2,18 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { MainContainer } from '../../components';
 import { IconDeposit, IconTransfer, IconWithdraw, LogoOnly, MultiHexagon } from '../../assets/imageSvg/ImageSVG';
-import { SIZES, TEXTS, icons, images } from '../../constants';
+import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeWallet = ({ navigation }) => {
-   
     return (
-        <MainContainer >
+        <MainContainer>
             <View style={styles.wrapper}>
                 <View style={styles.header}>
                     <MultiHexagon />
-                    <View style={{ alignItems: 'center', position: 'absolute', top: 75 }}>
+                    <View style={{ alignItems: 'center', position: 'absolute', top: 75 * WIDTH.widthScale }}>
                         <LogoOnly />
                         <Text style={{ fontSize: SIZES.xxLarge, ...TEXTS.textBold }}>1 986 086.06</Text>
                         <Text style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
@@ -63,7 +62,7 @@ const HomeWallet = ({ navigation }) => {
                 </View>
 
                 <View style={{ marginTop: 30 }}>
-                    <Image source={images.Shutterstock} />
+                    <Image source={images.Shutterstock} style={styles.img} />
                     <View style={{ padding: 16, position: 'absolute' }}>
                         <Text style={{ fontSize: SIZES.xLarge, ...TEXTS.textMedium }}>
                             Claim {'\n'}
@@ -73,7 +72,7 @@ const HomeWallet = ({ navigation }) => {
 
                         <ButtonCustom
                             text="Start Earning NOW"
-                            buttonStyle={{ width: 176, height: 39, marginTop: 10 }}
+                            buttonStyle={styles.buttonStart}
                             onPress={() => navigation.navigate('EstateNFTs')}
                         />
                     </View>
@@ -87,7 +86,7 @@ const HomeWallet = ({ navigation }) => {
                         text="Get NOW"
                         onPress={() => navigation.navigate('Setting')}
                         backgroundLinearGradient={['#FFFFFF33', '#FFFFFF00']}
-                        buttonStyle={{ ...styles.button, marginTop: 0 }}
+                        buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale }}
                         buttonStyleText={{
                             fontSize: 14,
                             ...TEXTS.textRegular,
@@ -96,7 +95,7 @@ const HomeWallet = ({ navigation }) => {
                         rightIcon={
                             <LinearGradient
                                 colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
-                                style={styles.iconContinue}
+                                style={{ ...styles.iconContinue, height: 30 * WIDTH.widthScale }}
                                 locations={[0.3191, 0.6809]}
                             >
                                 <Image source={icons.continueicon} />
@@ -106,14 +105,14 @@ const HomeWallet = ({ navigation }) => {
                 </View>
 
                 <View style={{ marginTop: 22, alignItems: 'center', justifyContent: 'center' }}>
-                    <Image source={images.freepik} />
+                    <Image source={images.freepik} style={styles.img} />
                     <View style={{ padding: 16, position: 'absolute' }}>
                         <Text style={{ fontSize: SIZES.large, ...TEXTS.textBold }}>NFT Marketplace</Text>
                         <ButtonCustom
                             text="Go to Shop"
                             onPress={() => navigation.navigate('NFTNavigator')}
                             backgroundColorBtn="#FFFFFF33"
-                            buttonStyle={{ width: 133, height: 30, marginTop: 5 }}
+                            buttonStyle={styles.buttonShop}
                             buttonStyleText={{ fontSize: 14, ...TEXTS.textRegular }}
                         />
                     </View>
@@ -134,11 +133,16 @@ const HomeWallet = ({ navigation }) => {
                             locations={[0.3191, 0.6809]}
                             style={styles.postNFT}
                         >
-                            <Image source={images.to_earn02} style={{ ...styles.postImage, left: 47 }} />
-                            <View style={styles.postText}>
-                                <Text style={styles.postTitle}>NFT Virtual Machine</Text>
+                            <Image
+                                source={images.to_earn02}
+                                style={{ ...styles.postImage, left: 47 * WIDTH.widthScale }}
+                            />
+                            <View style={styles.postTextContent}>
+                                <Text style={styles.postTitle} numberOfLines={2}>
+                                    NFT Virtual Machine
+                                </Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: SIZES.xSmall, ...TEXTS.textRegular, width: 99 }}>
+                                    <Text style={styles.postText} numberOfLines={4}>
                                         Earn your NFT items and trade them on the marketplace to make money
                                     </Text>
                                     <LinearGradient
@@ -168,10 +172,10 @@ const HomeWallet = ({ navigation }) => {
                             style={styles.postNFT}
                         >
                             <Image source={images.to_earn01} style={styles.postImage} />
-                            <View style={styles.postText}>
+                            <View style={styles.postTextContent}>
                                 <Text style={styles.postTitle}>NFT Card</Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: SIZES.xSmall, ...TEXTS.textRegular, width: 99 }}>
+                                    <Text style={styles.postText} numberOfLines={4}>
                                         Earn your NFT items and trade them on the marketplace to make money
                                     </Text>
                                     <LinearGradient
@@ -198,11 +202,11 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: 'center',
-        height: 376,
+        height: 376 * WIDTH.widthScale,
     },
     actionIcon: {
-        width: 48,
-        height: 48,
+        width: 48 * WIDTH.widthScale,
+        height: 48 * WIDTH.widthScale,
         borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
@@ -211,8 +215,8 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF29',
     },
     iconContinue: {
-        width: 26,
-        height: 26,
+        width: 26 * WIDTH.widthScale,
+        height: 26 * WIDTH.widthScale,
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center',
@@ -220,17 +224,23 @@ const styles = StyleSheet.create({
         right: 0,
     },
     button: {
-        height: 30,
-        width: 'auto',
+        height: 27 * WIDTH.widthScale,
+        width: 117 * WIDTH.widthScale,
         justifyContent: 'flex-start',
-        paddingHorizontal: 8,
-        paddingEnd: 30,
+        paddingHorizontal: 6,
         marginTop: 10,
     },
+    buttonStart: {
+        width: 176 * WIDTH.widthScale,
+        height: 39 * WIDTH.widthScale,
+        marginTop: 10,
+    },
+    buttonShop: { width: 133 * WIDTH.widthScale, height: 30 * WIDTH.widthScale, marginTop: 5 },
+
     actionContainer: {
         flexDirection: 'row',
         position: 'absolute',
-        bottom: 0,
+        bottom: -5 ,
         columnGap: 53,
     },
     action: {
@@ -241,10 +251,16 @@ const styles = StyleSheet.create({
         ...TEXTS.textRegular,
         marginTop: 7,
     },
+
+    img: {
+        width: 337 * WIDTH.widthScale,
+        height: 183 * WIDTH.widthScale,
+    },
     share: {
         marginTop: 24,
         backgroundColor: '#08021C80',
-        height: 79,
+        height: 79 * WIDTH.widthScale,
+        width: 337 * WIDTH.widthScale,
         borderRadius: 11,
         flexDirection: 'row',
         elevation: 1,
@@ -262,25 +278,30 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
-        width: 153,
-        height: 177,
+        width: 153 * WIDTH.widthScale,
+        height: 177 * WIDTH.widthScale,
     },
     postImage: {
         position: 'absolute',
-        left: 65,
-        bottom: 111,
+        left: 65 * WIDTH.widthScale,
+        bottom: 111 * WIDTH.widthScale,
     },
-    postText: {
+    postTextContent: {
         paddingLeft: 13,
         paddingRight: 7,
         paddingBottom: 7,
         flex: 1,
         justifyContent: 'flex-end',
     },
+    postText: {
+        fontSize: SIZES.xSmall,
+        ...TEXTS.textRegular,
+        width: 99 * WIDTH.widthScale,
+    },
     postTitle: {
         fontSize: 14,
         ...TEXTS.textBold,
-        width: 89,
+        width: 89 * WIDTH.widthScale,
         marginBottom: 7,
     },
 });

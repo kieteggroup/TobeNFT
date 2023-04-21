@@ -1,10 +1,4 @@
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    Dimensions,
-} from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import { ButtonCustom } from '../../CustomComponent';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,7 +6,7 @@ import { Children, useState } from 'react';
 import { MainContainer, SelectDropdown } from '../../components';
 
 const currency = ['NOW', 'USDT', 'NOW (EARING)'];
-const Swap = ({  navigation }) => {
+const Swap = ({ navigation }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
@@ -28,7 +22,8 @@ const Swap = ({  navigation }) => {
 
                 <ButtonCustom
                     text="Swap"
-                    containerStyle={{ marginHorizontal: SIZES.small0, marginTop: 27 }}
+                    containerStyle={{ marginTop: 27 }}
+                    buttonStyle={{ height: 39 * WIDTH.widthScale, width: 176 * WIDTH.widthScale }}
                     onPress={() => navigation.navigate('SwapDetail')}
                 />
             </View>

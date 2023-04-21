@@ -8,7 +8,7 @@ import MainContainer from '../../components/MainContainer';
 
 const SwapDetail = () => {
     return (
-        <MainContainer noBackgroundFooter >
+        <MainContainer noBackgroundFooter>
             <View style={styles.wrapper}>
                 {/* Info */}
                 <LinearGradient
@@ -18,7 +18,7 @@ const SwapDetail = () => {
                     locations={[0.3191, 0.6809]}
                     style={styles.infoContainer}
                 >
-                    <Image source={images.tanbinh} />
+                    <Image source={images.tanbinh} style={styles.img} />
                     <Text style={[styles.title, TEXTS.textBold]}>LOTTE Mart Tân Bình</Text>
                     <View style={{ alignItems: 'flex-start' }}>
                         <Text style={[styles.name, TEXTS.textMedium]}>Coffee shop</Text>
@@ -63,13 +63,11 @@ const SwapDetail = () => {
                     end={{ x: 1, y: 1 }}
                     style={styles.mapContainer}
                 >
-                    <View style={{ width: 'auto' }}>
-                        <Image style={{ flex: 1 }} source={images.map} />
-                    </View>
-                    <View style={{ flex: 1 }}>
+                    <Image style={{ height: WIDTH.width100 }} source={images.map} />
+                    <View style={{ width: '50%' }}>
                         <View style={{ padding: 10 }}>
                             <Text style={styles.mapTitle}>LOTTE Mart Tân Bình</Text>
-                            <Text style={{ ...TEXTS.textRegular, ...styles.subHeading }}>
+                            <Text style={{ ...TEXTS.textRegular, ...styles.subHeading, flexWrap: 'wrap' }}>
                                 Tân Bình 20 Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam
                             </Text>
                             <Text style={[TEXTS.textRegular]}>null</Text>
@@ -101,7 +99,7 @@ const SwapDetail = () => {
                             placeholderStyle="#536981"
                         />
                         <InputCustom
-                            style={{ ...styles.input, height: 83, borderRadius: 13 }}
+                            style={{ ...styles.input, height: 83* WIDTH.widthScale, borderRadius: 13 }}
                             multiline
                             numberOfLines={4}
                             placeholder="Describe your experience"
@@ -132,28 +130,29 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         marginTop: SIZES.xSmall,
         paddingHorizontal: SIZES.large,
-
     },
     infoContainer: {
         // flex: 1,
-        // width: 327,
-        width: WIDTH.width100,
+        width: 361 * WIDTH.widthScale,
+        // height: 439 * WIDTH.widthScale,
+        // width: WIDTH.width100,
         maxWidth: WIDTH.width100,
         borderRadius: SIZES.xSmall,
         marginBottom: 13,
         alignItems: 'center',
         paddingHorizontal: 22,
         paddingBottom: SIZES.xSmall,
-
     },
-
+    img: {
+        width: 317 * WIDTH.widthScale,
+        height: 243 * WIDTH.widthScale,
+    },
     title: {
         fontSize: SIZES.medium,
         marginTop: SIZES.xSmall,
     },
 
     name: {
-       
         marginTop: 5,
     },
     subHeading: {
@@ -165,7 +164,7 @@ const styles = StyleSheet.create({
     },
     start: {
         flexDirection: 'row',
-        marginBottom:SIZES.xSmall,
+        marginBottom: SIZES.xSmall,
     },
 
     starImg: {
@@ -191,7 +190,7 @@ const styles = StyleSheet.create({
     },
     mapContainer: {
         borderRadius: SIZES.xSmall,
-        marginHorizontal: 30,
+        width: 143 * WIDTH.widthScale,
         flexDirection: 'row',
         width: WIDTH.width100,
 
@@ -227,13 +226,11 @@ const styles = StyleSheet.create({
         borderRadius: SIZES.xSmall,
         marginHorizontal: SIZES.small,
         width: WIDTH.width100,
-
     },
     reviewHeader: {
         paddingHorizontal: 25,
         paddingTop: SIZES.xSmall,
-        paddingBottom: SIZES.large,
-
+        paddingBottom: SIZES.xSmall,
     },
     reviewBody: {
         borderTopWidth: 1,
@@ -242,17 +239,14 @@ const styles = StyleSheet.create({
         rowGap: 13,
         padding: 15,
         width: WIDTH.width100,
-
     },
     reviewTitle: {
         ...TEXTS.textRegular,
-       
     },
     input: {
         backgroundColor: '#fff',
         ...TEXTS.textRegular,
-        height: 38,
-       
+        height: 38* WIDTH.widthScale,
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#EAEAEA',

@@ -6,12 +6,12 @@ import { ScreenBottomTab } from './components';
 import { StatusBar } from 'react-native';
 import { useFonts } from 'expo-font';
 import { FONTS, TEXTS } from './constants';
-import SwapNavigator from './navigations/SwapNavigator';
+import { AuthNavigator } from './navigations';
 
 const Stack = createNativeStackNavigator();
 // Định nghĩa kiểu mặc định cho thành phần Text
 Text.defaultProps = Text.defaultProps || {};
-Text.defaultProps.style = { ...TEXTS.textRegular, };
+Text.defaultProps.style = { ...TEXTS.textRegular };
 
 function App() {
     const isDarkMode = useColorScheme() === 'light';
@@ -29,19 +29,19 @@ function App() {
                 barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                 backgroundColor="transparent"
                 translucent
+                
             />
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName="ScreenBottomTab"
+                    initialRouteName="AuthNavigator"
                     screenOptions={{
                         contentStyle: {
                             backgroundColor: '#08021C',
                         },
                         headerShown: false,
-                        
                     }}
-                    
                 >
+                    <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
                     <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
                 </Stack.Navigator>
             </NavigationContainer>
