@@ -9,7 +9,7 @@ const Welcome = () => {
     const navigation = useNavigation();
     useEffect(() => {
         const welcome = setTimeout(() => {
-            navigation.navigate('Login');
+            navigation.navigate('AuthNavigator');
         }, 2000);
 
         return () => {

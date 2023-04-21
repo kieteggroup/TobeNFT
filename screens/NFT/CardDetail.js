@@ -69,7 +69,7 @@ const CardDetail = () => {
                                     colors={['#502D9F66', '#08021C00']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
                                     <Text style={[styles.tagText, TEXTS.textRegular]}>Take out</Text>
@@ -78,7 +78,7 @@ const CardDetail = () => {
                                     colors={['#502D9F66', '#08021C00']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
                                     <Text style={[styles.tagText, TEXTS.textRegular]}>Delivery</Text>
@@ -87,7 +87,7 @@ const CardDetail = () => {
                                     colors={['#502d9f99', '#09031E15']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
                                     <Text style={[styles.tagText, TEXTS.textRegular]}>Delivery</Text>
@@ -96,7 +96,7 @@ const CardDetail = () => {
                                     colors={['#502d9f99', '#09031E15']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
                                     <Text style={[styles.tagText, TEXTS.textRegular]}>Take out</Text>
@@ -117,14 +117,14 @@ const CardDetail = () => {
                             style={styles.input}
                             radiusMax
                             placeholder="Title of your review"
-                            placeholderStyle="#536981"
+                            placeholderColor="#536981"
                         />
                         <InputCustom
                             style={{ ...styles.input, height: 83 * WIDTH.widthScale, borderRadius: 13 }}
                             multiline
                             numberOfLines={4}
                             placeholder="Message"
-                            placeholderStyle="#536981"
+                            placeholderColor="#536981"
                         />
                         <ButtonCustom
                             text="Login or Register"

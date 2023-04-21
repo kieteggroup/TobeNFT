@@ -31,4 +31,7 @@ export default {
     to_earn01: require('../assets/Image/to_earn01.png'),
     to_earn02: require('../assets/Image/to_earn02.png'),
     empty_data: require('../assets/Image/empty_data.png'),
+    contact: require('../assets/Image/contact.png'),
+    imgCopyLink: require('../assets/Image/imgCopyLink.png'),
+    system: require('../assets/Image/system.png'),
 };

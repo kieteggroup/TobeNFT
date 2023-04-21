@@ -8,6 +8,8 @@ import { useFonts } from 'expo-font';
 import { FONTS, TEXTS } from './constants';
 import { AuthNavigator } from './navigations';
 
+import Welcome from './screens/Welcome';
+
 const Stack = createNativeStackNavigator();
 // Định nghĩa kiểu mặc định cho thành phần Text
 Text.defaultProps = Text.defaultProps || {};
@@ -22,6 +24,7 @@ function App() {
         Roboto_Regular: require('./assets/fonts/Roboto-Regular.ttf'),
         Roboto_Bold: require('./assets/fonts/Roboto-Bold.ttf'),
     });
+
     if (!fontsLoaded) return null;
     return (
         <SafeAreaView style={styles.wrapper}>
@@ -33,7 +36,7 @@ function App() {
             />
             <NavigationContainer>
                 <Stack.Navigator
-                    initialRouteName="AuthNavigator"
+                    initialRouteName="Welcome"
                     screenOptions={{
                         contentStyle: {
                             backgroundColor: '#08021C',
@@ -41,6 +44,7 @@ function App() {
                         headerShown: false,
                     }}
                 >
+                    <Stack.Screen name="Welcome" component={Welcome} />
                     <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
                     <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
                 </Stack.Navigator>

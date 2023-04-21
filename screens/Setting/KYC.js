@@ -16,7 +16,7 @@ const KYC = ({ navigation }) => {
                 colors={['#502D9F66', '#08021C00']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                locations={[0.3191, 0.6809]}
+                locations={[0.3392, 0.9986]}
                 style={styles.content}
             >
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>

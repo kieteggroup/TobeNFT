@@ -17,7 +17,7 @@ const Deposit = () => {
                             colors={['#F4007499', '#08021C00']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
-                            locations={[0.3191, 0.6809]}
+                            locations={[0.3392, 0.9986]}
                             style={styles.itemCardText}
                         >
                             <Text
@@ -38,7 +38,7 @@ const Deposit = () => {
                             colors={['#FFFFFF1A', '#08021C00']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
-                            locations={[0.3191, 0.6809]}
+                            locations={[0.3392, 0.9986]}
                             style={{ ...styles.itemCardText, borderWidth: 0 }}
                         >
                             <Text

@@ -24,7 +24,7 @@ const AccountTwo = ({ navigation }) => {
                                 colors={['#F4007466', '#25135166']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                locations={[0.3191, 0.6809]}
+                                locations={[0.3392, 0.9986]}
                                 style={styles.coinFooter}
                             >
                                 <Text style={styles.text}>Total free earning coins</Text>
@@ -37,7 +37,7 @@ const AccountTwo = ({ navigation }) => {
                                 colors={['#F4007466', '#25135166']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                locations={[0.3191, 0.6809]}
+                                locations={[0.3392, 0.9986]}
                                 style={styles.coinFooter}
                             >
                                 <Text style={styles.text}>Total profit and commission coins</Text>
@@ -50,7 +50,7 @@ const AccountTwo = ({ navigation }) => {
                         colors={['#502D9F66', '#08021C00']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
-                        locations={[0.3191, 0.6809]}
+                        locations={[0.3392, 0.9986]}
                         style={styles.totalProfitContainer}
                     >
                         <View style={styles.totalProfitInfo}>
@@ -59,7 +59,7 @@ const AccountTwo = ({ navigation }) => {
                                     colors={['#FFFFFF13', '#8F79D939']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.profitCoin}
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
@@ -72,7 +72,7 @@ const AccountTwo = ({ navigation }) => {
                                     colors={['#FFFFFF13', '#8F79D939']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.profitCoin}
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
@@ -85,7 +85,7 @@ const AccountTwo = ({ navigation }) => {
                                     colors={['#FFFFFF13', '#8F79D939']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.profitCoin}
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
@@ -98,7 +98,7 @@ const AccountTwo = ({ navigation }) => {
                                     colors={['#FFFFFF13', '#8F79D939']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
-                                    locations={[0.3191, 0.6809]}
+                                    locations={[0.3392, 0.9986]}
                                     style={styles.profitCoin}
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
@@ -114,14 +114,14 @@ const AccountTwo = ({ navigation }) => {
                             colors={['#FFD70566', '#502D9F66']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
-                            locations={[0.3191, 0.6809]}
+                            locations={[0.3392, 0.9986]}
                             style={styles.profitFooter}
                         >
                             <LinearGradient
                                 colors={['#FFFFFF13', '#8F79D939']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                locations={[0.3191, 0.6809]}
+                                locations={[0.3392, 0.9986]}
                                 style={styles.totalProfit}
                             >
                                 <View style={styles.total}>

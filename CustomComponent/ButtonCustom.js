@@ -13,8 +13,8 @@ const ButtonCustom = ({
     backgroundColorBtn,
     ref,
     backgroundLinearGradient,
-    start,
-    end,
+    start = { x: 0, y: 0 },
+    end = { x: 0, y: 1 },
     locations = [0, 1],
     containerStyle,
 }) => {

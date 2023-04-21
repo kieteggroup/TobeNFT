@@ -3,7 +3,7 @@ import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { IconDropDown } from '../assets/imageSvg/ImageSVG';
-const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, backgroundStyle, iconColor }) => {
+const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle, iconColor }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
@@ -12,12 +12,12 @@ const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, backgroundStyle
                 colors={[backgroundStyle || '#FFFFFF13', backgroundStyle || '#8F79D939']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                locations={[0.3191, 0.6809]}
+                locations={[0.3392, 0.9986]}
                 style={[styles.dropdown, dropdownStyle]}
             >
-                <Text style={[styles.dropdownText, placeholderStyle]}>0.0</Text>
+                <Text style={[styles.dropdownText, placeholderColor]}>0.0</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ ...styles.dropdownText, marginRight: 15, ...placeholderStyle }}>
+                    <Text style={{ ...styles.dropdownText, marginRight: 15, ...placeholderColor }}>
                         {selectCurrency}
                     </Text>
                     {isSelect ? (

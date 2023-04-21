@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { routerSetting } from '../router/router';
+import { routerProfile, routerSetting } from '../router/router';
 
 import { HeaderScreenLeft, HeaderScreenRight } from '../components/headerBar';
 
@@ -20,7 +20,24 @@ function SettingNavigator() {
             initialRouteName="Setting"
         >
             {routerSetting.map((screen) => (
-                <Stack.Screen key={screen.name} name={screen.name} component={screen.component} />
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                    options={{
+                        headerLeft: () => screen.headerLeft || false,
+                    }}
+                />
+            ))}
+            {routerProfile.map((screen) => (
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                    options={{
+                        headerLeft: () => screen.headerLeft || false,
+                    }}
+                />
             ))}
         </Stack.Navigator>
     );

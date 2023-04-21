@@ -3,7 +3,6 @@ import { routerNFT, routerSwap } from '../router/router';
 
 import { HeaderScreenLeft, HeaderScreenRight } from '../components/headerBar';
 
-
 const Stack = createNativeStackNavigator();
 
 function SwapNavigator() {
@@ -20,9 +19,15 @@ function SwapNavigator() {
             }}
             initialRouteName="Swap"
         >
-         
             {routerSwap.map((screen) => (
-            <Stack.Screen key={screen.name} name={screen.name} component={screen.component} />
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                    options={{
+                        headerLeft: () => screen.headerLeft || false,
+                    }}
+                />
             ))}
         </Stack.Navigator>
     );

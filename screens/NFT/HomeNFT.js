@@ -50,7 +50,7 @@ const HomeNFT = ({ children, route }) => {
                                         }
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3191, 0.6809]}
+                                        locations={[0.3392, 0.9986]}
                                         buttonStyle={{
                                             width: 'auto',
                                             height: 35 * WIDTH.widthScale,

@@ -16,7 +16,7 @@ const listSetting = [
     },
     {
         name: 'History',
-        navigate: 'History',
+        navigate: 'MenuHistory',
     },
     {
         name: 'Security',
@@ -98,10 +98,10 @@ const Setting = ({ navigation }) => {
                                 borderRadius: 5,
                                 borderWidth: 0,
                             }}
+                            onPress={() => navigation.navigate('ShareLink')}
                         />
                         <ButtonCustom
                             text="Referral code"
-                            onPress={() => navigation.navigate('AuthCode')}
                             backgroundColorBtn="#E8127C"
                             buttonStyle={{
                                 width: 150 * WIDTH.widthScale,
@@ -132,14 +132,14 @@ const Setting = ({ navigation }) => {
                         ))}
                     </View>
                     <View style={styles.header}>
-                        <View style={styles.headerItem}>
+                        <TouchableOpacity style={styles.headerItem}>
                             <Text style={styles.text}>Help Center</Text>
                             <Image source={icons.continueicon} />
-                        </View>
-                        <View style={styles.headerItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.headerItem} onPress={() => navigation.navigate('Contact')}>
                             <Text style={styles.text}>About US</Text>
                             <Image source={icons.continueicon} />
-                        </View>
+                        </TouchableOpacity>
                     </View>
 
                     <ButtonCustom
@@ -148,7 +148,7 @@ const Setting = ({ navigation }) => {
                             width: 332 * WIDTH.widthScale,
                             height: 39 * WIDTH.widthScale,
                         }}
-                        buttonStyleText={{ fontSize: SIZES.xLarge, ...TEXTS.textRegular, fontWeight: 500}}
+                        buttonStyleText={{ fontSize: SIZES.xLarge, ...TEXTS.textRegular, fontWeight: 500 }}
                     />
                 </View>
             </View>

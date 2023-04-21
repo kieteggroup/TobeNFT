@@ -54,7 +54,7 @@ const EstateNFTs = () => {
                     colors={['#502D9F66', '#08021C00']}
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
-                    locations={[0.3191, 0.6809]}
+                    locations={[0.3392, 0.9986]}
                     style={styles.header}
                 >
                     <Text style={styles.title}>Real Estate NFTs</Text>
@@ -168,41 +168,41 @@ const EstateNFTs = () => {
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
-                                placeholderStyle={{ color: '#536981' }}
+                                placeholderColor={{ color: '#536981' }}
                             />
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
-                                placeholderStyle={{ color: '#536981' }}
+                                placeholderColor={{ color: '#536981' }}
                             />
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
-                                placeholderStyle={{ color: '#536981' }}
+                                placeholderColor={{ color: '#536981' }}
                             />
                             <InputCustom
                                 placeholder="Features"
                                 radiusMax
-                                placeholderStyle="#536981"
+                                placeholderColor="#536981"
                                 style={styles.input}
                             />
                             <InputCustom
                                 placeholder="Address"
                                 radiusMax
-                                placeholderStyle="#536981"
+                                placeholderColor="#536981"
                                 style={styles.input}
                             />
                             <InputCustom
                                 placeholder="Description"
                                 radiusMax
-                                placeholderStyle="#536981"
+                                placeholderColor="#536981"
                                 style={{ ...styles.input, height: 61* WIDTH.widthScale }}
                             />
                             <LinearGradient
                                 colors={['#502D9F66', '#8F79D966']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                locations={[0.3191, 0.6809]}
+                                locations={[0.3392, 0.9986]}
                                 style={styles.ratio}
                             >
                                 <Text style={styles.address}>

@@ -15,7 +15,7 @@ const SwapDetail = () => {
                     colors={['#502D9F10', '#08021C00']}
                     start={{ x: 0, y: 1 }}
                     end={{ x: 0, y: 0 }}
-                    locations={[0.3191, 0.6809]}
+                    locations={[0.3392, 0.9986]}
                     style={styles.infoContainer}
                 >
                     <Image source={images.tanbinh} style={styles.img} />
@@ -83,7 +83,7 @@ const SwapDetail = () => {
                     colors={['#2A0F57', '#2A0F5790']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
-                    locations={[0.3191, 0.6809]}
+                    locations={[0.3392, 0.9986]}
                     style={styles.review}
                 >
                     <View style={styles.reviewHeader}>
@@ -96,14 +96,14 @@ const SwapDetail = () => {
                             style={styles.input}
                             radiusMax
                             placeholder="Beautiful place!"
-                            placeholderStyle="#536981"
+                            placeholderColor="#536981"
                         />
                         <InputCustom
                             style={{ ...styles.input, height: 83* WIDTH.widthScale, borderRadius: 13 }}
                             multiline
                             numberOfLines={4}
                             placeholder="Describe your experience"
-                            placeholderStyle="#536981"
+                            placeholderColor="#536981"
                         />
                         <View style={styles.start}>
                             <Image style={styles.starImg} source={icons.saovang} />

@@ -9,7 +9,7 @@ const InputCustom = ({
     keyboardType,
     value,
     showPass,
-    placeholderStyle = '#fff',
+    placeholderColor = '#fff',
     style,
     radiusMax,
     multiline,
@@ -25,7 +25,7 @@ const InputCustom = ({
             secureTextEntry={showPass}
             value={value}
             onChangeText={onChangeText}
-            placeholderTextColor={placeholderStyle}
+            placeholderTextColor={placeholderColor}
             keyboardType={keyboardType}
             autoCapitalize={autoCapitalize}
             multiline={multiline}

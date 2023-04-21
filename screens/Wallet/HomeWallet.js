@@ -12,32 +12,34 @@ const HomeWallet = ({ navigation }) => {
         <MainContainer>
             <View style={styles.wrapper}>
                 <View style={styles.header}>
-                    <MultiHexagon />
-                    <View style={{ alignItems: 'center', position: 'absolute', top: 75 * WIDTH.widthScale }}>
-                        <LogoOnly />
-                        <Text style={{ fontSize: SIZES.xxLarge, ...TEXTS.textBold }}>1 986 086.06</Text>
-                        <Text style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
-                            Available ~ <Text style={{ ...TEXTS.textMedium }}>$6900</Text>
-                        </Text>
-                        <ButtonCustom
-                            text="Detail Balance"
-                            backgroundColorBtn="#FFFFFF33"
-                            onPress={() => navigation.navigate('Account')}
-                            buttonStyle={styles.button}
-                            buttonStyleText={{
-                                fontSize: SIZES.small,
-                                ...TEXTS.textRegular,
-                            }}
-                            rightIcon={
-                                <LinearGradient
-                                    colors={['#FFFFFF33', '#DDDDDD33', '#08021C00', '#FFFFFF33']}
-                                    style={styles.iconContinue}
-                                    locations={[0.3191, 0.6809]}
-                                >
-                                    <Image source={icons.continueicon} />
-                                </LinearGradient>
-                            }
-                        />
+                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <MultiHexagon />
+                        <View style={{ alignItems: 'center', position: 'absolute' }}>
+                            <LogoOnly />
+                            <Text style={{ fontSize: SIZES.xxLarge, ...TEXTS.textBold }}>1 986 086.06</Text>
+                            <Text style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
+                                Available ~ <Text style={{ ...TEXTS.textMedium }}>$6900</Text>
+                            </Text>
+                            <ButtonCustom
+                                text="Detail Balance"
+                                backgroundColorBtn="#FFFFFF33"
+                                onPress={() => navigation.navigate('Account')}
+                                buttonStyle={styles.button}
+                                buttonStyleText={{
+                                    fontSize: SIZES.small,
+                                    ...TEXTS.textRegular,
+                                }}
+                                rightIcon={
+                                    <LinearGradient
+                                        colors={['#FFFFFF33', '#DDDDDD33', '#08021C00', '#FFFFFF33']}
+                                        style={styles.iconContinue}
+                                        locations={[0.3392, 0.9986]}
+                                    >
+                                        <Image source={icons.continueicon} />
+                                    </LinearGradient>
+                                }
+                            />
+                        </View>
                     </View>
                     <View style={styles.actionContainer}>
                         <TouchableOpacity style={styles.action} onPress={() => navigation.navigate('Deposit')}>
@@ -86,7 +88,7 @@ const HomeWallet = ({ navigation }) => {
                         text="Get NOW"
                         onPress={() => navigation.navigate('Setting')}
                         backgroundLinearGradient={['#FFFFFF33', '#FFFFFF00']}
-                        buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale }}
+                        buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale  }}
                         buttonStyleText={{
                             fontSize: 14,
                             ...TEXTS.textRegular,
@@ -95,8 +97,8 @@ const HomeWallet = ({ navigation }) => {
                         rightIcon={
                             <LinearGradient
                                 colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
-                                style={{ ...styles.iconContinue, height: 30 * WIDTH.widthScale }}
-                                locations={[0.3191, 0.6809]}
+                                style={{ ...styles.iconContinue, height: 30 * WIDTH.widthScale ,width: 30 * WIDTH.widthScale }}
+                                locations={[0.3392, 0.9986]}
                             >
                                 <Image source={icons.continueicon} />
                             </LinearGradient>
@@ -130,7 +132,7 @@ const HomeWallet = ({ navigation }) => {
                             colors={['#502D9F66', '#08021C00']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
-                            locations={[0.3191, 0.6809]}
+                            locations={[0.3392, 0.9986]}
                             style={styles.postNFT}
                         >
                             <Image
@@ -148,7 +150,7 @@ const HomeWallet = ({ navigation }) => {
                                     <LinearGradient
                                         colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
                                         style={styles.iconContinue}
-                                        locations={[0.3191, 0.6809]}
+                                        locations={[0.3392, 0.9986]}
                                     >
                                         <Image source={icons.continueicon} />
                                     </LinearGradient>
@@ -168,7 +170,7 @@ const HomeWallet = ({ navigation }) => {
                             colors={['#502D9F66', '#08021C00']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
-                            locations={[0.3191, 0.6809]}
+                            locations={[0.3392, 0.9986]}
                             style={styles.postNFT}
                         >
                             <Image source={images.to_earn01} style={styles.postImage} />
@@ -181,7 +183,7 @@ const HomeWallet = ({ navigation }) => {
                                     <LinearGradient
                                         colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
                                         style={styles.iconContinue}
-                                        locations={[0.3191, 0.6809]}
+                                        locations={[0.3392, 0.9986]}
                                     >
                                         <Image source={icons.continueicon} />
                                     </LinearGradient>
@@ -224,10 +226,9 @@ const styles = StyleSheet.create({
         right: 0,
     },
     button: {
-        height: 27 * WIDTH.widthScale,
+        height: 26 * WIDTH.widthScale,
         width: 117 * WIDTH.widthScale,
-        justifyContent: 'flex-start',
-        paddingHorizontal: 6,
+        paddingRight: 29 * WIDTH.widthScale,
         marginTop: 10,
     },
     buttonStart: {
@@ -240,7 +241,7 @@ const styles = StyleSheet.create({
     actionContainer: {
         flexDirection: 'row',
         position: 'absolute',
-        bottom: -5 ,
+        bottom: -5,
         columnGap: 53,
     },
     action: {
