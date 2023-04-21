@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { COLORS, icons } from '../constants';
+import { COLORS, icons, images } from '../constants';
 import { useNavigation } from '@react-navigation/native';
+import { LogoHorizontal } from '../assets/imageSvg/ImageSVG';
 
 const HeaderScreenLeft = ({ src, goBack, goHome }) => {
     // console.log(n);
@@ -10,12 +11,15 @@ const HeaderScreenLeft = ({ src, goBack, goHome }) => {
         if (goBack) {
             return navigation.goBack();
         } else if (goHome) {
-            return navigation.navigate('WalletNavigator');
+            return navigation.navigate('HomeWallet');
         }
+
+        return false
     };
     return (
         <TouchableOpacity onPress={() => handelNavigator()}>
-            <Image source={src} />
+            {goHome && <LogoHorizontal />}
+            {goBack && <Image source={icons.back} />}
         </TouchableOpacity>
     );
 };
@@ -23,7 +27,7 @@ const HeaderScreenRight = ({ src }) => {
     return (
         <View style={styles.coinNow}>
             <Image source={icons.toearnnownho} />
-            <Text style={styles.coinText}>1 986 086.06</Text>
+            <Text style={styles.coinToken}>1 986 086.06</Text>
         </View>
     );
 };
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         // backgroundColor:"#fff"
     },
-    coinText: {
+    coinToken: {
         color: COLORS.white,
         marginLeft: 10,
     },

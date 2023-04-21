@@ -1,7 +1,7 @@
 import { View, FlatList, StyleSheet, ImageBackground, ScrollView } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { COLORS, FONT, SIZES, WIDTH, images } from '../../constants';
+import { COLORS, FONTS, SIZES, WIDTH, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import Marketplace from './Marketplace';
 import Card from './Card';
@@ -9,7 +9,7 @@ import VirtualMachine from './VirtualMachine';
 
 const nftType = ['NFT Marketplace', 'NFT Card', 'Virtual Machine'];
 
-const MainContainerNFT = ({ children }) => {
+const HomeNFT = ({ children, route }) => {
     const [activeType, setActiveType] = useState('NFT Marketplace');
 
     const displayTabContent = () => {
@@ -53,10 +53,10 @@ const MainContainerNFT = ({ children }) => {
                                         locations={[0.3191, 0.6809]}
                                         buttonStyle={{
                                             width: 'auto',
-                                            height: 35,
+                                            height: 35 * WIDTH.widthScale,
                                             borderWidth: activeType === item ? 1 : 0,
                                         }}
-                                        buttonStyleText={{ fontFamily: FONT.regularRoboto, fontSize: 14 }}
+                                        buttonStyleText={{ fontFamily: FONTS.regularRoboto }}
                                     />
                                 )}
                                 keyExtractor={({ item }) => item}
@@ -74,7 +74,7 @@ const MainContainerNFT = ({ children }) => {
                         </>
                     )}
                 </View>
-                <View style={{ height: 100}}></View>
+                <View style={{ height: 100 }}></View>
             </ImageBackground>
         </ScrollView>
     );
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
     },
 });
-export default MainContainerNFT;
+export default HomeNFT;

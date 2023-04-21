@@ -1,41 +1,19 @@
-import Logo from '../assets/imageSvg/ImageSVG';
-import logo from '../assets/Image/logo.png';
-import logoLogin from '../assets/Image/logoLogin.png';
-import hiddenPass from '../assets/Image/hiddenpass.png';
-import viewPass from '../assets/Image/viewpass.png';
-import iconFacebook from '../assets/Image/iconFacebook.png';
-import iconGoogle from '../assets/Image/IconGoogle.png';
-import back from '../assets/Image/quaylaij.png';
-import toearnnownho from '../assets/Image/toearnnownho.png';
-import Toearnnow from '../assets/Image/Toearnnow.png';
-import Usdt from '../assets/Image/Usdt.png';
-import iconNFT from '../assets/Image/iconNFT.png';
-import saotrang from '../assets/Image/saotrang.png';
-import saovang from '../assets/Image/saovang.png';
-import search from '../assets/Image/search.png';
-import iconswap from '../assets/Image/iconswap.png';
-import vector from '../assets/Image/vector.png';
-import quaylai from '../assets/Image/back.png';
-import continueicon from '../assets/Image/continueicon.png';
-
 export default {
-    // logo: Logo,
-    logo,
-    logoLogin,
-    hiddenPass,
-    viewPass,
-    iconFacebook,
-    iconGoogle,
-    back,
-    quaylai,
-    continueicon,
-    toearnnownho,
-    Toearnnow,
-    Usdt,
-    iconNFT,
-    saotrang,
-    saovang,
-    search,
-    iconswap,
-    vector,
+    logo: require('../assets/Image/logo.png'),
+    logoLogin: require('../assets/Image/logoLogin.png'),
+    hiddenPass: require('../assets/Image/hiddenpass.png'),
+    viewPass: require('../assets/Image/viewpass.png'),
+    iconFacebook: require('../assets/Image/iconFacebook.png'),
+    iconGoogle: require('../assets/Image/IconGoogle.png'),
+    back: require('../assets/Image/quaylaij.png'),
+    toearnnownho: require('../assets/Image/toearnnownho.png'),
+   
+    iconNFT: require('../assets/Image/iconNFT.png'),
+    saotrang: require('../assets/Image/saotrang.png'),
+    saovang: require('../assets/Image/saovang.png'),
+    search: require('../assets/Image/search.png'),
+    iconswap: require('../assets/Image/iconswap.png'),
+    quaylai: require('../assets/Image/back.png'),
+    continueicon: require('../assets/Image/continueicon.png'),
+    plus: require('../assets/Image/plus.png'),
 };

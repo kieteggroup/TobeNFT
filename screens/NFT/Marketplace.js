@@ -1,10 +1,32 @@
-import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Image, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONT, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 
+const dataNFT = [
+    {
+        name: 'Juicy Burger',
+        address: '158 Ludlow St, New York, NY 10002, United States',
+        price: 1000,
+    },
+    {
+        name: 'Juicy Burger',
+        address: '158 Ludlow St, New York, NY 10002, United States',
+        price: 1000,
+    },
+    {
+        name: 'Juicy Burger',
+        address: '158 Ludlow St, New York, NY 10002, United States',
+        price: 1000,
+    },
+    {
+        name: 'Juicy Burger',
+        address: '158 Ludlow St, New York, NY 10002, United States',
+        price: 1000,
+    },
+];
 const Marketplace = () => {
     const navigation = useNavigation();
 
@@ -12,7 +34,7 @@ const Marketplace = () => {
         <View style={styles.wrapper}>
             {/* Title */}
             <View style={{ paddingHorizontal: 20, alignItems: 'center' }}>
-                <View style={{ height: 52, marginTop: 23 }}>
+                <View style={{ height: 52 * WIDTH.widthScale, marginTop: 23 }}>
                     <Text style={styles.title}>NFT MARKETPLACE</Text>
                 </View>
                 <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
@@ -32,19 +54,25 @@ const Marketplace = () => {
                 <ButtonCustom
                     text="Search"
                     leftIcon={<Image source={icons.search} />}
-                    buttonStyle={{ borderWidth: 0, marginBottom: 16 }}
-                    buttonStyleText={{ fontFamily: FONT.regular }}
+                    buttonStyle={{ borderWidth: 0, marginBottom: 16, width: 292 * WIDTH.widthScale }}
+                    buttonStyleText={{ fontFamily: FONTS.regular }}
                     backgroundLinearGradient={['#502D9F', '#F40074']}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     locations={[0.085, 1]}
+                    onPress={() => navigation.navigate('MyNFT')}
                 />
             </LinearGradient>
-            <View style={styles.listRestaurant}>
-                {[1, 2, 3, 4, 5].map((item) => (
+
+            <FlatList
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.listRestaurant}
+                data={dataNFT}
+                keyExtractor={(item) => item.name}
+                renderItem={({ item }) => (
                     <TouchableOpacity
                         style={styles.wrapperItem}
-                        key={item}
+                        key={item.name}
                         onPress={() => navigation.navigate('CardDetail')}
                     >
                         <View style={styles.left}>
@@ -62,45 +90,34 @@ const Marketplace = () => {
                         </View>
 
                         <View style={styles.right}>
-                            <Text
-                                style={{
-                                  ...TEXTS.textMedium,
-                                    marginTop: 23,
-                                }}
-                            >
-                                Juicy Burger
-                            </Text>
+                            <Text style={styles.name}>{item.name}</Text>
                             <Text numberOfLines={1} style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
-                                158 Ludlow St, New York, NY 10002, United States
+                                {item.address}
                             </Text>
                             <Text
                                 style={{
-                                   ...TEXTS.textBold,
-                                   fontSize: SIZES.large,
+                                    ...TEXTS.textBold,
+                                    fontSize: SIZES.large,
                                 }}
                             >
-                                $1000
+                                ${item.price}
                             </Text>
                             <ButtonCustom
                                 text="Buy now"
-                                buttonStyle={{
-                                    height: 30,
-                                    borderWidth: 0,
-                                    marginTop: 12,
-                                }}
+                                buttonStyle={styles.button}
                                 buttonStyleText={{
-                                    fontSize: 14,
                                     ...TEXTS.textBold,
+                                    fontSize: 14,
                                 }}
                                 backgroundLinearGradient={['#780D69', '#EC0174']}
                                 start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 0 }}
+                                end={{ x: 1, y: 1 }}
                                 locations={[0.25, 0.75]}
                             />
                         </View>
                     </TouchableOpacity>
-                ))}
-            </View>
+                )}
+            />
         </View>
     );
 };
@@ -137,8 +154,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     input: {
-        fontSize: 14,
-        height: 36,
+        height: 36 * WIDTH.widthScale,
         width: WIDTH.width100,
         ...TEXTS.textMedium,
     },
@@ -147,7 +163,8 @@ const styles = StyleSheet.create({
         rowGap: 23,
     },
     wrapperItem: {
-        width: WIDTH.width100,
+        width: 331 * WIDTH.widthScale,
+        height: 159 * WIDTH.widthScale,
         flexDirection: 'row',
         borderWidth: 1,
         borderStyle: 'solid',
@@ -163,9 +180,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#140E2580',
-        height: 34,
+        height: 34 * WIDTH.widthScale,
         borderTopLeftRadius: 18,
         borderTopRightRadius: 18,
+    },
+    img: {
+        width: 160 * WIDTH.widthScale,
+        height: WIDTH.width100,
+        overflow:'hidden'
     },
     textRestaurant: {
         fontSize: SIZES.small,
@@ -179,6 +201,17 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         alignItems: 'flex-start',
         rowGap: 5,
+    },
+    name: {
+        ...TEXTS.textMedium,
+        fontSize: SIZES.medium,
+        marginTop: 23,
+    },
+    button: {
+        height: 30 * WIDTH.widthScale,
+        borderWidth: 0,
+        marginTop: 12,
+        width: 138 * WIDTH.widthScale,
     },
 });
 export default Marketplace;

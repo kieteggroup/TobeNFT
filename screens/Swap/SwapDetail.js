@@ -8,7 +8,7 @@ import MainContainer from '../../components/MainContainer';
 
 const SwapDetail = () => {
     return (
-        <MainContainer noBackgroundFooter noBlurBackground>
+        <MainContainer noBackgroundFooter >
             <View style={styles.wrapper}>
                 {/* Info */}
                 <LinearGradient
@@ -84,7 +84,7 @@ const SwapDetail = () => {
                 <LinearGradient
                     colors={['#2A0F57', '#2A0F5790']}
                     start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
+                    end={{ x: 1, y: 1 }}
                     locations={[0.3191, 0.6809]}
                     style={styles.review}
                 >
@@ -130,28 +130,30 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         marginBottom: 50,
-        marginTop: 10,
-        paddingHorizontal: 20,
+        marginTop: SIZES.xSmall,
+        paddingHorizontal: SIZES.large,
+
     },
     infoContainer: {
         // flex: 1,
         // width: 327,
         width: WIDTH.width100,
         maxWidth: WIDTH.width100,
-        borderRadius: 10,
+        borderRadius: SIZES.xSmall,
         marginBottom: 13,
         alignItems: 'center',
         paddingHorizontal: 22,
-        paddingBottom: 10,
+        paddingBottom: SIZES.xSmall,
+
     },
 
     title: {
         fontSize: SIZES.medium,
-        marginTop: 10,
+        marginTop: SIZES.xSmall,
     },
 
     name: {
-        fontSize: 14,
+       
         marginTop: 5,
     },
     subHeading: {
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     },
     start: {
         flexDirection: 'row',
-        marginBottom: 10,
+        marginBottom:SIZES.xSmall,
     },
 
     starImg: {
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
     },
     tagContent: {
         flexDirection: 'row',
-        columnGap: 10,
+        columnGap: SIZES.xSmall,
         marginTop: 6,
     },
     tagText: {
@@ -184,13 +186,15 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         // height: 14,
         // width: 50,
-        paddingHorizontal: 10,
+        paddingHorizontal: SIZES.xSmall,
         paddingVertical: 1,
     },
     mapContainer: {
-        borderRadius: 10,
+        borderRadius: SIZES.xSmall,
         marginHorizontal: 30,
         flexDirection: 'row',
+        width: WIDTH.width100,
+
         elevation: 3,
         shadowColor: '#000',
         shadowOffset: {
@@ -203,7 +207,7 @@ const styles = StyleSheet.create({
     mapTitle: {
         ...TEXTS.textBold,
         fontSize: 13,
-        marginBottom: 10,
+        marginBottom: SIZES.xSmall,
     },
     footer: {
         borderTopWidth: 1,
@@ -213,20 +217,23 @@ const styles = StyleSheet.create({
     footerTitle: {
         ...TEXTS.textRegular,
         fontSize: 15,
-        marginLeft: 10,
+        marginLeft: SIZES.xSmall,
         marginTop: 5,
-        marginBottom: 10,
+        marginBottom: SIZES.xSmall,
     },
     review: {
         marginTop: 40,
         alignItems: 'flex-start',
-        borderRadius: 10,
-        marginHorizontal: 10,
+        borderRadius: SIZES.xSmall,
+        marginHorizontal: SIZES.small,
+        width: WIDTH.width100,
+
     },
     reviewHeader: {
         paddingHorizontal: 25,
-        paddingTop: 10,
-        paddingBottom: 20,
+        paddingTop: SIZES.xSmall,
+        paddingBottom: SIZES.large,
+
     },
     reviewBody: {
         borderTopWidth: 1,
@@ -234,16 +241,18 @@ const styles = StyleSheet.create({
         borderColor: '#ffdee333',
         rowGap: 13,
         padding: 15,
+        width: WIDTH.width100,
+
     },
     reviewTitle: {
         ...TEXTS.textRegular,
-        fontSize: 14,
+       
     },
     input: {
         backgroundColor: '#fff',
         ...TEXTS.textRegular,
         height: 38,
-        fontSize: 14,
+       
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: '#EAEAEA',

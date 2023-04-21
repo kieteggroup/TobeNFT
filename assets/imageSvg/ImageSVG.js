@@ -1,9 +1,17 @@
 import * as React from 'react';
-import Svg, { Path, Defs, LinearGradient, Stop, G, ClipPath } from 'react-native-svg';
+import Svg, { Path, Defs, LinearGradient, Stop, G, ClipPath, Rect } from 'react-native-svg';
+import { WIDTH } from '../../constants';
 
 function Logo(props) {
     return (
-        <Svg width={173} height={80} viewBox="0 0 173 80" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <Svg
+            width={173 * WIDTH.widthScale}
+            height={80 * WIDTH.widthScale}
+            viewBox="0 0 173 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
             <Path
                 d="M86.135 8.85c4.94 0 9.33 2.158 12.294 5.503l7.465-4.964C101.283 3.669 94.148 0 86.135 0S71.097 3.561 66.487 9.28l7.464 4.965C76.915 10.9 81.306 8.85 86.135 8.85z"
                 fill="url(#paint0_linear_1_1312)"
@@ -103,449 +111,94 @@ function Logo(props) {
         </Svg>
     );
 }
+export function LogoOnly(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={47} height={67} viewBox="0 0 47 67" fill="none" {...props}>
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M27.475 33.245V16.269l3.013-3.116V4.779L22.248 0v33.245h5.227z"
+                fill="#02FFAC"
+            />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.166 12.333C5.844 15.893 0 24.19 0 33.846c0 5.973 2.274 11.96 6.812 16.522l16.441 16.52 16.441-16.52a23.371 23.371 0 006.813-16.522c0-7.25-3.3-13.74-8.47-18.027l-.006 18.027c0 3.8-1.437 7.6-4.328 10.5a14.72 14.72 0 01-20.895 0 14.84 14.84 0 01-4.328-10.5V22.438l5.686-3.3v-6.805z"
+                fill="#02FFAC"
+            />
+            <Path
+                d="M35.858 33.243V16.267l-5.37-3.115v20.091h5.37zM19.042 33.243V23.26l-3.013-3.116v13.099h-5.37V23.26l5.37-3.116V8.735l5.366-3.109v27.617h-2.353z"
+                fill="#fff"
+            />
+            <Path
+                d="M10.865 35.605c1.074 5.9 6.206 10.377 12.388 10.377 6.182 0 11.313-4.477 12.388-10.377H10.865z"
+                fill="#02FFAC"
+            />
+        </Svg>
+    );
+}
+function LogoHorizontal(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={109} height={34} viewBox="0 0 109 34" fill="none" {...props}>
+            <G clipPath="url(#clip0_42_6317)" fill="#02FFAC">
+                <Path d="M31.206 24.725V13.8h-3.917v-.965c0-.386.135-.714.403-.985.27-.27.595-.405.98-.405h9.139v2.355h-3.879v10.923h-2.726zM39.377 23.798c-.538-.463-.922-1.086-1.152-1.871a8.662 8.662 0 01-.346-2.451c0-.695.095-1.39.288-2.084.192-.695.493-1.274.902-1.738.666-.771 1.523-1.229 2.574-1.37 1.049-.141 1.996-.058 2.841.25.972.387 1.69 1.055 2.15 2.008.435.849.653 1.84.653 2.972 0 .823-.09 1.53-.269 2.123-.18.593-.41 1.094-.691 1.506-.614.849-1.395 1.376-2.343 1.583a5.205 5.205 0 01-2.553.058c-.858-.195-1.543-.522-2.054-.986zm1.843-6.793c-.538.592-.781 1.473-.73 2.643.05 1.171.269 1.988.653 2.451.154.206.423.38.807.521a1.83 1.83 0 001.17.04c.398-.117.75-.405 1.057-.869.307-.463.474-1.209.5-2.238 0-.926-.148-1.621-.442-2.084-.295-.463-.634-.759-1.018-.888a1.855 1.855 0 00-1.152-.02c-.384.116-.666.264-.845.444zM50.812 12.72v3.088c.281-.49.691-.888 1.229-1.197.46-.258 1.024-.386 1.689-.386 1.203 0 2.19.502 2.957 1.506.768 1.003 1.152 2.303 1.152 3.899 0 1.594-.384 2.895-1.152 3.898-.384.49-.902.843-1.555 1.062-.653.218-1.3.327-1.938.327a6.42 6.42 0 01-3.418-.965c-1.05-.644-1.575-1.879-1.575-3.705v-8.839h1.305c.358 0 .666.129.922.386.255.258.384.567.384.926zm4.377 6.794c0-.926-.192-1.647-.576-2.161-.384-.54-.909-.811-1.575-.811-.717 0-1.268.257-1.652.772-.384.54-.576 1.274-.576 2.2 0 1.08.18 1.866.537 2.355.384.54.922.811 1.613.811.717 0 1.268-.27 1.652-.811.386-.541.577-1.325.577-2.355zM65.894 21.56h1.92c-.281 1.08-.818 1.904-1.613 2.47-.794.59-1.791.888-2.995.888-1.458 0-2.597-.477-3.417-1.429-.82-.926-1.229-2.251-1.229-3.976 0-1.647.397-2.933 1.19-3.86.82-.952 1.96-1.428 3.418-1.428 1.537 0 2.727.463 3.572 1.39.82.952 1.229 2.277 1.229 3.975V20.016a.658.658 0 01-.04.27h-6.642c.026.798.217 1.39.576 1.776.333.412.832.617 1.498.617.435 0 .807-.09 1.114-.27a.55.55 0 00.212-.136l.211-.212c.026-.078.122-.18.288-.31.165-.127.401-.192.708-.192zm-4.607-3.011h3.916c-.05-.695-.23-1.209-.537-1.544-.334-.36-.807-.54-1.422-.54-.563 0-1.024.18-1.382.54-.358.361-.55.875-.575 1.544zM73.79 24.725V12.837c0-.386.135-.714.403-.985.27-.27.596-.418.98-.444h1.459l5.375 9.148v-9.148h2.688v13.316h-2.803l-5.415-9.148v9.148H73.79v.001zM86.53 24.724V12.836c0-.386.135-.714.404-.985.27-.27.595-.405.98-.405h8.216v2.278h-6.912v2.856h5.146v.888c0 .386-.135.714-.403.985-.27.27-.596.405-.98.405h-3.763v5.866h-2.687zM101.577 24.725V13.8h-3.916v-.965c0-.386.134-.714.403-.985.269-.27.595-.405.979-.405h9.139v2.355h-3.878v10.923h-2.727z" />
+            </G>
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12.65 15.307V7.49l1.387-1.434V2.2L10.243 0v15.307h2.407z"
+                fill="#02FFAC"
+            />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M6.522 5.678A10.771 10.771 0 000 15.584c0 2.75 1.047 5.506 3.137 7.606l7.57 7.607 7.569-7.607a10.76 10.76 0 003.137-7.606 10.76 10.76 0 00-3.9-8.3l-.003 8.3a6.82 6.82 0 01-1.993 4.834 6.777 6.777 0 01-9.62 0 6.833 6.833 0 01-1.992-4.834V10.33l2.618-1.519V5.678z"
+                fill="#02FFAC"
+            />
+            <Path
+                d="M16.51 15.306V7.49l-2.473-1.435v9.25h2.473zM8.767 15.306v-4.597L7.38 9.275v6.03H4.908V10.71L7.38 9.275V4.022l2.47-1.431v12.715H8.767z"
+                fill="#fff"
+            />
+            <Path
+                d="M5.002 16.393c.495 2.717 2.858 4.778 5.704 4.778 2.847 0 5.21-2.061 5.704-4.778H5.002z"
+                fill="#02FFAC"
+            />
+            <Defs>
+                <ClipPath id="clip0_42_6317">
+                    <Path fill="#fff" transform="translate(25.493 2.763)" d="M0 0H82.8757V30.7975H0z" />
+                </ClipPath>
+            </Defs>
+        </Svg>
+    );
+}
 
 function QrCode(props) {
     return (
-        <Svg height={150} width={150} xmlns="http://www.w3.org/2000/svg" {...props}>
-            <Path d="M0 0h5v5H0zM5 0h5v5H5zM10 0h6v5h-6zM16 0h5v5h-5zM21 0h5v5h-5zM26 0h5v5h-5zM31 0h5v5h-5z" />
-            <Path d="M36 0h5v5h-5zM41 0h6v5h-6zM47 0h5v5h-5z" fill="#FFF" />
-            <Path d="M52 0h5v5h-5z" />
-            <Path d="M57 0h5v5h-5z" fill="#FFF" />
-            <Path d="M62 0h5v5h-5z" />
-            <Path d="M67 0h5v5h-5z" fill="#FFF" />
-            <Path d="M72 0h6v5h-6z" />
-            <Path d="M78 0h5v5h-5zM83 0h5v5h-5zM88 0h5v5h-5zM93 0h5v5h-5z" fill="#FFF" />
-            <Path d="M98 0h5v5h-5z" />
-            <Path d="M103 0h6v5h-6zM109 0h5v5h-5z" fill="#FFF" />
-            <Path d="M114 0h5v5h-5zM119 0h5v5h-5zM124 0h5v5h-5zM129 0h5v5h-5zM134 0h6v5h-6zM140 0h5v5h-5zM145 0h5v5h-5zM0 5h5v5H0z" />
-            <Path d="M5 5h5v5H5zM10 5h6v5h-6zM16 5h5v5h-5zM21 5h5v5h-5zM26 5h5v5h-5z" fill="#FFF" />
-            <Path d="M31 5h5v5h-5z" />
-            <Path d="M36 5h5v5h-5z" fill="#FFF" />
-            <Path d="M41 5h6v5h-6z" />
-            <Path d="M47 5h5v5h-5z" fill="#FFF" />
-            <Path d="M52 5h5v5h-5z" />
-            <Path d="M57 5h5v5h-5zM62 5h5v5h-5z" fill="#FFF" />
-            <Path d="M67 5h5v5h-5zM72 5h6v5h-6zM78 5h5v5h-5z" />
-            <Path d="M83 5h5v5h-5zM88 5h5v5h-5z" fill="#FFF" />
-            <Path d="M93 5h5v5h-5z" />
-            <Path d="M98 5h5v5h-5zM103 5h6v5h-6zM109 5h5v5h-5z" fill="#FFF" />
-            <Path d="M114 5h5v5h-5z" />
-            <Path d="M119 5h5v5h-5zM124 5h5v5h-5zM129 5h5v5h-5zM134 5h6v5h-6zM140 5h5v5h-5z" fill="#FFF" />
-            <Path d="M145 5h5v5h-5zM0 10h5v6H0z" />
-            <Path d="M5 10h5v6H5z" fill="#FFF" />
-            <Path d="M10 10h6v6h-6zM16 10h5v6h-5zM21 10h5v6h-5z" />
-            <Path d="M26 10h5v6h-5z" fill="#FFF" />
-            <Path d="M31 10h5v6h-5z" />
-            <Path d="M36 10h5v6h-5zM41 10h6v6h-6zM47 10h5v6h-5zM52 10h5v6h-5zM57 10h5v6h-5z" fill="#FFF" />
-            <Path d="M62 10h5v6h-5z" />
-            <Path d="M67 10h5v6h-5z" fill="#FFF" />
-            <Path d="M72 10h6v6h-6zM78 10h5v6h-5z" />
-            <Path d="M83 10h5v6h-5zM88 10h5v6h-5z" fill="#FFF" />
-            <Path d="M93 10h5v6h-5z" />
-            <Path d="M98 10h5v6h-5zM103 10h6v6h-6zM109 10h5v6h-5z" fill="#FFF" />
-            <Path d="M114 10h5v6h-5z" />
-            <Path d="M119 10h5v6h-5z" fill="#FFF" />
-            <Path d="M124 10h5v6h-5zM129 10h5v6h-5zM134 10h6v6h-6z" />
-            <Path d="M140 10h5v6h-5z" fill="#FFF" />
-            <Path d="M145 10h5v6h-5zM0 16h5v5H0z" />
-            <Path d="M5 16h5v5H5z" fill="#FFF" />
-            <Path d="M10 16h6v5h-6zM16 16h5v5h-5zM21 16h5v5h-5z" />
-            <Path d="M26 16h5v5h-5z" fill="#FFF" />
-            <Path d="M31 16h5v5h-5z" />
-            <Path d="M36 16h5v5h-5z" fill="#FFF" />
-            <Path d="M41 16h6v5h-6zM47 16h5v5h-5zM52 16h5v5h-5z" />
-            <Path d="M57 16h5v5h-5z" fill="#FFF" />
-            <Path d="M62 16h5v5h-5zM67 16h5v5h-5zM72 16h6v5h-6z" />
-            <Path d="M78 16h5v5h-5z" fill="#FFF" />
-            <Path d="M83 16h5v5h-5zM88 16h5v5h-5zM93 16h5v5h-5z" />
-            <Path d="M98 16h5v5h-5z" fill="#FFF" />
-            <Path d="M103 16h6v5h-6z" />
-            <Path d="M109 16h5v5h-5z" fill="#FFF" />
-            <Path d="M114 16h5v5h-5z" />
-            <Path d="M119 16h5v5h-5z" fill="#FFF" />
-            <Path d="M124 16h5v5h-5zM129 16h5v5h-5zM134 16h6v5h-6z" />
-            <Path d="M140 16h5v5h-5z" fill="#FFF" />
-            <Path d="M145 16h5v5h-5zM0 21h5v5H0z" />
-            <Path d="M5 21h5v5H5z" fill="#FFF" />
-            <Path d="M10 21h6v5h-6zM16 21h5v5h-5zM21 21h5v5h-5z" />
-            <Path d="M26 21h5v5h-5z" fill="#FFF" />
-            <Path d="M31 21h5v5h-5z" />
-            <Path d="M36 21h5v5h-5zM41 21h6v5h-6z" fill="#FFF" />
-            <Path d="M47 21h5v5h-5z" />
+        <Svg xmlns="http://www.w3.org/2000/svg" width={180* WIDTH.widthScale} height={180* WIDTH.widthScale} viewBox="0 0 180 180" fill="none" {...props}>
+            <Path d="M22.5 22.5H45V45H22.5V22.5z" fill="#fff" />
+            <Path d="M67.5 0v67.5H0V0h67.5zM56.25 11.25h-45v45h45v-45zM45 135H22.5v22.5H45V135z" fill="#fff" />
             <Path
-                d="M52 21h5v5h-5zM57 21h5v5h-5zM62 21h5v5h-5zM67 21h5v5h-5zM72 21h6v5h-6zM78 21h5v5h-5zM83 21h5v5h-5zM88 21h5v5h-5zM93 21h5v5h-5z"
-                fill="#FFF"
+                d="M67.5 112.5V180H0v-67.5h67.5zm-56.25 11.25v45h45v-45h-45zM135 22.5h22.5V45H135V22.5z"
+                fill="#fff"
             />
-            <Path d="M98 21h5v5h-5z" />
-            <Path d="M103 21h6v5h-6zM109 21h5v5h-5z" fill="#FFF" />
-            <Path d="M114 21h5v5h-5z" />
-            <Path d="M119 21h5v5h-5z" fill="#FFF" />
-            <Path d="M124 21h5v5h-5zM129 21h5v5h-5zM134 21h6v5h-6z" />
-            <Path d="M140 21h5v5h-5z" fill="#FFF" />
-            <Path d="M145 21h5v5h-5zM0 26h5v5H0z" />
-            <Path d="M5 26h5v5H5zM10 26h6v5h-6zM16 26h5v5h-5zM21 26h5v5h-5zM26 26h5v5h-5z" fill="#FFF" />
-            <Path d="M31 26h5v5h-5z" />
-            <Path d="M36 26h5v5h-5z" fill="#FFF" />
-            <Path d="M41 26h6v5h-6zM47 26h5v5h-5z" />
-            <Path d="M52 26h5v5h-5z" fill="#FFF" />
-            <Path d="M57 26h5v5h-5zM62 26h5v5h-5zM67 26h5v5h-5z" />
-            <Path d="M72 26h6v5h-6z" fill="#FFF" />
-            <Path d="M78 26h5v5h-5zM83 26h5v5h-5z" />
-            <Path d="M88 26h5v5h-5z" fill="#FFF" />
-            <Path d="M93 26h5v5h-5z" />
-            <Path d="M98 26h5v5h-5zM103 26h6v5h-6zM109 26h5v5h-5z" fill="#FFF" />
-            <Path d="M114 26h5v5h-5z" />
-            <Path d="M119 26h5v5h-5zM124 26h5v5h-5zM129 26h5v5h-5zM134 26h6v5h-6zM140 26h5v5h-5z" fill="#FFF" />
-            <Path d="M145 26h5v5h-5zM0 31h5v5H0zM5 31h5v5H5zM10 31h6v5h-6zM16 31h5v5h-5zM21 31h5v5h-5zM26 31h5v5h-5zM31 31h5v5h-5z" />
-            <Path d="M36 31h5v5h-5z" fill="#FFF" />
-            <Path d="M41 31h6v5h-6z" />
-            <Path d="M47 31h5v5h-5z" fill="#FFF" />
-            <Path d="M52 31h5v5h-5z" />
-            <Path d="M57 31h5v5h-5z" fill="#FFF" />
-            <Path d="M62 31h5v5h-5z" />
-            <Path d="M67 31h5v5h-5z" fill="#FFF" />
-            <Path d="M72 31h6v5h-6z" />
-            <Path d="M78 31h5v5h-5z" fill="#FFF" />
-            <Path d="M83 31h5v5h-5z" />
-            <Path d="M88 31h5v5h-5z" fill="#FFF" />
-            <Path d="M93 31h5v5h-5z" />
-            <Path d="M98 31h5v5h-5z" fill="#FFF" />
-            <Path d="M103 31h6v5h-6z" />
-            <Path d="M109 31h5v5h-5z" fill="#FFF" />
-            <Path d="M114 31h5v5h-5zM119 31h5v5h-5zM124 31h5v5h-5zM129 31h5v5h-5zM134 31h6v5h-6zM140 31h5v5h-5zM145 31h5v5h-5z" />
             <Path
-                d="M0 36h5v5H0zM5 36h5v5H5zM10 36h6v5h-6zM16 36h5v5h-5zM21 36h5v5h-5zM26 36h5v5h-5zM31 36h5v5h-5zM36 36h5v5h-5zM41 36h6v5h-6z"
-                fill="#FFF"
+                d="M112.5 0v67.5H180V0h-67.5zm56.25 11.25v45h-45v-45h45zm-78.75 0V0h11.25v22.5H90V45H78.75V11.25H90zm0 56.25V45h11.25v22.5H90zM67.5 90V78.75h11.25V67.5H90V90h11.25V78.75h56.25V90h-45v11.25H78.75V90H67.5zm0 0v11.25h-45V90H11.25v11.25H0v-22.5h33.75V90H67.5zM180 101.25h-11.25v-22.5H180v22.5zm-11.25 0H157.5v22.5H180V112.5h-11.25v-11.25zm-45 0h22.5v11.25H135v11.25h-11.25v-22.5zm22.5 33.75v-11.25H135V135h-11.25v11.25h-22.5v11.25H135V135h11.25zm0 0H180v11.25h-22.5v11.25h-11.25V135zm-45-11.25V135h11.25v-22.5H78.75v11.25h22.5z"
+                fill="#fff"
             />
-            <Path d="M47 36h5v5h-5zM52 36h5v5h-5zM57 36h5v5h-5z" />
-            <Path d="M62 36h5v5h-5zM67 36h5v5h-5z" fill="#FFF" />
-            <Path d="M72 36h6v5h-6z" />
-            <Path d="M78 36h5v5h-5zM83 36h5v5h-5zM88 36h5v5h-5z" fill="#FFF" />
-            <Path d="M93 36h5v5h-5zM98 36h5v5h-5z" />
-            <Path
-                d="M103 36h6v5h-6zM109 36h5v5h-5zM114 36h5v5h-5zM119 36h5v5h-5zM124 36h5v5h-5zM129 36h5v5h-5zM134 36h6v5h-6zM140 36h5v5h-5zM145 36h5v5h-5z"
-                fill="#FFF"
-            />
-            <Path d="M0 41h5v6H0zM5 41h5v6H5zM10 41h6v6h-6zM16 41h5v6h-5zM21 41h5v6h-5z" />
-            <Path d="M26 41h5v6h-5z" fill="#FFF" />
-            <Path d="M31 41h5v6h-5zM36 41h5v6h-5zM41 41h6v6h-6zM47 41h5v6h-5z" />
-            <Path d="M52 41h5v6h-5z" fill="#FFF" />
-            <Path d="M57 41h5v6h-5z" />
-            <Path d="M62 41h5v6h-5z" fill="#FFF" />
-            <Path d="M67 41h5v6h-5z" />
-            <Path d="M72 41h6v6h-6z" fill="#FFF" />
-            <Path d="M78 41h5v6h-5z" />
-            <Path d="M83 41h5v6h-5z" fill="#FFF" />
-            <Path d="M88 41h5v6h-5zM93 41h5v6h-5z" />
-            <Path d="M98 41h5v6h-5zM103 41h6v6h-6z" fill="#FFF" />
-            <Path d="M109 41h5v6h-5z" />
-            <Path d="M114 41h5v6h-5z" fill="#FFF" />
-            <Path d="M119 41h5v6h-5z" />
-            <Path d="M124 41h5v6h-5z" fill="#FFF" />
-            <Path d="M129 41h5v6h-5z" />
-            <Path d="M134 41h6v6h-6z" fill="#FFF" />
-            <Path d="M140 41h5v6h-5z" />
-            <Path d="M145 41h5v6h-5zM0 47h5v5H0z" fill="#FFF" />
-            <Path d="M5 47h5v5H5z" />
-            <Path d="M10 47h6v5h-6z" fill="#FFF" />
-            <Path d="M16 47h5v5h-5z" />
-            <Path d="M21 47h5v5h-5z" fill="#FFF" />
-            <Path d="M26 47h5v5h-5z" />
-            <Path d="M31 47h5v5h-5z" fill="#FFF" />
-            <Path d="M36 47h5v5h-5z" />
-            <Path d="M41 47h6v5h-6zM47 47h5v5h-5z" fill="#FFF" />
-            <Path d="M52 47h5v5h-5z" />
-            <Path d="M57 47h5v5h-5z" fill="#FFF" />
-            <Path d="M62 47h5v5h-5zM67 47h5v5h-5zM72 47h6v5h-6z" />
-            <Path d="M78 47h5v5h-5z" fill="#FFF" />
-            <Path d="M83 47h5v5h-5z" />
-            <Path d="M88 47h5v5h-5zM93 47h5v5h-5z" fill="#FFF" />
-            <Path d="M98 47h5v5h-5zM103 47h6v5h-6z" />
-            <Path d="M109 47h5v5h-5z" fill="#FFF" />
-            <Path d="M114 47h5v5h-5z" />
-            <Path d="M119 47h5v5h-5z" fill="#FFF" />
-            <Path d="M124 47h5v5h-5z" />
-            <Path d="M129 47h5v5h-5zM134 47h6v5h-6z" fill="#FFF" />
-            <Path d="M140 47h5v5h-5zM145 47h5v5h-5z" />
-            <Path d="M0 52h5v5H0z" fill="#FFF" />
-            <Path d="M5 52h5v5H5z" />
-            <Path d="M10 52h6v5h-6z" fill="#FFF" />
-            <Path d="M16 52h5v5h-5zM21 52h5v5h-5z" />
-            <Path d="M26 52h5v5h-5z" fill="#FFF" />
-            <Path d="M31 52h5v5h-5z" />
-            <Path d="M36 52h5v5h-5z" fill="#FFF" />
-            <Path d="M41 52h6v5h-6z" />
-            <Path d="M47 52h5v5h-5z" fill="#FFF" />
-            <Path d="M52 52h5v5h-5z" />
-            <Path d="M57 52h5v5h-5zM62 52h5v5h-5zM67 52h5v5h-5zM72 52h6v5h-6z" fill="#FFF" />
-            <Path d="M78 52h5v5h-5zM83 52h5v5h-5zM88 52h5v5h-5zM93 52h5v5h-5z" />
-            <Path d="M98 52h5v5h-5zM103 52h6v5h-6z" fill="#FFF" />
-            <Path d="M109 52h5v5h-5z" />
-            <Path d="M114 52h5v5h-5z" fill="#FFF" />
-            <Path d="M119 52h5v5h-5zM124 52h5v5h-5zM129 52h5v5h-5zM134 52h6v5h-6z" />
-            <Path d="M140 52h5v5h-5zM145 52h5v5h-5zM0 57h5v5H0z" fill="#FFF" />
-            <Path d="M5 57h5v5H5zM10 57h6v5h-6zM16 57h5v5h-5zM21 57h5v5h-5zM26 57h5v5h-5z" />
-            <Path
-                d="M31 57h5v5h-5zM36 57h5v5h-5zM41 57h6v5h-6zM47 57h5v5h-5zM52 57h5v5h-5zM57 57h5v5h-5z"
-                fill="#FFF"
-            />
-            <Path d="M62 57h5v5h-5z" />
-            <Path d="M67 57h5v5h-5z" fill="#FFF" />
-            <Path d="M72 57h6v5h-6zM78 57h5v5h-5zM83 57h5v5h-5z" />
-            <Path d="M88 57h5v5h-5z" fill="#FFF" />
-            <Path d="M93 57h5v5h-5zM98 57h5v5h-5zM103 57h6v5h-6z" />
-            <Path d="M109 57h5v5h-5zM114 57h5v5h-5zM119 57h5v5h-5z" fill="#FFF" />
-            <Path d="M124 57h5v5h-5z" />
-            <Path d="M129 57h5v5h-5zM134 57h6v5h-6z" fill="#FFF" />
-            <Path d="M140 57h5v5h-5z" />
-            <Path d="M145 57h5v5h-5zM0 62h5v5H0z" fill="#FFF" />
-            <Path d="M5 62h5v5H5z" />
-            <Path d="M10 62h6v5h-6z" fill="#FFF" />
-            <Path d="M16 62h5v5h-5zM21 62h5v5h-5z" />
-            <Path d="M26 62h5v5h-5z" fill="#FFF" />
-            <Path d="M31 62h5v5h-5zM36 62h5v5h-5zM41 62h6v5h-6zM47 62h5v5h-5zM52 62h5v5h-5z" />
-            <Path d="M57 62h5v5h-5z" fill="#FFF" />
-            <Path d="M62 62h5v5h-5zM67 62h5v5h-5z" />
-            <Path d="M72 62h6v5h-6z" fill="#FFF" />
-            <Path d="M78 62h5v5h-5zM83 62h5v5h-5zM88 62h5v5h-5zM93 62h5v5h-5z" />
-            <Path d="M98 62h5v5h-5z" fill="#FFF" />
-            <Path d="M103 62h6v5h-6zM109 62h5v5h-5z" />
-            <Path d="M114 62h5v5h-5zM119 62h5v5h-5zM124 62h5v5h-5z" fill="#FFF" />
-            <Path d="M129 62h5v5h-5zM134 62h6v5h-6zM140 62h5v5h-5zM145 62h5v5h-5z" />
-            <Path d="M0 67h5v5H0zM5 67h5v5H5zM10 67h6v5h-6z" fill="#FFF" />
-            <Path d="M16 67h5v5h-5zM21 67h5v5h-5z" />
-            <Path d="M26 67h5v5h-5zM31 67h5v5h-5z" fill="#FFF" />
-            <Path d="M36 67h5v5h-5z" />
-            <Path d="M41 67h6v5h-6zM47 67h5v5h-5zM52 67h5v5h-5zM57 67h5v5h-5zM62 67h5v5h-5z" fill="#FFF" />
-            <Path d="M67 67h5v5h-5zM72 67h6v5h-6z" />
-            <Path d="M78 67h5v5h-5zM83 67h5v5h-5zM88 67h5v5h-5zM93 67h5v5h-5z" fill="#FFF" />
-            <Path d="M98 67h5v5h-5z" />
-            <Path d="M103 67h6v5h-6zM109 67h5v5h-5z" fill="#FFF" />
-            <Path d="M114 67h5v5h-5zM119 67h5v5h-5zM124 67h5v5h-5zM129 67h5v5h-5z" />
-            <Path d="M134 67h6v5h-6zM140 67h5v5h-5z" fill="#FFF" />
-            <Path d="M145 67h5v5h-5z" />
-            <Path d="M0 72h5v6H0z" fill="#FFF" />
-            <Path d="M5 72h5v6H5zM10 72h6v6h-6z" />
-            <Path d="M16 72h5v6h-5zM21 72h5v6h-5zM26 72h5v6h-5z" fill="#FFF" />
-            <Path d="M31 72h5v6h-5zM36 72h5v6h-5zM41 72h6v6h-6z" />
-            <Path d="M47 72h5v6h-5z" fill="#FFF" />
-            <Path d="M52 72h5v6h-5zM57 72h5v6h-5zM62 72h5v6h-5z" />
-            <Path d="M67 72h5v6h-5zM72 72h6v6h-6z" fill="#FFF" />
-            <Path d="M78 72h5v6h-5zM83 72h5v6h-5z" />
-            <Path d="M88 72h5v6h-5z" fill="#FFF" />
-            <Path d="M93 72h5v6h-5z" />
-            <Path d="M98 72h5v6h-5z" fill="#FFF" />
-            <Path d="M103 72h6v6h-6zM109 72h5v6h-5z" />
-            <Path d="M114 72h5v6h-5zM119 72h5v6h-5zM124 72h5v6h-5zM129 72h5v6h-5z" fill="#FFF" />
-            <Path d="M134 72h6v6h-6zM140 72h5v6h-5z" />
-            <Path d="M145 72h5v6h-5z" fill="#FFF" />
-            <Path d="M0 78h5v5H0zM5 78h5v5H5zM10 78h6v5h-6z" />
-            <Path d="M16 78h5v5h-5z" fill="#FFF" />
-            <Path d="M21 78h5v5h-5z" />
-            <Path d="M26 78h5v5h-5zM31 78h5v5h-5zM36 78h5v5h-5z" fill="#FFF" />
-            <Path d="M41 78h6v5h-6zM47 78h5v5h-5zM52 78h5v5h-5zM57 78h5v5h-5z" />
-            <Path d="M62 78h5v5h-5zM67 78h5v5h-5z" fill="#FFF" />
-            <Path d="M72 78h6v5h-6zM78 78h5v5h-5z" />
-            <Path d="M83 78h5v5h-5zM88 78h5v5h-5zM93 78h5v5h-5z" fill="#FFF" />
-            <Path d="M98 78h5v5h-5z" />
-            <Path d="M103 78h6v5h-6zM109 78h5v5h-5z" fill="#FFF" />
-            <Path d="M114 78h5v5h-5zM119 78h5v5h-5zM124 78h5v5h-5zM129 78h5v5h-5z" />
-            <Path d="M134 78h6v5h-6z" fill="#FFF" />
-            <Path d="M140 78h5v5h-5z" />
-            <Path d="M145 78h5v5h-5zM0 83h5v5H0z" fill="#FFF" />
-            <Path d="M5 83h5v5H5z" />
-            <Path d="M10 83h6v5h-6zM16 83h5v5h-5z" fill="#FFF" />
-            <Path d="M21 83h5v5h-5zM26 83h5v5h-5zM31 83h5v5h-5zM36 83h5v5h-5z" />
-            <Path d="M41 83h6v5h-6zM47 83h5v5h-5zM52 83h5v5h-5z" fill="#FFF" />
-            <Path d="M57 83h5v5h-5z" />
-            <Path d="M62 83h5v5h-5z" fill="#FFF" />
-            <Path d="M67 83h5v5h-5z" />
-            <Path d="M72 83h6v5h-6zM78 83h5v5h-5z" fill="#FFF" />
-            <Path d="M83 83h5v5h-5zM88 83h5v5h-5z" />
-            <Path
-                d="M93 83h5v5h-5zM98 83h5v5h-5zM103 83h6v5h-6zM109 83h5v5h-5zM114 83h5v5h-5zM119 83h5v5h-5zM124 83h5v5h-5zM129 83h5v5h-5z"
-                fill="#FFF"
-            />
-            <Path d="M134 83h6v5h-6zM140 83h5v5h-5zM145 83h5v5h-5zM0 88h5v5H0zM5 88h5v5H5z" />
-            <Path d="M10 88h6v5h-6z" fill="#FFF" />
-            <Path d="M16 88h5v5h-5z" />
-            <Path d="M21 88h5v5h-5zM26 88h5v5h-5zM31 88h5v5h-5z" fill="#FFF" />
-            <Path d="M36 88h5v5h-5z" />
-            <Path d="M41 88h6v5h-6z" fill="#FFF" />
-            <Path d="M47 88h5v5h-5z" />
-            <Path d="M52 88h5v5h-5zM57 88h5v5h-5z" fill="#FFF" />
-            <Path d="M62 88h5v5h-5z" />
-            <Path d="M67 88h5v5h-5z" fill="#FFF" />
-            <Path d="M72 88h6v5h-6z" />
-            <Path d="M78 88h5v5h-5zM83 88h5v5h-5zM88 88h5v5h-5z" fill="#FFF" />
-            <Path d="M93 88h5v5h-5zM98 88h5v5h-5zM103 88h6v5h-6zM109 88h5v5h-5zM114 88h5v5h-5zM119 88h5v5h-5zM124 88h5v5h-5zM129 88h5v5h-5z" />
-            <Path d="M134 88h6v5h-6zM140 88h5v5h-5z" fill="#FFF" />
-            <Path d="M145 88h5v5h-5zM0 93h5v5H0z" />
-            <Path d="M5 93h5v5H5z" fill="#FFF" />
-            <Path d="M10 93h6v5h-6zM16 93h5v5h-5z" />
-            <Path d="M21 93h5v5h-5z" fill="#FFF" />
-            <Path d="M26 93h5v5h-5zM31 93h5v5h-5z" />
-            <Path d="M36 93h5v5h-5z" fill="#FFF" />
-            <Path d="M41 93h6v5h-6zM47 93h5v5h-5z" />
-            <Path d="M52 93h5v5h-5zM57 93h5v5h-5zM62 93h5v5h-5zM67 93h5v5h-5z" fill="#FFF" />
-            <Path d="M72 93h6v5h-6zM78 93h5v5h-5zM83 93h5v5h-5z" />
-            <Path d="M88 93h5v5h-5zM93 93h5v5h-5zM98 93h5v5h-5z" fill="#FFF" />
-            <Path d="M103 93h6v5h-6zM109 93h5v5h-5z" />
-            <Path d="M114 93h5v5h-5z" fill="#FFF" />
-            <Path d="M119 93h5v5h-5z" />
-            <Path d="M124 93h5v5h-5zM129 93h5v5h-5z" fill="#FFF" />
-            <Path d="M134 93h6v5h-6z" />
-            <Path d="M140 93h5v5h-5zM145 93h5v5h-5z" fill="#FFF" />
-            <Path d="M0 98h5v5H0z" />
-            <Path d="M5 98h5v5H5z" fill="#FFF" />
-            <Path d="M10 98h6v5h-6z" />
-            <Path d="M16 98h5v5h-5z" fill="#FFF" />
-            <Path d="M21 98h5v5h-5z" />
-            <Path d="M26 98h5v5h-5zM31 98h5v5h-5zM36 98h5v5h-5zM41 98h6v5h-6zM47 98h5v5h-5z" fill="#FFF" />
-            <Path d="M52 98h5v5h-5z" />
-            <Path d="M57 98h5v5h-5z" fill="#FFF" />
-            <Path d="M62 98h5v5h-5z" />
-            <Path d="M67 98h5v5h-5z" fill="#FFF" />
-            <Path d="M72 98h6v5h-6z" />
-            <Path
-                d="M78 98h5v5h-5zM83 98h5v5h-5zM88 98h5v5h-5zM93 98h5v5h-5zM98 98h5v5h-5zM103 98h6v5h-6zM109 98h5v5h-5zM114 98h5v5h-5zM119 98h5v5h-5z"
-                fill="#FFF"
-            />
-            <Path d="M124 98h5v5h-5z" />
-            <Path d="M129 98h5v5h-5zM134 98h6v5h-6z" fill="#FFF" />
-            <Path d="M140 98h5v5h-5z" />
-            <Path d="M145 98h5v5h-5z" fill="#FFF" />
-            <Path d="M0 103h5v6H0z" />
-            <Path d="M5 103h5v6H5z" fill="#FFF" />
-            <Path d="M10 103h6v6h-6z" />
-            <Path d="M16 103h5v6h-5z" fill="#FFF" />
-            <Path d="M21 103h5v6h-5z" />
-            <Path d="M26 103h5v6h-5z" fill="#FFF" />
-            <Path d="M31 103h5v6h-5zM36 103h5v6h-5z" />
-            <Path d="M41 103h6v6h-6zM47 103h5v6h-5z" fill="#FFF" />
-            <Path d="M52 103h5v6h-5z" />
-            <Path d="M57 103h5v6h-5z" fill="#FFF" />
-            <Path d="M62 103h5v6h-5zM67 103h5v6h-5z" />
-            <Path d="M72 103h6v6h-6z" fill="#FFF" />
-            <Path d="M78 103h5v6h-5zM83 103h5v6h-5zM88 103h5v6h-5zM93 103h5v6h-5z" />
-            <Path d="M98 103h5v6h-5z" fill="#FFF" />
-            <Path d="M103 103h6v6h-6zM109 103h5v6h-5zM114 103h5v6h-5zM119 103h5v6h-5zM124 103h5v6h-5zM129 103h5v6h-5zM134 103h6v6h-6zM140 103h5v6h-5z" />
-            <Path
-                d="M145 103h5v6h-5zM0 109h5v5H0zM5 109h5v5H5zM10 109h6v5h-6zM16 109h5v5h-5zM21 109h5v5h-5zM26 109h5v5h-5zM31 109h5v5h-5zM36 109h5v5h-5z"
-                fill="#FFF"
-            />
-            <Path d="M41 109h6v5h-6z" />
-            <Path d="M47 109h5v5h-5zM52 109h5v5h-5zM57 109h5v5h-5zM62 109h5v5h-5zM67 109h5v5h-5z" fill="#FFF" />
-            <Path d="M72 109h6v5h-6z" />
-            <Path d="M78 109h5v5h-5zM83 109h5v5h-5zM88 109h5v5h-5zM93 109h5v5h-5z" fill="#FFF" />
-            <Path d="M98 109h5v5h-5zM103 109h6v5h-6z" />
-            <Path d="M109 109h5v5h-5zM114 109h5v5h-5zM119 109h5v5h-5z" fill="#FFF" />
-            <Path d="M124 109h5v5h-5z" />
-            <Path d="M129 109h5v5h-5zM134 109h6v5h-6zM140 109h5v5h-5z" fill="#FFF" />
-            <Path d="M145 109h5v5h-5zM0 114h5v5H0zM5 114h5v5H5zM10 114h6v5h-6zM16 114h5v5h-5zM21 114h5v5h-5zM26 114h5v5h-5zM31 114h5v5h-5z" />
-            <Path d="M36 114h5v5h-5z" fill="#FFF" />
-            <Path d="M41 114h6v5h-6z" />
-            <Path d="M47 114h5v5h-5z" fill="#FFF" />
-            <Path d="M52 114h5v5h-5zM57 114h5v5h-5zM62 114h5v5h-5zM67 114h5v5h-5z" />
-            <Path d="M72 114h6v5h-6z" fill="#FFF" />
-            <Path d="M78 114h5v5h-5zM83 114h5v5h-5zM88 114h5v5h-5zM93 114h5v5h-5zM98 114h5v5h-5zM103 114h6v5h-6z" />
-            <Path d="M109 114h5v5h-5z" fill="#FFF" />
-            <Path d="M114 114h5v5h-5z" />
-            <Path d="M119 114h5v5h-5z" fill="#FFF" />
-            <Path d="M124 114h5v5h-5z" />
-            <Path d="M129 114h5v5h-5zM134 114h6v5h-6z" fill="#FFF" />
-            <Path d="M140 114h5v5h-5z" />
-            <Path d="M145 114h5v5h-5z" fill="#FFF" />
-            <Path d="M0 119h5v5H0z" />
-            <Path d="M5 119h5v5H5zM10 119h6v5h-6zM16 119h5v5h-5zM21 119h5v5h-5zM26 119h5v5h-5z" fill="#FFF" />
-            <Path d="M31 119h5v5h-5z" />
-            <Path d="M36 119h5v5h-5zM41 119h6v5h-6z" fill="#FFF" />
-            <Path d="M47 119h5v5h-5zM52 119h5v5h-5zM57 119h5v5h-5z" />
-            <Path d="M62 119h5v5h-5zM67 119h5v5h-5zM72 119h6v5h-6zM78 119h5v5h-5z" fill="#FFF" />
-            <Path d="M83 119h5v5h-5z" />
-            <Path d="M88 119h5v5h-5zM93 119h5v5h-5zM98 119h5v5h-5z" fill="#FFF" />
-            <Path d="M103 119h6v5h-6z" />
-            <Path d="M109 119h5v5h-5zM114 119h5v5h-5zM119 119h5v5h-5z" fill="#FFF" />
-            <Path d="M124 119h5v5h-5zM129 119h5v5h-5z" />
-            <Path d="M134 119h6v5h-6z" fill="#FFF" />
-            <Path d="M140 119h5v5h-5zM145 119h5v5h-5zM0 124h5v5H0z" />
-            <Path d="M5 124h5v5H5z" fill="#FFF" />
-            <Path d="M10 124h6v5h-6zM16 124h5v5h-5zM21 124h5v5h-5z" />
-            <Path d="M26 124h5v5h-5z" fill="#FFF" />
-            <Path d="M31 124h5v5h-5z" />
-            <Path d="M36 124h5v5h-5z" fill="#FFF" />
-            <Path d="M41 124h6v5h-6zM47 124h5v5h-5z" />
-            <Path d="M52 124h5v5h-5z" fill="#FFF" />
-            <Path d="M57 124h5v5h-5z" />
-            <Path d="M62 124h5v5h-5zM67 124h5v5h-5zM72 124h6v5h-6z" fill="#FFF" />
-            <Path d="M78 124h5v5h-5zM83 124h5v5h-5zM88 124h5v5h-5z" />
-            <Path d="M93 124h5v5h-5zM98 124h5v5h-5z" fill="#FFF" />
-            <Path d="M103 124h6v5h-6zM109 124h5v5h-5zM114 124h5v5h-5zM119 124h5v5h-5zM124 124h5v5h-5z" />
-            <Path d="M129 124h5v5h-5z" fill="#FFF" />
-            <Path d="M134 124h6v5h-6zM140 124h5v5h-5zM145 124h5v5h-5zM0 129h5v5H0z" />
-            <Path d="M5 129h5v5H5z" fill="#FFF" />
-            <Path d="M10 129h6v5h-6zM16 129h5v5h-5zM21 129h5v5h-5z" />
-            <Path d="M26 129h5v5h-5z" fill="#FFF" />
-            <Path d="M31 129h5v5h-5z" />
-            <Path d="M36 129h5v5h-5z" fill="#FFF" />
-            <Path d="M41 129h6v5h-6zM47 129h5v5h-5z" />
-            <Path d="M52 129h5v5h-5zM57 129h5v5h-5z" fill="#FFF" />
-            <Path d="M62 129h5v5h-5zM67 129h5v5h-5z" />
-            <Path d="M72 129h6v5h-6zM78 129h5v5h-5zM83 129h5v5h-5zM88 129h5v5h-5z" fill="#FFF" />
-            <Path d="M93 129h5v5h-5z" />
-            <Path d="M98 129h5v5h-5z" fill="#FFF" />
-            <Path d="M103 129h6v5h-6zM109 129h5v5h-5z" />
-            <Path d="M114 129h5v5h-5zM119 129h5v5h-5zM124 129h5v5h-5zM129 129h5v5h-5zM134 129h6v5h-6z" fill="#FFF" />
-            <Path d="M140 129h5v5h-5zM145 129h5v5h-5zM0 134h5v6H0z" />
-            <Path d="M5 134h5v6H5z" fill="#FFF" />
-            <Path d="M10 134h6v6h-6zM16 134h5v6h-5zM21 134h5v6h-5z" />
-            <Path d="M26 134h5v6h-5z" fill="#FFF" />
-            <Path d="M31 134h5v6h-5z" />
-            <Path d="M36 134h5v6h-5z" fill="#FFF" />
-            <Path d="M41 134h6v6h-6zM47 134h5v6h-5zM52 134h5v6h-5z" />
-            <Path d="M57 134h5v6h-5zM62 134h5v6h-5z" fill="#FFF" />
-            <Path d="M67 134h5v6h-5zM72 134h6v6h-6zM78 134h5v6h-5zM83 134h5v6h-5z" />
-            <Path d="M88 134h5v6h-5zM93 134h5v6h-5zM98 134h5v6h-5zM103 134h6v6h-6zM109 134h5v6h-5z" fill="#FFF" />
-            <Path d="M114 134h5v6h-5zM119 134h5v6h-5zM124 134h5v6h-5zM129 134h5v6h-5z" />
-            <Path d="M134 134h6v6h-6z" fill="#FFF" />
-            <Path d="M140 134h5v6h-5z" />
-            <Path d="M145 134h5v6h-5z" fill="#FFF" />
-            <Path d="M0 140h5v5H0z" />
-            <Path d="M5 140h5v5H5zM10 140h6v5h-6zM16 140h5v5h-5zM21 140h5v5h-5zM26 140h5v5h-5z" fill="#FFF" />
-            <Path d="M31 140h5v5h-5z" />
-            <Path d="M36 140h5v5h-5z" fill="#FFF" />
-            <Path d="M41 140h6v5h-6zM47 140h5v5h-5zM52 140h5v5h-5z" />
-            <Path d="M57 140h5v5h-5z" fill="#FFF" />
-            <Path d="M62 140h5v5h-5zM67 140h5v5h-5z" />
-            <Path d="M72 140h6v5h-6z" fill="#FFF" />
-            <Path d="M78 140h5v5h-5z" />
-            <Path d="M83 140h5v5h-5zM88 140h5v5h-5z" fill="#FFF" />
-            <Path d="M93 140h5v5h-5zM98 140h5v5h-5zM103 140h6v5h-6zM109 140h5v5h-5z" />
-            <Path d="M114 140h5v5h-5z" fill="#FFF" />
-            <Path d="M119 140h5v5h-5zM124 140h5v5h-5z" />
-            <Path d="M129 140h5v5h-5zM134 140h6v5h-6z" fill="#FFF" />
-            <Path d="M140 140h5v5h-5z" />
-            <Path d="M145 140h5v5h-5z" fill="#FFF" />
-            <Path d="M0 145h5v5H0zM5 145h5v5H5zM10 145h6v5h-6zM16 145h5v5h-5zM21 145h5v5h-5zM26 145h5v5h-5zM31 145h5v5h-5z" />
-            <Path d="M36 145h5v5h-5z" fill="#FFF" />
-            <Path d="M41 145h6v5h-6z" />
-            <Path d="M47 145h5v5h-5zM52 145h5v5h-5zM57 145h5v5h-5z" fill="#FFF" />
-            <Path d="M62 145h5v5h-5z" />
-            <Path d="M67 145h5v5h-5z" fill="#FFF" />
-            <Path d="M72 145h6v5h-6z" />
-            <Path d="M78 145h5v5h-5z" fill="#FFF" />
-            <Path d="M83 145h5v5h-5zM88 145h5v5h-5zM93 145h5v5h-5z" />
-            <Path d="M98 145h5v5h-5zM103 145h6v5h-6z" fill="#FFF" />
-            <Path d="M109 145h5v5h-5zM114 145h5v5h-5z" />
-            <Path d="M119 145h5v5h-5zM124 145h5v5h-5z" fill="#FFF" />
-            <Path d="M129 145h5v5h-5zM134 145h6v5h-6z" />
-            <Path d="M140 145h5v5h-5zM145 145h5v5h-5z" fill="#FFF" />
+            <Path d="M78.75 135H90v33.75h45V180H78.75v-45zM180 157.5V180h-33.75v-11.25h22.5V157.5H180z" fill="#fff" />
         </Svg>
     );
 }
 function IconWallet(props) {
     return (
-        <Svg width={26} height={19} viewBox="0 0 26 19" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <Svg
+            width={26 * WIDTH.widthScale}
+            height={19 * WIDTH.widthScale}
+            viewBox="0 0 26 19"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
             <Path
                 d="M23.827 16.811c0 1.2-.79 2.174-1.763 2.174H2.224c-.973-.002-1.763-.973-1.763-2.174V2.173C.46.973 1.25 0 2.224 0h19.84c.973 0 1.763.973 1.763 2.173v14.638z"
                 fill="#fff"
@@ -559,7 +212,14 @@ function IconWallet(props) {
 }
 function IconProfile(props) {
     return (
-        <Svg width={20} height={21} viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <Svg
+            width={20 * WIDTH.widthScale}
+            height={21 * WIDTH.widthScale}
+            viewBox="0 0 20 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
             <Path
                 d="M15.516 14.739H4.484C2.01 14.739 0 16.609 0 18.914v1.54h20v-1.54c0-2.306-2.005-4.175-4.484-4.175z"
                 fill="#E80274"
@@ -570,7 +230,14 @@ function IconProfile(props) {
 }
 function IconSwap(props) {
     return (
-        <Svg width={21} height={21} viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <Svg
+            width={21 * WIDTH.widthScale}
+            height={21 * WIDTH.widthScale}
+            viewBox="0 0 21 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
             <Path
                 d="M18.245 3.41A10.5 10.5 0 000 10.5h1.969A8.532 8.532 0 0116.85 4.805l-1.757 1.757L21 7.875l-1.313-5.907-1.442 1.443zM19.031 10.5A8.532 8.532 0 014.15 16.195l1.757-1.757L0 13.125l1.313 5.907 1.442-1.443A10.5 10.5 0 0021 10.5h-1.969z"
                 fill="#fff"
@@ -585,9 +252,17 @@ function IconSwap(props) {
         </Svg>
     );
 }
+
 function IconSetting(props) {
     return (
-        <Svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <Svg
+            width={24 * WIDTH.widthScale}
+            height={24 * WIDTH.widthScale}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            {...props}
+        >
             <G clipPath="url(#clip0_42_4231)">
                 <Path
                     d="M7.311 6.449a7.065 7.065 0 00-1.683 2.188 7.028 7.028 0 001.043 7.777c2.586 2.928 7.075 3.216 10.019.645a7.033 7.033 0 00.648-9.962c-2.588-2.927-7.08-3.22-10.027-.648zm8.236 9.317a5.385 5.385 0 01-3.897 1.32 5.403 5.403 0 01-3.694-1.808 5.323 5.323 0 01.497-7.544 5.383 5.383 0 013.907-1.35 5.4 5.4 0 013.715 1.808 5.338 5.338 0 011.324 3.896 5.322 5.322 0 01-1.852 3.678z"
@@ -606,5 +281,335 @@ function IconSetting(props) {
         </Svg>
     );
 }
-export { QrCode, IconWallet, IconProfile, IconSwap, IconSetting };
+export function HexagonSelect(props) {
+    return (
+        <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={179 * WIDTH.widthScale}
+            height={161 * WIDTH.widthScale}
+            viewBox="0 0 179 161"
+            fill="none"
+            {...props}
+        >
+            <Path
+                d="M138.872 149.595l-.004.006-.004.007c-2.952 5.191-8.496 8.392-14.498 8.392H54.634c-6.002 0-11.546-3.201-14.498-8.392l-.004-.007-.004-.006-34.902-60.67-.003-.004a17.06 17.06 0 010-16.842l.003-.005 34.902-60.669.004-.006.004-.007C43.088 6.202 48.632 3 54.634 3h69.732c6.002 0 11.546 3.201 14.498 8.392l.004.007.004.006 34.902 60.67.004.005a17.061 17.061 0 01-.004 16.846l-34.902 60.669z"
+                fill="url(#paint0_linear_102_49)"
+                fillOpacity={0.9}
+                stroke="#fff"
+                strokeWidth={6}
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_102_49"
+                    x1={89.5}
+                    y1={161}
+                    x2={89.5}
+                    y2={-0.0000021619}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#F40074" />
+                    <Stop offset={1} stopColor="#502D9F" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function Hexagon(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={179} height={161} viewBox="0 0 179 161" fill="none" {...props}>
+            <Path
+                d="M54.634 161h69.732c7.069 0 13.615-3.771 17.106-9.909l34.91-60.682a20.06 20.06 0 000-19.818l-34.91-60.682C137.981 3.771 131.435 0 124.366 0H54.634c-7.07 0-13.615 3.77-17.106 9.909L2.618 70.591a20.06 20.06 0 000 19.818l34.91 60.682C41.019 157.229 47.565 161 54.634 161z"
+                fill="url(#paint0_linear_42_5527)"
+                fillOpacity={0.9}
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_42_5527"
+                    x1={89.5}
+                    y1={161}
+                    x2={89.5}
+                    y2={-0.0000021619}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#750D68" />
+                    <Stop offset={1} stopColor="#180346" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function MultiHexagon(props) {
+    return (
+        <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={339 * WIDTH.widthScale}
+            height={329 * WIDTH.widthScale}
+            viewBox="0 0 339 329"
+            fill="none"
+            {...props}
+        >
+            <Path
+                d="M154.838 39.271L68.02 89.396c-8.801 5.081-14.253 14.459-14.208 24.574l-.051 100.285a28.584 28.584 0 0014.177 24.557l86.876 50.098c8.737 5.097 19.584 5.064 28.386-.018l86.817-50.124c8.802-5.081 14.254-14.459 14.209-24.574l.051-100.285a28.583 28.583 0 00-14.178-24.557l-86.875-50.098c-8.738-5.097-19.585-5.064-28.386.017z"
+                fill="url(#paint0_linear_110_37)"
+                fillOpacity={0.3}
+            />
+            <Path
+                d="M217.905 51.96h-97.527c-9.887 0-19.042 5.262-23.924 13.827l-48.825 84.681a27.94 27.94 0 000 27.656l48.825 84.68c4.882 8.566 14.037 13.828 23.924 13.828h97.527c9.887 0 19.042-5.262 23.924-13.828l48.825-84.68a27.942 27.942 0 000-27.656l-48.825-84.68c-4.882-8.566-14.037-13.828-23.924-13.828z"
+                fill="url(#paint1_linear_110_37)"
+                fillOpacity={0.3}
+            />
+            <Path
+                d="M209.569 71.217h-80.856c-8.197 0-15.786 4.36-19.834 11.458L68.4 152.838a23.138 23.138 0 000 22.915l40.479 70.164c4.048 7.097 11.637 11.457 19.834 11.457h80.856c8.197 0 15.787-4.36 19.835-11.457l40.478-70.164a23.138 23.138 0 000-22.915l-40.478-70.163c-4.048-7.098-11.638-11.458-19.835-11.458z"
+                fill="url(#paint2_linear_110_37)"
+                fillOpacity={0.3}
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_110_37"
+                    x1={111.429}
+                    y1={64.3336}
+                    x2={226.609}
+                    y2={263.83}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#562E9E" />
+                    <Stop offset={1} stopColor="#EB2C7C" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint1_linear_110_37"
+                    x1={169.141}
+                    y1={51.9597}
+                    x2={169.141}
+                    y2={276.632}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#562E9E" />
+                    <Stop offset={1} stopColor="#EB2C7C" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint2_linear_110_37"
+                    x1={169.141}
+                    y1={71.2173}
+                    x2={169.141}
+                    y2={257.374}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#562E9E" />
+                    <Stop offset={1} stopColor="#EB2C7C" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function IconDropDown({ color = '#fff', style, width = 11, height = 8 }) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 11 8" fill="none" {...style}>
+            <Path
+                d="M10.92.66L5.79 7.846a.348.348 0 01-.578 0L.08.66C-.11.392.06 0 .369 0h10.262c.308 0 .48.392.29.66z"
+                fill={color}
+            />
+        </Svg>
+    );
+}
+
+export function IconDeposit(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={22} height={23} viewBox="0 0 22 23" fill="none" {...props}>
+            <Path
+                d="M19.704 13.591v7.847H1.314v-7.846h18.39zm1.314-.98H0v9.808h21.018V12.61z"
+                fill="url(#paint0_linear_1_7463)"
+            />
+            <Path
+                d="M10.509 0l6.305 10.93h-3.152v7.285H7.356V10.93H4.204L10.509 0z"
+                fill="url(#paint1_linear_1_7463)"
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_1_7463"
+                    x1={10.5088}
+                    y1={12.6106}
+                    x2={10.5088}
+                    y2={22.4189}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCC" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint1_linear_1_7463"
+                    x1={10.5089}
+                    y1={0}
+                    x2={10.5089}
+                    y2={18.2153}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCC" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function IconWithdraw(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={22} height={23} viewBox="0 0 22 23" fill="none" {...props}>
+            <Path
+                d="M19.704 13.591v7.847H1.314V13.59h18.39zm1.314-.98H0v9.807h21.018V12.61z"
+                fill="url(#paint0_linear_1_7471)"
+            />
+            <Path
+                d="M10.509 18.215L4.203 7.286h3.153V0h6.305v7.286h3.153l-6.305 10.93z"
+                fill="url(#paint1_linear_1_7471)"
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_1_7471"
+                    x1={10.5088}
+                    y1={12.6102}
+                    x2={10.5088}
+                    y2={22.4184}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#E4C0FC" />
+                    <Stop offset={1} stopColor="#DEAECB" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint1_linear_1_7471"
+                    x1={10.5087}
+                    y1={18.2153}
+                    x2={10.5087}
+                    y2={0.0000133514}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#E4C0FC" />
+                    <Stop offset={1} stopColor="#DEAECB" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function IconTransfer(props) {
+    return (
+        <Svg xmlns="http://www.w3.org/2000/svg" width={23} height={23} viewBox="0 0 23 23" fill="none" {...props}>
+            <Path d="M5.604 9.207a3.603 3.603 0 100-7.206 3.603 3.603 0 000 7.206z" fill="url(#paint0_linear_1_7479)" />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M5.604 2.501a3.103 3.103 0 100 6.206 3.103 3.103 0 000-6.206zM1.5 5.604a4.103 4.103 0 118.206 0 4.103 4.103 0 01-8.206 0z"
+                fill="url(#paint1_linear_1_7479)"
+            />
+            <Path
+                d="M16.413 20.017a3.603 3.603 0 100-7.206 3.603 3.603 0 000 7.206z"
+                fill="url(#paint2_linear_1_7479)"
+            />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M16.413 13.31a3.103 3.103 0 100 6.207 3.103 3.103 0 000-6.206zm-4.103 3.104a4.103 4.103 0 118.206 0 4.103 4.103 0 01-8.206 0z"
+                fill="url(#paint3_linear_1_7479)"
+            />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M.237 10.584a.5.5 0 01.487-.022l3.503 1.751a.5.5 0 01-.448.895l-2.745-1.373c.42 5.141 4.725 9.183 9.975 9.183a.5.5 0 110 1C4.929 22.018 0 17.089 0 11.008a.5.5 0 01.237-.424z"
+                fill="url(#paint4_linear_1_7479)"
+            />
+            <Path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10.51.5a.5.5 0 01.5-.5c6.08 0 11.008 4.929 11.008 11.009a.5.5 0 01-.724.447l-3.503-1.751a.5.5 0 11.448-.895l2.745 1.373C20.564 5.042 16.26 1 11.01 1a.5.5 0 01-.5-.5z"
+                fill="url(#paint5_linear_1_7479)"
+            />
+            <Defs>
+                <LinearGradient
+                    id="paint0_linear_1_7479"
+                    x1={5.60393}
+                    y1={2.0011}
+                    x2={5.60393}
+                    y2={9.20701}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint1_linear_1_7479"
+                    x1={5.60393}
+                    y1={1.5011}
+                    x2={5.60393}
+                    y2={9.70701}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint2_linear_1_7479"
+                    x1={16.4128}
+                    y1={12.8106}
+                    x2={16.4128}
+                    y2={20.0165}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint3_linear_1_7479"
+                    x1={16.4128}
+                    y1={12.3106}
+                    x2={16.4128}
+                    y2={20.5165}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint4_linear_1_7479"
+                    x1={5.75442}
+                    y1={10.5088}
+                    x2={5.75442}
+                    y2={22.0176}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+                <LinearGradient
+                    id="paint5_linear_1_7479"
+                    x1={16.2637}
+                    y1={0}
+                    x2={16.2637}
+                    y2={11.5088}
+                    gradientUnits="userSpaceOnUse"
+                >
+                    <Stop stopColor="#DFAFCD" />
+                    <Stop offset={1} stopColor="#DFAFCD" />
+                </LinearGradient>
+            </Defs>
+        </Svg>
+    );
+}
+export function IconX(props) {
+    return (
+        <Svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={props?.style?.width ?? 17}
+            height={props?.style?.height ?? 17}
+            viewBox="0 0 17 17"
+            fill="none"
+            {...props}
+        >
+            <Rect
+                width={props?.style?.width ?? 17}
+                height={props?.style?.height ?? 17}
+                rx={3}
+                fill={props?.style?.backgroundColor ?? '#F40074'}
+            />
+            <Path d="M13.5 4L4 13.5M4 4l9.5 9.5" stroke={props?.style?.color ?? '#fff'} />
+        </Svg>
+    );
+}
+export { QrCode, IconWallet, IconProfile, IconSwap, IconSetting, LogoHorizontal };
 export default Logo;

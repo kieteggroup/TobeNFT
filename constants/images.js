@@ -1,33 +1,34 @@
-import banner from '../assets/Image/Banner.png';
-import login from '../assets/Image/Login.png';
-import signup from '../assets/Image/signup.png';
-import logongang from '../assets/Image/logongang.png';
-import anhlocation from '../assets/Image/anhlocation.png';
-import locationnho from '../assets/Image/locationnho.png';
-import technology from '../assets/Image/technology.png';
-import cardclassic from '../assets/Image/cardclassic.png';
-import cardgold from '../assets/Image/cardgold.png';
-import virtualGold from '../assets/Image/virtualGold.png';
-import virtualPlatinum from '../assets/Image/virtualPlatinum.png';
-import virtualSilver from '../assets/Image/virtualSilver.png';
-import virtualVip from '../assets/Image/virtualVip.png';
-import tanbinh from '../assets/Image/tanbinh.png';
-import map from '../assets/Image/map.png';
-
 export default {
-    banner,
-    login,
-    signup,
-    logongang,
-    anhlocation,
-    locationnho,
-    technology,
-    cardclassic,
-    cardgold,
-    virtualGold,
-    virtualPlatinum,
-    virtualSilver,
-    virtualVip,
-    tanbinh,
-    map,
+    banner: require('../assets/Image/Banner.png'),
+    login: require('../assets/Image/Login.png'),
+    signup: require('../assets/Image/signup.png'),
+    technology_left_blob: require('../assets/Image/technology_left_blob.png'),
+    anhlocation: require('../assets/Image/anhlocation.png'),
+    locationnho: require('../assets/Image/locationnho.png'),
+    technology: require('../assets/Image/technology.png'),
+    cardclassic: require('../assets/Image/cardclassic.png'),
+    cardgold: require('../assets/Image/cardgold.png'),
+    bnb: require('../assets/Image/bnb.png'),
+    Usdt: require('../assets/Image/Usdt.png'),
+    virtualGold: require('../assets/Image/virtualGold.png'),
+    virtualPlatinum: require('../assets/Image/virtualPlatinum.png'),
+    virtualSilver: require('../assets/Image/virtualSilver.png'),
+    virtualVip: require('../assets/Image/virtualVip.png'),
+    tanbinh: require('../assets/Image/tanbinh.png'),
+    mountain: require('../assets/Image/mountain.png'),
+    map: require('../assets/Image/map.png'),
+    tele: require('../assets/Image/tele.png'),
+    reddit: require('../assets/Image/reddit.png'),
+    twitter: require('../assets/Image/twitter.png'),
+    instagram: require('../assets/Image/instagram.png'),
+    youtube: require('../assets/Image/youtube.png'),
+    fb: require('../assets/Image/fb.png'),
+    mintNFT: require('../assets/Image/mintNFT.png'),
+    Vectorsaologo: require('../assets/Image/Vectorsaologo.png'),
+    Shutterstock: require('../assets/Image/Shutterstock.png'),
+    freepik: require('../assets/Image/freepik.png'),
+    freepik_4: require('../assets/Image/freepik_4.png'),
+    to_earn01: require('../assets/Image/to_earn01.png'),
+    to_earn02: require('../assets/Image/to_earn02.png'),
+    empty_data: require('../assets/Image/empty_data.png'),
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Dimensions, ImageBackground, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONT, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 
 const { width, height } = Dimensions.get('window');
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         fontSize: SIZES.xLarge,
         fontWeight: 600,
-        fontFamily: FONT.medium
+        fontFamily: FONTS.medium
     },
     form: {
         alignItems: 'center',
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     },
     textForgot: {
         color: COLORS.white,
-        fontSize: 14,
+       
         marginTop: 23,
         height: 50,
     },

@@ -1,17 +1,17 @@
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, FlatList } from 'react-native';
-import { TEXTS, WIDTH, icons, images } from '../constants';
+import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
-
-const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, icon }) => {
+import { IconDropDown } from '../assets/imageSvg/ImageSVG';
+const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, backgroundStyle, iconColor }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
         <TouchableOpacity onPress={() => setIsSelect(!isSelect)} style={styles.wrapper}>
             <LinearGradient
-                colors={['#FFFFFF13', '#8F79D939']}
-                start={{ x: 0.6, y: 1 }}
-                end={{ x: 1, y: 0 }}
+                colors={[backgroundStyle || '#FFFFFF13', backgroundStyle || '#8F79D939']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
                 locations={[0.3191, 0.6809]}
                 style={[styles.dropdown, dropdownStyle]}
             >
@@ -21,16 +21,16 @@ const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, icon }) => {
                         {selectCurrency}
                     </Text>
                     {isSelect ? (
-                        <Image source={icon || icons.vector} style={{ transform: [{ rotate: '180deg' }] }} />
+                        <IconDropDown style={{ transform: [{ rotate: '180deg' }] }} color={iconColor} />
                     ) : (
-                        <Image source={icon || icons.vector} style={{ marginTop: 5 }} />
+                        <IconDropDown color={iconColor} />
                     )}
                 </View>
             </LinearGradient>
 
             {isSelect ? (
                 <FlatList
-                    data={data}
+                    data={data || []}
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             style={styles.dataItem}
@@ -39,8 +39,8 @@ const SelectDropdown = ({ data, placeholderStyle, dropdownStyle, icon }) => {
                                 setSelectCurrency(item);
                             }}
                         >
-                            <Image source={icons.Toearnnow} style={{ width: 30, height: 30 }} />
-                            <Text style={{ ...TEXTS.textRegular, fontSize: 14 }}>{item}</Text>
+                            <Image source={icons.bnb} style={{ width: 30, height: 30 }} />
+                            <Text style={{ ...TEXTS.textRegular }}>{item}</Text>
                         </TouchableOpacity>
                     )}
                     style={styles.dropdownArea}
@@ -55,13 +55,12 @@ const styles = StyleSheet.create({
         zIndex: 999,
     },
     dropdown: {
-        height: 36,
-        width: WIDTH.width100,
+        height: 38 * WIDTH.widthScale,
         borderRadius: 18,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 12,
+        paddingHorizontal: SIZES.small,
     },
     dropdownText: {
         ...TEXTS.textRegular,
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         columnGap: 10,
-        paddingVertical: 10,
+        paddingVertical: SIZES.xSmall,
         // backgroundColor:"#ccc"
     },
 });

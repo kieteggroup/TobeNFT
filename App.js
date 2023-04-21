@@ -5,13 +5,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ScreenBottomTab } from './components';
 import { StatusBar } from 'react-native';
 import { useFonts } from 'expo-font';
-import { FONT, TEXTS } from './constants';
+import { FONTS, TEXTS } from './constants';
 import SwapNavigator from './navigations/SwapNavigator';
 
 const Stack = createNativeStackNavigator();
 // Định nghĩa kiểu mặc định cho thành phần Text
 Text.defaultProps = Text.defaultProps || {};
-Text.defaultProps.style = { ...TEXTS.textRegular,fontSize:14 };
+Text.defaultProps.style = { ...TEXTS.textRegular, };
 
 function App() {
     const isDarkMode = useColorScheme() === 'light';
@@ -31,19 +31,19 @@ function App() {
                 translucent
             />
             <NavigationContainer>
-                <View style={styles.view}>
-                    <Stack.Navigator
-                        initialRouteName="ScreenBottomTab"
-                        screenOptions={{
-                            contentStyle: {
-                                backgroundColor: '#08021C',
-                            },
-                            headerShown: false,
-                        }}
-                    >
-                        <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
-                    </Stack.Navigator>
-                </View>
+                <Stack.Navigator
+                    initialRouteName="ScreenBottomTab"
+                    screenOptions={{
+                        contentStyle: {
+                            backgroundColor: '#08021C',
+                        },
+                        headerShown: false,
+                        
+                    }}
+                    
+                >
+                    <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
+                </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaView>
     );
@@ -51,9 +51,6 @@ function App() {
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
-    },
-    view: {
         flex: 1,
     },
 });

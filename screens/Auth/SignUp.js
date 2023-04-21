@@ -3,7 +3,7 @@ import { StyleSheet, Text, Image, View, TouchableOpacity, ImageBackground, Scrol
 import CheckBox from 'react-native-check-box';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONT, SIZES, WIDTH, icons, images } from '../../constants';
+import { COLORS, FONTS, SIZES, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 
 const SignUp = (props) => {
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         fontSize: SIZES.xLarge,
         fontWeight: 600,
-        fontFamily: FONT.medium,
+        fontFamily: FONTS.medium,
     },
     form: {
         marginTop: 40,
@@ -185,11 +185,11 @@ const styles = StyleSheet.create({
         marginLeft: 15.87,
         width: 310,
         fontSize: SIZES.small,
-        fontFamily: FONT.regular,
+        fontFamily: FONTS.regular,
     },
     textLink: {
         color: COLORS.primary,
-        fontFamily: FONT.bold,
+        fontFamily: FONTS.bold,
         fontWeight: 700,
     },
 
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     footerLeftTitle: {
         color: COLORS.white,
         fontSize: SIZES.small,
-        fontFamily: FONT.regular,
+        fontFamily: FONTS.regular,
     },
     social: {
         flexDirection: 'row',
@@ -219,12 +219,12 @@ const styles = StyleSheet.create({
     footerRightTitle: {
         color: COLORS.white,
         fontSize: SIZES.small,
-        fontFamily: FONT.medium,
+        fontFamily: FONTS.medium,
         fontWeight: 500,
     },
     footerRightLogin: {
         color: COLORS.primary,
-        fontFamily: FONT.bold,
+        fontFamily: FONTS.bold,
         fontWeight: 700,
         marginTop: 5,
     },

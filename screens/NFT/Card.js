@@ -1,8 +1,10 @@
 import React from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { COLORS, FONT, SIZES, TEXTS, WIDTH, images } from '../../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ButtonCustom } from '../../CustomComponent';
+import Table from '../../components/Table';
+import HomeNFT from './HomeNFT';
 
 const dataCard = [
     {
@@ -19,9 +21,9 @@ const Card = () => {
     return (
         <View style={styles.wrapper}>
             {/* Title */}
-            <View style={{ paddingHorizontal: 20 ,alignItems:"center"}}>
+            <View style={{ paddingHorizontal: 20, alignItems: 'center' }}>
                 <View style={{ height: 52, marginTop: 23 }}>
-                    <Text style={[styles.title,TEXTS.textBold]}>NFT CARD</Text>
+                    <Text style={[styles.title, TEXTS.textBold]}>NFT CARD</Text>
                 </View>
                 <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
             </View>
@@ -29,13 +31,14 @@ const Card = () => {
                 colors={['#502D9F66', '#08021C00']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
-                locations={[0.085, 1]}
+                locations={[0.3191, 0.6809]}
                 style={styles.cardContainer}
             >
                 <FlatList
                     showsHorizontalScrollIndicator={false}
                     horizontal
                     snapToInterval={100}
+                    // pagingEnabled
                     contentContainerStyle={{
                         paddingHorizontal: 20,
                         paddingTop: 17,
@@ -46,15 +49,15 @@ const Card = () => {
                     keyExtractor={(item) => item.name}
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
-                            <Image source={item.card} />
-                            <View style={{ position: 'absolute', right: 16, top: 129 }}>
+                            <Image source={item.card} style={styles.img} />
+                            <View style={{ position: 'absolute', right: 16, top: 129 * WIDTH.widthScale }}>
                                 <ButtonCustom
                                     text="BUY NOW"
-                                    buttonStyle={{ height: 28, width: 105.85, borderWidth: 0 }}
-                                    buttonStyleText={{ fontSize: 14, fontFamily: FONT.bold }}
+                                    buttonStyle={styles.button}
+                                    buttonStyleText={{ fontFamily: FONTS.bold }}
                                     backgroundLinearGradient={['#780D69', '#EC0174']}
                                     start={{ x: 0, y: 0 }}
-                                    end={{ x: 1, y: 0 }}
+                                    end={{ x: 1, y: 1 }}
                                     locations={[0.25, 0.75]}
                                 />
                             </View>
@@ -63,10 +66,10 @@ const Card = () => {
                                 colors={['#502D9F', '#E30370']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
-                                locations={[0.085, 1]}
+                                locations={[0.3191, 0.6809]}
                                 style={{
-                                    height: 5,
-                                    width: 103,
+                                    height: 5 * WIDTH.widthScale,
+                                    width: 103 * WIDTH.widthScale,
                                     borderRadius: 6.5,
                                     position: 'absolute',
                                     bottom: 0,
@@ -79,30 +82,7 @@ const Card = () => {
             </LinearGradient>
 
             <View style={{ paddingHorizontal: 22, paddingTop: 22, width: WIDTH.width100 }}>
-                <View style={styles.history}>
-                    <Text style={styles.historyHeading}>History Comission</Text>
-                    <LinearGradient
-                        colors={['#251351', '#1409314F']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                        locations={[0.25, 0.75]}
-                        style={styles.thead}
-                    >
-                        <Text numberOfLines={1}>#</Text>
-                        <Text> Username</Text>
-                        <Text numberOfLines={1}> Description ...</Text>
-                    </LinearGradient>
-                    <FlatList
-                        data={[1, 2, 3, 4, 5]}
-                        renderItem={({ item }) => (
-                            <View style={styles.row}>
-                                <Text style={styles.name}>{item}</Text>
-                            </View>
-                        )}
-                        keyExtractor={(item) => item.id}
-                        style={styles.container}
-                    />
-                </View>
+                <Table heading="History Commission" />
             </View>
         </View>
     );
@@ -123,57 +103,28 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     cardContainer: {
-        height: 280,
+        height: 280 * WIDTH.widthScale,
         borderTopWidth: 2,
         borderBottomWidth: 2,
         borderStyle: 'solid',
         borderColor: '#6A318133',
-        marginTop: 24,
-        width: '100%',
+        marginTop: SIZES.xLarge,
+        width: WIDTH.width100,
     },
-    card: {
-        // flexDirection: 'c',
-    },
+    card: {},
     cardText: {
         fontSize: SIZES.large,
         marginTop: 14,
         ...TEXTS.textBold,
-
     },
-    history: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#FFFFFF1A',
-        borderRadius: 18,
-        height: 320,
-        backgroundColor: '#FFFFFF1A',
+    img: {
+        width: 308.3 * WIDTH.widthScale,
+        height: 194.23 * WIDTH.widthScale,
     },
-    historyHeading: {
-        ...TEXTS.textBold,
-        fontFamily: FONT.boldRoboto,
-        paddingVertical: 15,
-        paddingLeft: 30,
-    },
-    thead: {
-        height: 40.88,
-        alignItems: 'center',
-        // justifyContent: 'space-around',
-        paddingHorizontal: 30,
-        columnGap: 20,
-        flexDirection: 'row',
-        width: '100%',
-        overflow: 'hidden',
-        overlayColor: 'red',
-    },
-    row: {
-        height: 37,
-        borderBottomWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#FFFFFF1A',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 30,
-        columnGap: 20,
+    button: {
+        height: 27.75 * WIDTH.widthScale,
+        width: 105.85 * WIDTH.widthScale,
+        borderWidth: 0,
     },
 });
 export default Card;

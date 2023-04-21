@@ -1,15 +1,20 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { routerNFT } from '../router/router';
-import { icons } from '../constants';
-import { Image } from 'react-native';
+import { routerMyNFT, routerNFT } from '../router/router';
+
 import { HeaderScreenLeft, HeaderScreenRight } from '../components/headerBar';
-import MainContainerNFT from '../screens/NFT/MainContainerNFT';
-import { CardDetail } from '../screens/NFT';
+import { useEffect, useState } from 'react';
 
 const Stack = createNativeStackNavigator();
 
-function NFTNavigator() {
+function NFTNavigator({ route }) {
+    const param = route?.params;
+    const [activeType, setActiveType] = useState(param?.navigateTab);
+
+    useEffect(() => {
+        setActiveType(param?.navigateTab);
+    }, [param?.navigateTab]);
+
     return (
         <Stack.Navigator
             screenOptions={{
@@ -20,20 +25,26 @@ function NFTNavigator() {
                 headerStyle: { backgroundColor: '#08021C' },
                 headerRight: () => <HeaderScreenRight />,
                 headerTitle: '',
+                
             }}
-            initialRouteName="Marketplace"
+            initialRouteName="HomeNFT"
         >
-            <Stack.Screen name="MainContainerNFT" component={MainContainerNFT} />
-            <Stack.Screen
-                name="CardDetail"
-                component={CardDetail}
-                options={{
-                    headerLeft: () => <HeaderScreenLeft src={icons.back} goBack />,
-                }}
-            />
-            {/* {routerNFT.map((screen) => (
-            <Stack.Screen key={screen.name} name={screen.name} component={screen.component} />
-            ))} */}
+            {routerNFT.map((screen) => (
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                    initialParams={{ navigateTab: activeType }}
+
+                />
+            ))}
+            {routerMyNFT.map((screen) => (
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                />
+            ))}
         </Stack.Navigator>
     );
 }

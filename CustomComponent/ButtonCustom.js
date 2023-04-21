@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { COLORS, FONT, SIZES, TEXTS } from '../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
 const ButtonCustom = ({
     onPress,
     text,
@@ -18,7 +18,7 @@ const ButtonCustom = ({
     locations = [0, 1],
     containerStyle,
 }) => {
-    const backgroundDefault = [backgroundColorBtn || '#E80274', backgroundColorBtn || '#7D0D6A'];
+    const backgroundDefault = [backgroundColorBtn || '#EA0274', backgroundColorBtn || '#7B0D6A'];
     return (
         <TouchableOpacity onPress={onPress} ref={ref} style={{ alignItems: 'center', ...containerStyle }}>
             <LinearGradient
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF29',
         borderRadius: 74,
         alignItems: 'center',
-        width: 259,
-        height: 42,
+        justifyContent: 'center',
+        width: 259 * WIDTH.widthScale,
+        height: 42 * WIDTH.widthScale,
         maxWidth: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
         overflow: 'hidden',
-        paddingHorizontal: 12,
+        paddingHorizontal: SIZES.small,
     },
     buttonText: {
         fontSize: SIZES.medium,

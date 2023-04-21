@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, FONT } from '../constants';
+import { COLORS, FONTS } from '../constants';
 
 export default StyleSheet.create({
     CustomFontRegular: {
         color: COLORS.white,
-        fontFamily: FONT.regular,
+        fontFamily: FONTS.regular,
     },
 });

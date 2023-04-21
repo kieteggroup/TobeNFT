@@ -3,25 +3,20 @@ import {
     Text,
     Image,
     StyleSheet,
-    ScrollView,
-    ImageBackground,
-    TouchableOpacity,
-    FlatList,
     Dimensions,
 } from 'react-native';
 import { ButtonCustom } from '../../CustomComponent';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Children, useState } from 'react';
-import SelectDropdown from '../../CustomComponent/SelectDropdown';
-import MainContainer from '../../components/MainContainer';
+import { MainContainer, SelectDropdown } from '../../components';
 
 const currency = ['NOW', 'USDT', 'NOW (EARING)'];
-const Swap = ({ children, noBackgroundFooter, noBlurBackground, navigation }) => {
+const Swap = ({  navigation }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
-        <MainContainer>
+        <MainContainer blurBackground>
             <View style={styles.wrapper}>
                 <Text style={styles.title}>Swap</Text>
                 <Text style={styles.subtitle}>Trade tokens in an instant</Text>
@@ -33,7 +28,7 @@ const Swap = ({ children, noBackgroundFooter, noBlurBackground, navigation }) =>
 
                 <ButtonCustom
                     text="Swap"
-                    containerStyle={{ marginHorizontal: 100, marginTop: 27 }}
+                    containerStyle={{ marginHorizontal: SIZES.small0, marginTop: 27 }}
                     onPress={() => navigation.navigate('SwapDetail')}
                 />
             </View>
@@ -45,18 +40,18 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     wrapper: {
         paddingHorizontal: 20,
+        paddingBottom: 30,
         width: WIDTH.width100,
-        height: height - 185,
     },
     title: {
         fontSize: SIZES.xLarge,
         ...TEXTS.textBold,
-        marginTop: 172,
+        marginTop: 160,
     },
     subtitle: {
         fontSize: SIZES.large,
         ...TEXTS.textRegular,
-        marginBottom: 32,
+        marginBottom: SIZES.xxLarge,
     },
 });
 export default Swap;

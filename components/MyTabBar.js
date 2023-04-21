@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'react-native-svg';
+import { SIZES } from '../constants';
 
 const MyTabBar = ({ state, descriptors, navigation }) => {
     return (
@@ -75,7 +76,7 @@ const styles = {
     container: {
         flexDirection: 'row',
         height: 56,
-        paddingHorizontal: 10,
+        paddingHorizontal: SIZES.xSmall
     },
     tabButton: {
         justifyContent: 'center',
@@ -83,7 +84,7 @@ const styles = {
     },
 };
 const button = {
-    paddingHorizontal: 10,
+    paddingHorizontal: SIZES.xSmall,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: '#ffffff29',

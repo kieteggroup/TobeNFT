@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View } from 'react-native';
 
-import { COLORS, FONT, SIZES, TEXTS, WIDTH } from '../constants';
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
 
 const InputCustom = ({
     onChangeText,
@@ -35,16 +35,17 @@ const InputCustom = ({
 };
 const styles = StyleSheet.create({
     input: {
-        width: 334,
+        width:WIDTH.width100,
         maxWidth: WIDTH.width100,
         height: 50,
         borderRadius: 10,
         backgroundColor: '#FFFFFF33',
-        paddingHorizontal: 12,
+        paddingHorizontal: SIZES.small,
         // paddingVertical: 16,
         borderColor: '#ffffff29',
         fontSize: SIZES.small,
-        ...TEXTS.textRegular
+        ...TEXTS.textRegular,
+        
     },
 });
 

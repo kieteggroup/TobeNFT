@@ -3,11 +3,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { IconProfile, IconSetting, IconSwap, IconWallet } from '../assets/imageSvg/ImageSVG';
-import { Login, SignUp } from '../screens/Auth';
-import { FONT, icons } from '../constants';
+
+import { FONTS, SIZES, WIDTH, icons } from '../constants';
 import { ButtonCustom } from '../CustomComponent';
-import { AuthNavigator, NFTNavigator, WalletNavigator, SwapNavigator } from '../navigations';
-import Setting from '../screens/Setting/Setting';
+import { NFTNavigator, WalletNavigator, SwapNavigator } from '../navigations';
+
+import SettingNavigator from '../navigations/SettingNavigator';
 
 // import MyTabBar from './MyTabBar';
 
@@ -52,7 +53,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
                         });
                     };
 
-                    const widthFocus = isFocused ? { width: '35%' } : { flex: 1 };
+                    const widthFocus = isFocused ? { width: 115 * WIDTH.widthScale } : { flex: 1 };
                     const IconTab = options.tabBarIcon;
                     return (
                         <TouchableOpacity
@@ -71,7 +72,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
                                 <ButtonCustom
                                     leftIcon={IconTab()}
                                     text={label}
-                                    buttonStyleText={{ marginLeft: 14, fontSize: 14, fontFamily: FONT.regular }}
+                                    buttonStyleText={{ marginLeft: 14, fontFamily: FONTS.regular }}
                                 />
                             )}
                         </TouchableOpacity>
@@ -88,14 +89,13 @@ const ScreenBottomTab = () => {
             screenOptions={{
                 headerShown: false,
             }}
-            initialRouteName="WalletNavigator"
+            initialRouteName="Wallet"
             tabBar={(props) => <MyTabBar {...props} />}
         >
             <Tab.Screen
-                name="WalletNavigator"
+                name="Wallet"
                 component={WalletNavigator}
                 options={{
-                    tabBarLabel: 'Wallet',
                     tabBarIcon: () => <IconWallet />,
                 }}
             />
@@ -115,7 +115,7 @@ const ScreenBottomTab = () => {
             />
             <Tab.Screen
                 name="Setting"
-                component={Setting}
+                component={SettingNavigator}
                 options={{
                     tabBarIcon: () => <IconSetting />,
                 }}
@@ -138,8 +138,8 @@ const styles = {
     },
     container: {
         flexDirection: 'row',
-        height: 50,
-        paddingHorizontal: 10,
+        height: 50 * WIDTH.widthScale,
+        paddingHorizontal: SIZES.xSmall,
     },
     tabButton: {
         justifyContent: 'center',
