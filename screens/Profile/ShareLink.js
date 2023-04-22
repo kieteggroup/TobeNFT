@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
-import { RadialGradient, Stop } from 'react-native-svg';
 
 const ShareLink = ({ navigation }) => {
     return (

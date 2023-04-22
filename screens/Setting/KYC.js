@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableOpacity, View ,ImageBackground} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
-import { ImageBackground } from 'react-native';
 
 const genderList = ['Male', 'Female', 'Other'];
 const KYC = ({ navigation }) => {

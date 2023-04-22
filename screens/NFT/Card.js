@@ -1,7 +1,8 @@
-import React from 'react';
+
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import { COLORS, FONTS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { COLORS, FONTS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import Table from '../../components/Table';
 import HomeNFT from './HomeNFT';

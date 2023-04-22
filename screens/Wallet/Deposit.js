@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+
 
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { QrCode } from '../../assets/imageSvg/ImageSVG';

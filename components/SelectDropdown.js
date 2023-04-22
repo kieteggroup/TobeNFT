@@ -1,8 +1,10 @@
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, FlatList } from 'react-native';
-import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
 import { IconDropDown } from '../assets/imageSvg/ImageSVG';
+
 const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle, iconColor }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);

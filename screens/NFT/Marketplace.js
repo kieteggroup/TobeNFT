@@ -60,15 +60,11 @@ const Marketplace = () => {
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     locations={[0.085, 1]}
-                   
                 />
             </LinearGradient>
 
-            <FlatList
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.listRestaurant}
-                data={dataNFT}
-                renderItem={({ item ,index}) => (
+            <View style={styles.listRestaurant}>
+                {dataNFT.map((item, index) => (
                     <TouchableOpacity
                         style={styles.wrapperItem}
                         key={index}
@@ -115,8 +111,17 @@ const Marketplace = () => {
                             />
                         </View>
                     </TouchableOpacity>
+                ))}
+            </View>
+
+            {/* <FlatList
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.listRestaurant}
+                data={dataNFT}
+                renderItem={({ item, index }) => (
+                
                 )}
-            />
+            /> */}
         </View>
     );
 };
@@ -186,7 +191,7 @@ const styles = StyleSheet.create({
     img: {
         width: 160 * WIDTH.widthScale,
         height: WIDTH.width100,
-        overflow:'hidden'
+        overflow: 'hidden',
     },
     textRestaurant: {
         fontSize: SIZES.small,

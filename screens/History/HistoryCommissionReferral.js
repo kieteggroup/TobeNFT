@@ -1,7 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
-import { LinearGradient } from 'expo-linear-gradient';
 
 const HistoryCommissionReferral = () => {
     return (

@@ -1,19 +1,18 @@
 import { Image, SafeAreaView, StyleSheet, View, useColorScheme, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { ScreenBottomTab } from './components';
 import { StatusBar } from 'react-native';
 import { useFonts } from 'expo-font';
-import { FONTS, TEXTS } from './constants';
-import { AuthNavigator } from './navigations';
+import { useCallback } from 'react';
 
+import { AuthNavigator } from './navigations';
 import Welcome from './screens/Welcome';
+import * as SplashScreen from 'expo-splash-screen';
+import { ScreenBottomTab } from './components';
 
 const Stack = createNativeStackNavigator();
-// Định nghĩa kiểu mặc định cho thành phần Text
-Text.defaultProps = Text.defaultProps || {};
-Text.defaultProps.style = { ...TEXTS.textRegular };
+SplashScreen.preventAutoHideAsync();
+
 
 function App() {
     const isDarkMode = useColorScheme() === 'light';
@@ -25,14 +24,20 @@ function App() {
         Roboto_Bold: require('./assets/fonts/Roboto-Bold.ttf'),
     });
 
+    const onLayoutRootView = useCallback(async () => {
+        if(fontsLoaded){
+            await SplashScreen.hideAsync()
+        }
+    },[fontsLoaded])
+
     if (!fontsLoaded) return null;
+
     return (
-        <SafeAreaView style={styles.wrapper}>
+        <SafeAreaView style={styles.wrapper} onLayout={onLayoutRootView}>
             <StatusBar
                 barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                 backgroundColor="transparent"
                 translucent
-                
             />
             <NavigationContainer>
                 <Stack.Navigator

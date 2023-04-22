@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet ,TouchableOpacity} from 'react-native';
+
 import { MainContainer } from '../../components';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
-import { TouchableOpacity } from 'react-native';
 
 const listSetting = [
     {

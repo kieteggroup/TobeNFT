@@ -1,11 +1,11 @@
-import { FlatList, Image, ImageBackground, StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { FlatList, Image, ImageBackground, StyleSheet, View,Text } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { MainContainer, SelectDropdown } from '../../components';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Text } from 'react-native';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import { Hexagon, HexagonSelect } from '../../assets/imageSvg/ImageSVG';
-import { useState } from 'react';
 
 const listStage = [
     {

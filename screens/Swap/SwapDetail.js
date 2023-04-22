@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import Swap from './Swap';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
-import { LinearGradient } from 'expo-linear-gradient';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import MainContainer from '../../components/MainContainer';
 

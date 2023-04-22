@@ -1,9 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer, Table } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
-import { Image } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { IconDropDown } from '../../assets/imageSvg/ImageSVG';
 
 const AccountTwo = ({ navigation }) => {

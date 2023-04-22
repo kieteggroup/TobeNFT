@@ -1,11 +1,11 @@
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View ,ImageBackground} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
 import { SIZES, TEXTS, WIDTH, images } from '../../constants';
-import { ImageBackground } from 'react-native';
 
 const ChangePassword = ({ navigation }) => {
     return (

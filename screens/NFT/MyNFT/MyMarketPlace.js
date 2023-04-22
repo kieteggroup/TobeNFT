@@ -1,7 +1,7 @@
-import { View, ScrollView, Image, Text, FlatList, StyleSheet } from 'react-native';
+import { View, ScrollView, Image, Text, FlatList, StyleSheet ,TouchableOpacity} from 'react-native';
+
 import { images, icons, TEXTS, SIZES, WIDTH, FONTS } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
-import { TouchableOpacity } from 'react-native';
 
 const dataNFT = [
     {

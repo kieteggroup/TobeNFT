@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { routerAuth } from '../router/router';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +14,7 @@ function WalletNavigator() {
             }}
             initialRouteName="Login"
         >
+
             {routerAuth.map((screen) => (
                 <Stack.Screen key={screen.name} name={screen.name} component={screen.component} />
             ))}

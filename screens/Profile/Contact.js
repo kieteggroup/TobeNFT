@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import { MainContainer } from '../../components';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';

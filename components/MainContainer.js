@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
 import { COLORS, WIDTH, images } from '../constants';
-import { useEffect } from 'react';
 // locations={[0.3191, 0.6809]}
 const MainContainer = ({ children, noBackgroundFooter, blurBackground }) => {
     return (

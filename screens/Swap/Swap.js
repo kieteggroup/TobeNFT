@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+
 import { ButtonCustom } from '../../CustomComponent';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Children, useState } from 'react';
 import { MainContainer, SelectDropdown } from '../../components';
 

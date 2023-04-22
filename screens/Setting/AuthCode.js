@@ -1,9 +1,10 @@
 import React from 'react';
 import { Dimensions, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
 import { SIZES, TEXTS, WIDTH, images } from '../../constants';
 
 const AuthCode = ({ navigation }) => {

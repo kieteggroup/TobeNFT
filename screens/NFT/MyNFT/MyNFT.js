@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, ScrollView, Image, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+
 import { images, icons, TEXTS, SIZES, WIDTH, COLORS } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
 import MyLocation from './MyLocation';

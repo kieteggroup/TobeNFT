@@ -1,11 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View,FlatList } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { IconDeposit, IconTransfer, IconWithdraw, LogoOnly, MultiHexagon } from '../../assets/imageSvg/ImageSVG';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
-import { FlatList } from 'react-native';
 
 const listDataPost = [
     {

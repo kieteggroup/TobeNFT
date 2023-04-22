@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { FONTS, SIZES, TEXTS, WIDTH } from '../constants';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { FONTS, SIZES, TEXTS, WIDTH } from '../constants';
 
 const Table = ({ heading, leftIcon, rightIcon }) => {
     return (

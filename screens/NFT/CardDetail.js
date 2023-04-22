@@ -1,9 +1,10 @@
-import React from 'react';
+
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import { MainContainer } from '../../components';
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { LinearGradient } from 'expo-linear-gradient';
 import HomeNFT from './HomeNFT';
 
 const CardDetail = () => {
