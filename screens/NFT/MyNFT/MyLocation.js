@@ -49,10 +49,10 @@ const MyLocation = () => {
                     )}
                 />
             ) : (
-                <>
-                    <Image source={images.empty_data} />
+                <View style={{alignItems:'center'}} >
+                    <Image source={images.empty_data} style={styles.empty_data} />
                     <Text style={styles.title}>(Empty Data)</Text>
-                </>
+                </View>
             )}
         </>
     );
@@ -95,6 +95,10 @@ const styles = StyleSheet.create({
         height: 19 * WIDTH.widthScale,
         marginTop: 8,
         borderWidth: 0,
+    },
+    empty_data: {
+        width: 222 * WIDTH.widthScale,
+        height: 148 * WIDTH.widthScale,
     },
 });
 export default MyLocation;

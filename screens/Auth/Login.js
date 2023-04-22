@@ -13,8 +13,8 @@ const Login = (props) => {
     const [showPass, setShowPass] = useState(false);
     const navigation = useNavigation();
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
-            <ImageBackground style={styles.wrapper} source={images.login} resizeMode="stretch">
+        <ImageBackground style={styles.wrapper} source={images.login} resizeMode="stretch">
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 <View style={styles.logo}>
                     <Logo />
                 </View>
@@ -62,14 +62,13 @@ const Login = (props) => {
                         </Text>
                     </Text>
                 </View>
-            </ImageBackground>
-        </ScrollView>
+            </ScrollView>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
     wrapper: {
-        alignItems: 'center',
         flex: 1,
         paddingHorizontal: 20,
         // height: height,
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: SIZES.xLarge,
-        ...TEXTS.textMedium
+        ...TEXTS.textMedium,
     },
     form: {
         alignItems: 'center',

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, ScrollView, Image, Text, FlatList, StyleSheet, TouchableOpacity,ImageBackground } from 'react-native';
+import { View, ScrollView, Image, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { images, icons, TEXTS, SIZES, WIDTH, COLORS } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
 import MyLocation from './MyLocation';
@@ -56,16 +56,7 @@ const MyNFT = ({ title, renderItem }) => {
                         </Text>
                     </View>
                 </ImageBackground>
-                <View style={styles.dataNFT}>
-                    {[0].length > 0 ? (
-                        displayTabContent()
-                    ) : (
-                        <>
-                            <Image source={images.empty_data} />
-                            <Text style={styles.title}>(Empty Data)</Text>
-                        </>
-                    )}
-                </View>
+                <View style={styles.dataNFT}>{displayTabContent()}</View>
             </ScrollView>
             <ButtonCustom
                 text="Buy more"
@@ -103,7 +94,7 @@ const styles = StyleSheet.create({
     banner: {
         width: WIDTH.width100,
         // alignItems: 'center',
-        height:135* WIDTH.widthScale
+        height: 135 * WIDTH.widthScale,
     },
     bannerContent: {
         position: 'absolute',
@@ -132,5 +123,6 @@ const styles = StyleSheet.create({
         bottom: 110,
         borderWidth: 0,
     },
+   
 });
 export default MyNFT;

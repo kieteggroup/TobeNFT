@@ -5,64 +5,64 @@ import { ButtonCustom, InputCustom } from '../../CustomComponent';
 
 const Contact = ({ navigation }) => {
     return (
-        <MainContainer blurBackground>
-            <View style={styles.wrapper}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={icons.back} style={styles.back} />
-                </TouchableOpacity>
-                <Text style={styles.title}>CONTACT US</Text>
+            <MainContainer blurBackground>
+                <View style={styles.wrapper}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Image source={icons.back} style={styles.back} />
+                    </TouchableOpacity>
+                    <Text style={styles.title}>CONTACT US</Text>
 
-                <View style={styles.form}>
-                    <View style={styles.formName}>
-                        <View style={{ ...styles.formGroup, width: 146 * WIDTH.widthScale }}>
-                            <Text style={styles.label}>Fist name*</Text>
-                            <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Fist name" />
+                    <View style={styles.form}>
+                        <View style={styles.formName}>
+                            <View style={{ ...styles.formGroup, width: 146 * WIDTH.widthScale }}>
+                                <Text style={styles.label}>Fist name*</Text>
+                                <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Fist name" />
+                            </View>
+                            <View style={{ ...styles.formGroup, width: 146 * WIDTH.widthScale }}>
+                                <Text style={styles.label}>Last name*</Text>
+                                <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Last name" />
+                            </View>
                         </View>
-                        <View style={{ ...styles.formGroup, width: 146 * WIDTH.widthScale }}>
-                            <Text style={styles.label}>Last name*</Text>
-                            <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Last name" />
+
+                        <View style={styles.formGroup}>
+                            <Text style={styles.label}>Email*</Text>
+                            <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Email" />
                         </View>
-                    </View>
 
-                    <View style={styles.formGroup}>
-                        <Text style={styles.label}>Email*</Text>
-                        <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Email" />
-                    </View>
+                        <View style={styles.formGroup}>
+                            <Text style={styles.label}>Phone*</Text>
+                            <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Phone" />
+                        </View>
 
-                    <View style={styles.formGroup}>
-                        <Text style={styles.label}>Phone*</Text>
-                        <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Phone" />
-                    </View>
+                        <View style={styles.formGroup}>
+                            <Text style={styles.label}>Title*</Text>
+                            <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Title" />
+                        </View>
 
-                    <View style={styles.formGroup}>
-                        <Text style={styles.label}>Title*</Text>
-                        <InputCustom placeholderColor="#536981" style={styles.input} placeholder="Title" />
-                    </View>
+                        <View style={styles.formGroup}>
+                            <Text style={styles.label}>Content*</Text>
+                            <InputCustom
+                                placeholderColor="#536981"
+                                style={{ ...styles.input, height: 70 * WIDTH.widthScale }}
+                                numberOfLines={4}
+                                multiline
+                                placeholder="Content"
+                            />
+                        </View>
 
-                    <View style={styles.formGroup}>
-                        <Text style={styles.label}>Content*</Text>
-                        <InputCustom
-                            placeholderColor="#536981"
-                            style={{ ...styles.input, height: 70 * WIDTH.widthScale }}
-                            numberOfLines={4}
-                            multiline
-                            placeholder="Content"
+                        <ButtonCustom
+                            text="Submit"
+                            buttonStyle={styles.button}
+                            buttonStyleText={styles.buttonText}
+                            backgroundLinearGradient={['#800966', '#F61173']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
                         />
                     </View>
 
-                    <ButtonCustom
-                        text="Submit"
-                        buttonStyle={styles.button}
-                        buttonStyleText={styles.buttonText}
-                        backgroundLinearGradient={['#800966', '#F61173']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                    />
+                    <Image source={images.contact} style={styles.imgFooter} />
                 </View>
-
-                <Image source={images.contact} style={styles.imgFooter} />
-            </View>
-        </MainContainer>
+            </MainContainer>
     );
 };
 

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { routerWallet } from '../router/router';
+import { routerMyNFT, routerProfile, routerWallet } from '../router/router';
 import { HeaderScreenRight } from '../components/headerBar';
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +20,26 @@ function WalletNavigator() {
         >
             {routerWallet.map((screen) => (
                 <Stack.Screen
+                    name={screen.name}
+                    component={screen.component}
+                    options={{
+                        headerLeft: () => screen.headerLeft || false,
+                    }}
+                />
+            ))}
+            {routerMyNFT.map((screen) => (
+                <Stack.Screen
+                    key={screen.name}
+                    name={screen.name}
+                    component={screen.component}
+                    options={{
+                        headerLeft: () => screen.headerLeft || false,
+                    }}
+                />
+            ))}
+            {routerProfile.map((screen) => (
+                <Stack.Screen
+                    key={screen.name}
                     name={screen.name}
                     component={screen.component}
                     options={{

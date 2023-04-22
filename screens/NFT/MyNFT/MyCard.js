@@ -26,8 +26,8 @@ const MyCard = () => {
                     keyExtractor={(item) => item.name}
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
-                            <Image source={item.card} />
-                            <View style={{ position: 'absolute', right: 16, top: 129 }}>
+                            <Image source={item.card} style={styles.image} />
+                            <View style={{ position: 'absolute', right: 16, top: 129 * WIDTH.widthScale }}>
                                 <ButtonCustom
                                     text="BUY NOW"
                                     buttonStyle={styles.button}
@@ -43,10 +43,10 @@ const MyCard = () => {
                     )}
                 ></FlatList>
             ) : (
-                <>
-                    <Image source={images.empty_data} />
+                <View style={{ alignItems: 'center' }}>
+                    <Image source={images.empty_data} style={styles.empty_data} />
                     <Text style={styles.title}>(Empty Data)</Text>
-                </>
+                </View>
             )}
         </>
     );
@@ -59,15 +59,23 @@ const styles = StyleSheet.create({
         columnGap: 14,
         flexDirection: 'row',
     },
+    image: {
+        width: 308.3 * WIDTH.widthScale,
+        height: 194.23 * WIDTH.widthScale,
+    },
     button: {
-        height: 28 ,
-        width: 105.85 ,
+        height: 28 * WIDTH.widthScale,
+        width: 105.85 * WIDTH.widthScale,
         borderWidth: 0,
     },
     cardText: {
         fontSize: SIZES.large,
         marginTop: 14,
         ...TEXTS.textBold,
+    },
+    empty_data: {
+        width: 222 * WIDTH.widthScale,
+        height: 148 * WIDTH.widthScale,
     },
 });
 export default MyCard;

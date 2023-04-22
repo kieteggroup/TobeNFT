@@ -37,7 +37,7 @@ const routerNFT = [
     { name: 'VirtualMachine', component: VirtualMachine },
 ];
 
-const routerMyNFT = [{ name: 'MyNFT', component: MyNFT }];
+const routerMyNFT = [{ name: 'MyNFT', component: MyNFT, headerLeft: <HeaderScreenLeft goBack /> }];
 
 const routerSwap = [
     { name: 'Swap', component: Swap },
@@ -53,8 +53,16 @@ const routerSetting = [
     { name: 'MenuHistory', component: MenuHistory, headerLeft: <HeaderScreenLeft goBack /> },
     { name: 'HistoryEarning', component: HistoryEarning, headerLeft: <HeaderScreenLeft goBack /> },
     { name: 'HistoryProfit', component: HistoryProfit, headerLeft: <HeaderScreenLeft goBack /> },
-    { name: 'HistoryCommissionReferral', component: HistoryCommissionReferral, headerLeft: <HeaderScreenLeft goBack /> },
-    { name: 'HistoryCommissionLocation', component: HistoryCommissionLocation, headerLeft: <HeaderScreenLeft goBack /> },
+    {
+        name: 'HistoryCommissionReferral',
+        component: HistoryCommissionReferral,
+        headerLeft: <HeaderScreenLeft goBack />,
+    },
+    {
+        name: 'HistoryCommissionLocation',
+        component: HistoryCommissionLocation,
+        headerLeft: <HeaderScreenLeft goBack />,
+    },
     { name: 'HistoryCommissionMachine', component: HistoryCommissionMachine, headerLeft: <HeaderScreenLeft goBack /> },
 ];
 const routerProfile = [

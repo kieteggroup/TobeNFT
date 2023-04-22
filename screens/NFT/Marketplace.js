@@ -60,7 +60,7 @@ const Marketplace = () => {
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     locations={[0.085, 1]}
-                    onPress={() => navigation.navigate('MyNFT')}
+                   
                 />
             </LinearGradient>
 
@@ -68,11 +68,10 @@ const Marketplace = () => {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.listRestaurant}
                 data={dataNFT}
-                keyExtractor={(item) => item.name}
-                renderItem={({ item }) => (
+                renderItem={({ item ,index}) => (
                     <TouchableOpacity
                         style={styles.wrapperItem}
-                        key={item.name}
+                        key={index}
                         onPress={() => navigation.navigate('CardDetail')}
                     >
                         <View style={styles.left}>

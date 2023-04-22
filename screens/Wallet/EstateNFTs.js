@@ -169,16 +169,19 @@ const EstateNFTs = () => {
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
                                 placeholderColor={{ color: '#536981' }}
+                                  style={styles.input}
                             />
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
                                 placeholderColor={{ color: '#536981' }}
+                                style={styles.input}
                             />
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
                                 placeholderColor={{ color: '#536981' }}
+                                style={styles.input}
                             />
                             <InputCustom
                                 placeholder="Features"
@@ -196,7 +199,7 @@ const EstateNFTs = () => {
                                 placeholder="Description"
                                 radiusMax
                                 placeholderColor="#536981"
-                                style={{ ...styles.input, height: 61* WIDTH.widthScale }}
+                                style={{ ...styles.input, height: 61 * WIDTH.widthScale }}
                             />
                             <LinearGradient
                                 colors={['#502D9F66', '#8F79D966']}
@@ -332,9 +335,11 @@ const styles = StyleSheet.create({
         marginTop: 25,
         width: WIDTH.width100,
         rowGap: 12,
+        width: 337 * WIDTH.widthScale,
     },
     input: {
         height: 38 * WIDTH.widthScale,
+        width: WIDTH.width100,
         backgroundColor: COLORS.white,
         ...TEXTS.textRegular,
         fontSize: 14,
@@ -358,8 +363,8 @@ const styles = StyleSheet.create({
         borderRadius: 9,
         alignItems: 'center',
         justifyContent: 'center',
-        height: 63* WIDTH.widthScale,
-        width: 63* WIDTH.widthScale,
+        height: 63 * WIDTH.widthScale,
+        width: 63 * WIDTH.widthScale,
     },
 });
 export default EstateNFTs;

@@ -5,7 +5,25 @@ import { IconDeposit, IconTransfer, IconWithdraw, LogoOnly, MultiHexagon } from 
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
+import { FlatList } from 'react-native';
+
+const listDataPost = [
+    {
+        name: 'NFT Virtual Machine',
+        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        img: images.to_earn02,
+    },
+    {
+        name: 'NFT Card',
+        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        img: images.to_earn01,
+    },
+    {
+        name: 'NFT Card',
+        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        img: images.to_earn01,
+    },
+];
 
 const HomeWallet = ({ navigation }) => {
     return (
@@ -86,9 +104,9 @@ const HomeWallet = ({ navigation }) => {
                     </Text>
                     <ButtonCustom
                         text="Get NOW"
-                        onPress={() => navigation.navigate('Setting')}
+                        onPress={() => navigation.navigate('ShareLink')}
                         backgroundLinearGradient={['#FFFFFF33', '#FFFFFF00']}
-                        buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale  }}
+                        buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale }}
                         buttonStyleText={{
                             fontSize: 14,
                             ...TEXTS.textRegular,
@@ -97,7 +115,11 @@ const HomeWallet = ({ navigation }) => {
                         rightIcon={
                             <LinearGradient
                                 colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
-                                style={{ ...styles.iconContinue, height: 30 * WIDTH.widthScale ,width: 30 * WIDTH.widthScale }}
+                                style={{
+                                    ...styles.iconContinue,
+                                    height: 30 * WIDTH.widthScale,
+                                    width: 30 * WIDTH.widthScale,
+                                }}
                                 locations={[0.3392, 0.9986]}
                             >
                                 <Image source={icons.continueicon} />
@@ -108,11 +130,11 @@ const HomeWallet = ({ navigation }) => {
 
                 <View style={{ marginTop: 22, alignItems: 'center', justifyContent: 'center' }}>
                     <Image source={images.freepik} style={styles.img} />
-                    <View style={{ padding: 16, position: 'absolute' }}>
+                    <View style={{ padding: 16, position: 'absolute' ,alignItems:"center" }}>
                         <Text style={{ fontSize: SIZES.large, ...TEXTS.textBold }}>NFT Marketplace</Text>
                         <ButtonCustom
                             text="Go to Shop"
-                            onPress={() => navigation.navigate('NFTNavigator')}
+                            onPress={() => navigation.navigate('NFT')}
                             backgroundColorBtn="#FFFFFF33"
                             buttonStyle={styles.buttonShop}
                             buttonStyleText={{ fontSize: 14, ...TEXTS.textRegular }}
@@ -120,78 +142,47 @@ const HomeWallet = ({ navigation }) => {
                     </View>
                 </View>
 
-                <View style={styles.postContainer}>
-                    <TouchableOpacity
-                        onPress={() =>
-                            navigation.navigate('NFTNavigator', {
-                                navigateTab: 'Virtual Machine',
-                            })
-                        }
-                    >
-                        <LinearGradient
-                            colors={['#502D9F66', '#08021C00']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                            locations={[0.3392, 0.9986]}
-                            style={styles.postNFT}
+                <FlatList
+                    data={listDataPost}
+                    contentContainerStyle={styles.postContainer}
+                    horizontal
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('MyNFT')}
+                            style={{ alignSelf: 'flex-end' }}
                         >
-                            <Image
-                                source={images.to_earn02}
-                                style={{ ...styles.postImage, left: 47 * WIDTH.widthScale }}
-                            />
-                            <View style={styles.postTextContent}>
-                                <Text style={styles.postTitle} numberOfLines={2}>
-                                    NFT Virtual Machine
-                                </Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                    <Text style={styles.postText} numberOfLines={4}>
-                                        Earn your NFT items and trade them on the marketplace to make money
+                            <LinearGradient
+                                colors={['#502D9F66', '#08021C00']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                locations={[0.3392, 0.9986]}
+                                style={styles.postNFT}
+                            >
+                                <Image source={item.img} style={{ ...styles.postImage }} />
+                                <View style={styles.postTextContent}>
+                                    <Text style={styles.postTitle} numberOfLines={2}>
+                                        {item.name}
                                     </Text>
-                                    <LinearGradient
-                                        colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
-                                        style={styles.iconContinue}
-                                        locations={[0.3392, 0.9986]}
-                                    >
-                                        <Image source={icons.continueicon} />
-                                    </LinearGradient>
+                                    <Text style={styles.postText} numberOfLines={4}>
+                                        {item.description}
+                                    </Text>
                                 </View>
-                            </View>
-                        </LinearGradient>
-                    </TouchableOpacity>
 
-                    <TouchableOpacity
-                        onPress={() =>
-                            navigation.navigate('NFTNavigator', {
-                                navigateTab: 'NFT Card',
-                            })
-                        }
-                    >
-                        <LinearGradient
-                            colors={['#502D9F66', '#08021C00']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                            locations={[0.3392, 0.9986]}
-                            style={styles.postNFT}
-                        >
-                            <Image source={images.to_earn01} style={styles.postImage} />
-                            <View style={styles.postTextContent}>
-                                <Text style={styles.postTitle}>NFT Card</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-                                    <Text style={styles.postText} numberOfLines={4}>
-                                        Earn your NFT items and trade them on the marketplace to make money
-                                    </Text>
-                                    <LinearGradient
-                                        colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
-                                        style={styles.iconContinue}
-                                        locations={[0.3392, 0.9986]}
-                                    >
-                                        <Image source={icons.continueicon} />
-                                    </LinearGradient>
-                                </View>
-                            </View>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
+                                <LinearGradient
+                                    colors={['#FFFFFF33', '#FFFFFF00', '#08021C00', '#FFFFFF33']}
+                                    style={{
+                                        ...styles.iconContinue,
+                                        bottom: 7 * WIDTH.widthScale,
+                                        right: 7 * WIDTH.widthScale,
+                                    }}
+                                    locations={[0.3392, 0.9986]}
+                                >
+                                    <Image source={icons.continueicon} />
+                                </LinearGradient>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    )}
+                />
             </View>
         </MainContainer>
     );
@@ -199,7 +190,6 @@ const HomeWallet = ({ navigation }) => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        marginHorizontal: SIZES.large,
         alignItems: 'center',
     },
     header: {
@@ -269,10 +259,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     postContainer: {
-        marginTop: 56,
-        flexDirection: 'row',
+        marginTop: 16,
         columnGap: 22,
         marginBottom: 20,
+        height: 217 * WIDTH.widthScale,
+        paddingHorizontal: 20,
     },
     postNFT: {
         borderWidth: 2,
@@ -281,18 +272,23 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         width: 153 * WIDTH.widthScale,
         height: 177 * WIDTH.widthScale,
+        position: 'relative',
     },
     postImage: {
         position: 'absolute',
-        left: 65 * WIDTH.widthScale,
-        bottom: 111 * WIDTH.widthScale,
+        top: -40 * WIDTH.widthScale,
+        right: -8 * WIDTH.widthScale,
+
+        width: 103 * WIDTH.widthScale,
+        height: 104 * WIDTH.widthScale,
     },
     postTextContent: {
         paddingLeft: 13,
         paddingRight: 7,
         paddingBottom: 7,
-        flex: 1,
-        justifyContent: 'flex-end',
+        marginTop: 90 * WIDTH.widthScale,
+        // flex: 1,
+        // justifyContent: 'flex-end',
     },
     postText: {
         fontSize: SIZES.xSmall,

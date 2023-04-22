@@ -38,13 +38,7 @@ function NFTNavigator({ route }) {
 
                 />
             ))}
-            {routerMyNFT.map((screen) => (
-                <Stack.Screen
-                    key={screen.name}
-                    name={screen.name}
-                    component={screen.component}
-                />
-            ))}
+         
         </Stack.Navigator>
     );
 }

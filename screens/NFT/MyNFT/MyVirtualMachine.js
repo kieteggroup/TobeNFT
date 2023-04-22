@@ -45,14 +45,14 @@ const MyVirtualMachine = () => {
                     data={dataNFT}
                     renderItem={({ item }) => (
                         <View style={styles.virtualItem}>
-                            <Image source={item.img} />
+                            <Image source={item.img} style={styles.img}/>
                             <View style={styles.info}>
                                 <Text style={styles.name}>{item.name}</Text>
                                 <Text style={styles.price}>${item.price}</Text>
                                 <Text style={styles.description}>{item.description}</Text>
                                 <ButtonCustom
                                     text="BUY NOW"
-                                    buttonStyle={{ height: 30, width: 110, borderWidth: 0 }}
+                                    buttonStyle={{ height: 30 * WIDTH.widthScale, width: 110 * WIDTH.widthScale, borderWidth: 0 }}
                                     buttonStyleText={{ fontFamily: FONTS.bold }}
                                     backgroundLinearGradient={['#780D69', '#EC0174']}
                                     start={{ x: 0, y: 0 }}
@@ -64,10 +64,10 @@ const MyVirtualMachine = () => {
                     )}
                 />
             ) : (
-                <>
-                    <Image source={images.empty_data} />
+                <View style={{alignItems:'center'}} >
+                    <Image source={images.empty_data} style={styles.empty_data} />
                     <Text style={styles.title}>(Empty Data)</Text>
-                </>
+                </View>
             )}
         </>
     );
@@ -102,10 +102,18 @@ const styles = StyleSheet.create({
         fontSize: SIZES.large,
         ...TEXTS.textBold,
     },
+    image: {
+        width: 85.51 * WIDTH.widthScale,
+        height: 154.66 * WIDTH.widthScale,
+    },
     description: {
         ...TEXTS.textRegular,
         marginTop: 10,
         marginBottom: 16,
+    },
+    empty_data: {
+        width: 222 * WIDTH.widthScale,
+        height: 148 * WIDTH.widthScale,
     },
 });
 export default MyVirtualMachine;
