@@ -17,22 +17,22 @@ const dataCard = [
         card: images.cardgold,
     },
 ];
-
 const Card = () => {
     return (
         <View style={styles.wrapper}>
             {/* Title */}
             <View style={{ paddingHorizontal: SIZES.large, alignItems: 'center' }}>
                 <View style={styles.titleContent}>
-                    <Text style={[ TEXTS.textBold,styles.title,]}>NFT CARD</Text>
+                    <Text style={[TEXTS.textBold, styles.title]}>NFT CARD</Text>
                 </View>
                 <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
             </View>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                start={{ x: 0, y: 0 }}
+                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
+                angle={295.36}
                 style={styles.cardContainer}
             >
                 <FlatList
@@ -46,7 +46,7 @@ const Card = () => {
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
                             <Image source={item.card} style={styles.img} />
-                            <View style={{ position: 'absolute', right: SIZES.medium, top: 129 * WIDTH.widthScale }}>
+                            <View style={styles.buttonPosition}>
                                 <ButtonCustom
                                     text="BUY NOW"
                                     buttonStyle={styles.button}
@@ -118,6 +118,11 @@ const styles = StyleSheet.create({
     img: {
         width: 308.3,
         height: 194.23,
+    },
+    buttonPosition: {
+        position: 'absolute',
+        right: SIZES.medium,
+        top: 129,
     },
     button: {
         height: 27.75,

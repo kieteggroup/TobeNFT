@@ -2,11 +2,10 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { COLORS, SIZES, icons, images } from '../constants';
-import { LogoHorizontal } from '../assets/imageSvg/ImageSVG';
+import { IconToken, LogoHorizontal } from '../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
 
 const HeaderScreenLeft = ({ src, goBack, goHome }) => {
-    // console.log(n);
     const navigation = useNavigation();
 
     const handelNavigator = () => {
@@ -28,7 +27,7 @@ const HeaderScreenLeft = ({ src, goBack, goHome }) => {
 const HeaderScreenRight = ({ src }) => {
     return (
         <View style={styles.coinNow}>
-            <Image source={icons.toearnnownho} style={styles.tokenImg} />
+            <IconToken />
             <Text style={styles.coinToken}>1 986 086.06</Text>
         </View>
     );
@@ -36,14 +35,17 @@ const HeaderScreenRight = ({ src }) => {
 const styles = StyleSheet.create({
     coinNow: {
         flexDirection: 'row',
-        padding: 4,
+        height: 26,
+        width: 127,
         borderRadius: 50,
-        // backgroundColor:"#fff"
+        backgroundColor: '#FFFFFF26',
+        alignItems: 'center',
+        justifyContent:"center"
     },
     tokenImg: {},
     coinToken: {
         color: COLORS.white,
-        marginLeft: 10,
+        marginLeft: 7,
         fontSize: SIZES.xMedium,
     },
 });

@@ -211,9 +211,8 @@ const styles = StyleSheet.create({
         width: 153,
         height: 178,
         alignItems: 'center',
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         borderRadius: 18,
         overflow: 'hidden',
     },
@@ -236,17 +235,17 @@ const styles = StyleSheet.create({
         height: 62,
         width: WIDTH.width100,
         justifyContent: 'center',
+        ...BORDER,
+
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         borderRadius: 15,
 
         marginTop: 'auto',
     },
     totalProfitContainer: {
+        ...BORDER,
+
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         borderRadius: 18,
         width: 336,
         height: 316,

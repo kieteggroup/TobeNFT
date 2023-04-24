@@ -3,36 +3,25 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { BORDER, COLORS, WIDTH, images } from '../constants';
 // locations={[0.3191, 0.6809]}
-const MainContainer = ({ children, noBackgroundFooter, blurBackground }) => {
+const MainContainer = ({ children, noBackgroundFooter, borderBackground }) => {
+    const border = borderBackground && { ...BORDER, borderWidth: 2 * WIDTH.widthScale };
     return (
         <ImageBackground style={styles.wrapper} source={images.technology}>
-            {blurBackground ? (
-                <LinearGradient
-                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    locations={[0.3392, 0.9986]}
-                    style={{
-                        ...styles.wrapper,
-                        ...BORDER,
-                        borderWidth: 2 * WIDTH.widthScale,
-                    }}
-                >
-                    <ScrollView
-                        showsVerticalScrollIndicator={false}
-                        contentContainerStyle={styles.scroll}
-                        contentInsetAdjustmentBehavior="automatic"
-                    >
-                        {children}
-                    </ScrollView>
-                </LinearGradient>
-            ) : (
-                <View style={{ ...styles.wrapper }}>
-                    <ScrollView showsVerticalScrollIndicator={false} contentInsetAdjustmentBehavior="automatic">
-                        {children}
-                    </ScrollView>
-                </View>
-            )}
+            <LinearGradient
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
+                 start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                locations={[0.3392, 0.9986]}
+                angle={295.36}
+                style={{
+                    ...styles.wrapper,
+                    ...border
+                }}
+            >
+                <ScrollView showsVerticalScrollIndicator={false} contentInsetAdjustmentBehavior="automatic">
+                    {children}
+                </ScrollView>
+            </LinearGradient>
 
             <View
                 style={{

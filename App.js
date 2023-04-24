@@ -12,7 +12,7 @@ import { ScreenBottomTab } from './components';
 
 const Stack = createNativeStackNavigator();
 SplashScreen.preventAutoHideAsync();
-
+import './languages/i18n';
 
 function App() {
     const isDarkMode = useColorScheme() === 'light';
@@ -25,10 +25,10 @@ function App() {
     });
 
     const onLayoutRootView = useCallback(async () => {
-        if(fontsLoaded){
-            await SplashScreen.hideAsync()
+        if (fontsLoaded) {
+            await SplashScreen.hideAsync();
         }
-    },[fontsLoaded])
+    }, [fontsLoaded]);
 
     if (!fontsLoaded) return null;
 

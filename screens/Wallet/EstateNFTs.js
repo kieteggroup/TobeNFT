@@ -103,7 +103,7 @@ const EstateNFTs = () => {
                 >
                     <FlatList
                         data={listStage}
-                        keyExtractor={({ item }) => item}
+                         keyExtractor={(item, index) => `key-${index}`}
                         contentContainerStyle={styles.listStage}
                         horizontal
                         showsHorizontalScrollIndicator={false}
@@ -235,9 +235,8 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: 'center',
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         width: WIDTH.width100,
         paddingTop: 21,
         paddingBottom: 41.4,
@@ -340,7 +339,7 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
         backgroundColor: COLORS.white,
         ...TEXTS.textRegular,
-        color: '#000',
+        color: '#536981',
     },
     ratio: {
         // height: 38,

@@ -13,9 +13,10 @@ const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle
         <TouchableOpacity onPress={() => setIsSelect(!isSelect)} style={styles.wrapper}>
             <LinearGradient
                 colors={[backgroundStyle || '#FFFFFF13', backgroundStyle || '#8F79D939']}
-                start={{ x: 0, y: 0 }}
+                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
+                angle={295.36}
                 style={[styles.dropdown, dropdownStyle]}
             >
                 <Text style={[styles.dropdownText, placeholderColor]}>0.0</Text>
@@ -32,10 +33,10 @@ const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle
             </LinearGradient>
 
             {isSelect ? (
-                <FlatList
-                    data={data || []}
-                    renderItem={({ item }) => (
+                <View style={styles.dropdownArea}>
+                    {(data || []).map((item, index) => (
                         <TouchableOpacity
+                            key={index}
                             style={styles.dataItem}
                             onPress={() => {
                                 setIsSelect(!isSelect);
@@ -45,10 +46,16 @@ const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle
                             <Image source={images.bnb} style={styles.img} />
                             <Text style={{ ...TEXTS.textRegular }}>{item}</Text>
                         </TouchableOpacity>
-                    )}
-                    style={styles.dropdownArea}
-                />
-            ) : null}
+                    ))}
+                </View>
+            ) : // <FlatList
+            //     data={data || []}
+            //     renderItem={({ item }) => (
+
+            //     )}
+            //     style={styles.dropdownArea}
+            // />
+            null}
         </TouchableOpacity>
     );
 };

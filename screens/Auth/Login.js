@@ -1,24 +1,42 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Dimensions, ImageBackground, Image, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useTransition } from 'react';
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Dimensions,
+    ImageBackground,
+    Image,
+    ScrollView,
+    FlatList,
+} from 'react-native';
+import { StackActions, useNavigation } from '@react-navigation/native';
 
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 import Logo from '../../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useTranslation } from 'react-i18next';
 
-const Login = (props) => {
+const Login = () => {
+    const { t } = useTranslation();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(false);
     const navigation = useNavigation();
+
+    const handleLogin = () => {
+        navigation.dispatch(StackActions.replace('ScreenBottomTab'));
+    };
     return (
         <ImageBackground style={styles.wrapper} source={images.login} resizeMode="stretch">
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 <View style={styles.logo}>
                     <Logo />
                 </View>
-                <Text style={styles.title}>Log In</Text>
+
+                <Text style={styles.title}>{t('titleAuth')}</Text>
                 <View style={styles.form}>
                     <View style={styles.formGroup}>
                         <InputCustom
@@ -44,11 +62,7 @@ const Login = (props) => {
                             <Image source={showPass ? icons.viewPass : icons.hiddenPass} style={styles.imgEye} />
                         </TouchableOpacity>
                     </View>
-                    <ButtonCustom
-                        style={{ marginTop: 21.5 * WIDTH.widthScale }}
-                        text="Login"
-                        onPress={() => navigation.navigate('ScreenBottomTab')}
-                    />
+                    <ButtonCustom style={{ marginTop: 21.5 * WIDTH.widthScale }} text="Login" onPress={handleLogin} />
                 </View>
                 <Text style={styles.textForgot} onPress={() => navigation.navigate('ForgotPassword')}>
                     Forgot password?
@@ -71,11 +85,9 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         paddingHorizontal: SIZES.large,
-        // height: height,
     },
     logo: {
         marginTop: 36,
-        // marginTop: 36,
     },
     title: {
         ...TEXTS.textMedium,
@@ -94,7 +106,7 @@ const styles = StyleSheet.create({
     showPass: {
         position: 'absolute',
         right: 0,
-        padding:  SIZES.xSmall
+        padding: SIZES.xSmall,
     },
     imgEye: {
         width: 19.09,

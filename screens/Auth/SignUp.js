@@ -212,8 +212,8 @@ const styles = StyleSheet.create({
         marginTop: 10.05,
     },
     imgSocial: {
-        width: 37,
-        height: 36,
+        width: 57,
+        height: 56,
     },
     footerRight: {
         alignItems: 'center',

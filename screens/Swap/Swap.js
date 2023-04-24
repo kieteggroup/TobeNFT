@@ -11,7 +11,7 @@ const Swap = ({ navigation }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
-        <MainContainer blurBackground>
+        <MainContainer borderBackground>
             <View style={styles.wrapper}>
                 <Text style={styles.title}>Swap</Text>
                 <Text style={styles.subtitle}>Trade tokens in an instant</Text>

@@ -160,9 +160,9 @@ const styles = StyleSheet.create({
         flex: 1,
         width: 327,
         maxWidth: WIDTH.width100,
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6a318133',
+
         borderRadius: 18,
         alignItems: 'center',
     },
@@ -225,9 +225,9 @@ const styles = StyleSheet.create({
         marginTop: SIZES.xSmall,
     },
     tag: {
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6a318133',
+
         borderRadius: 32.5,
         width: 104,
         height: 37,

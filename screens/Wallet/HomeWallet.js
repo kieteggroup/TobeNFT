@@ -51,8 +51,9 @@ const HomeWallet = ({ navigation }) => {
                                 rightIcon={
                                     <LinearGradient
                                         colors={['#FFFFFF33', '#DDDDDD33', COLORS.bodyTransp, '#FFFFFF33']}
-                                        style={styles.iconContinue}
                                         locations={[0.3392, 0.9986]}
+                                        angle={295.36}
+                                        style={styles.iconContinue}
                                     >
                                         <Image source={icons.continueicon} />
                                     </LinearGradient>
@@ -158,6 +159,7 @@ const HomeWallet = ({ navigation }) => {
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                                 locations={[0.3392, 0.9986]}
+                                angle={295.36}
                                 style={styles.postNFT}
                             >
                                 <Image source={item.img} style={{ ...styles.postImage }} />
@@ -172,12 +174,13 @@ const HomeWallet = ({ navigation }) => {
 
                                 <LinearGradient
                                     colors={['#FFFFFF33', '#FFFFFF00', COLORS.bodyTransp, '#FFFFFF33']}
+                                    locations={[0.3392, 0.9986]}
+                                    angle={295.36}
                                     style={{
                                         ...styles.iconContinue,
                                         bottom: 7 * WIDTH.widthScale,
                                         right: 7 * WIDTH.widthScale,
                                     }}
-                                    locations={[0.3392, 0.9986]}
                                 >
                                     <Image source={icons.continueicon} />
                                 </LinearGradient>
@@ -219,7 +222,7 @@ const styles = StyleSheet.create({
     button: {
         height: 26,
         width: 117,
-        paddingRight: 29,
+        paddingRight: 27,
         paddingHorizontal: 0,
         marginTop: SIZES.xSmall,
     },
@@ -276,9 +279,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: SIZES.large,
     },
     postNFT: {
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         borderRadius: 18,
         width: 153,
         height: 177,

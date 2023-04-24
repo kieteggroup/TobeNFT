@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer, Table } from '../../components';
-import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
@@ -68,9 +68,8 @@ const styles = StyleSheet.create({
     },
     transfer: {
         alignItems: 'center',
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
         width: WIDTH.width100,
         paddingVertical: 36,
     },

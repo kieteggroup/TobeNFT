@@ -7,7 +7,7 @@ import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const Contact = ({ navigation }) => {
     return (
-        <MainContainer blurBackground>
+        <MainContainer borderBackground>
             <View style={styles.wrapper}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image source={icons.back} style={styles.back} />

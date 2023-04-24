@@ -10,9 +10,10 @@ const HistoryProfit = () => {
         <MainContainer>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                start={{ x: 0, y: 0 }}
+                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
+                angle={295.36}
                 style={styles.wrapper}
             >
                 <Text style={styles.title}>History Profit</Text>

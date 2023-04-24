@@ -13,9 +13,10 @@ const ChangePassword = ({ navigation }) => {
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                start={{ x: 0, y: 0 }}
+                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
+                angle={295.36}
                 style={styles.content}
             >
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>
@@ -45,9 +46,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 22,
     },
     content: {
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
+
         borderRadius: 18,
         width: 332,
         height: 292,

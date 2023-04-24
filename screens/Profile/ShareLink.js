@@ -8,7 +8,7 @@ import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const ShareLink = ({ navigation }) => {
     return (
-        <MainContainer blurBackground>
+        <MainContainer borderBackground>
             <View style={styles.wrapper}>
                 <View style={{ flexDirection: 'row' }}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>

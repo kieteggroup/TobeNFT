@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
         ...BORDER,
         borderColor: '#EAEAEA',
         fontStyle: 'normal',
-        color: '#000',
+        color: '#536981',
     },
 });
 

@@ -45,15 +45,9 @@ const VirtualMachine = () => {
             </View>
             {/* List Virtual */}
 
-            <FlatList
-                style={{ width: WIDTH.width100, marginTop: 40 }}
-                contentContainerStyle={{
-                    paddingHorizontal: SIZES.large,
-                    rowGap: 30,
-                }}
-                data={dataVirtual}
-                renderItem={({ item }) => (
-                    <View style={styles.virtualItem}>
+            <View style={styles.listData}>
+                {dataVirtual.map((item, index) => (
+                    <View key={index} style={styles.virtualItem}>
                         <Image source={item.img} style={styles.img} />
                         <View style={styles.info}>
                             <Text style={styles.name}>{item.name}</Text>
@@ -70,8 +64,19 @@ const VirtualMachine = () => {
                             />
                         </View>
                     </View>
+                ))}
+            </View>
+            {/* <FlatList
+                style={{ width: WIDTH.width100, marginTop: 40 }}
+                contentContainerStyle={{
+                    paddingHorizontal: SIZES.large,
+                    rowGap: 30,
+                }}
+                data={dataVirtual}
+                renderItem={({ item }) => (
+                    
                 )}
-            />
+            /> */}
 
             <View style={styles.history}>
                 <Table heading="History Commission" />
@@ -99,7 +104,12 @@ const styles = StyleSheet.create({
         fontSize: SIZES.medium,
         textAlign: 'center',
     },
-
+    listData: {
+        paddingHorizontal: SIZES.large,
+        rowGap: 30,
+        width: WIDTH.width100,
+        marginTop: 40,
+    },
     virtualItem: {
         flexDirection: 'row',
         backgroundColor: '#140E2582',
@@ -134,7 +144,7 @@ const styles = StyleSheet.create({
     },
     description: {
         ...TEXTS.textRegular,
-        marginTop:  SIZES.xSmall,
+        marginTop: SIZES.xSmall,
         marginBottom: SIZES.medium,
     },
     btnNow: {

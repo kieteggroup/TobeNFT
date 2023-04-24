@@ -37,10 +37,11 @@ const HomeNFT = ({ children, route }) => {
                     ) : (
                         <>
                             <FlatList
+                            
                                 data={nftType}
-                                renderItem={({ item }) => (
+                                renderItem={({ item, index }) => (
                                     <ButtonCustom
-                                        key={item}
+                                        key={index}
                                         text={item}
                                         onPress={() => setActiveType(item)}
                                         backgroundLinearGradient={
@@ -59,16 +60,10 @@ const HomeNFT = ({ children, route }) => {
                                         buttonStyleText={{ fontFamily: FONTS.regularRoboto }}
                                     />
                                 )}
-                                keyExtractor={({ item }) => item}
+                                 keyExtractor={(item, index) => `key-${index}`}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
-                                contentContainerStyle={{
-                                    columnGap: SIZES.xSmall,
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    paddingHorizontal: SIZES.large,
-                                }}
-                                style={{ marginTop: SIZES.xMedium }}
+                                contentContainerStyle={styles.listType}
                             />
                             {displayTabContent()}
                         </>
@@ -84,6 +79,13 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         width: WIDTH.width100,
+    },
+    listType: {
+        columnGap: SIZES.xSmall,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: SIZES.large,
+        marginTop: SIZES.xMedium,
     },
 });
 export default HomeNFT;

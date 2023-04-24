@@ -107,16 +107,18 @@ const ScreenBottomTab = () => {
                 }}
             />
             <Tab.Screen
-                name="Swap"
+                name="SwapNavigator"
                 component={SwapNavigator}
                 options={{
+                    tabBarLabel: 'Swap',
                     tabBarIcon: () => <IconSwap />,
                 }}
             />
             <Tab.Screen
-                name="Setting"
+                name="SettingNavigator"
                 component={SettingNavigator}
                 options={{
+                    tabBarLabel: 'Setting',
                     tabBarIcon: () => <IconSetting />,
                 }}
             />

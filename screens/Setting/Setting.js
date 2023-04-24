@@ -100,8 +100,9 @@ const Setting = ({ navigation }) => {
                     </View>
 
                     <View style={styles.listSetting}>
-                        {listSetting.map((item) => (
+                        {listSetting.map((item,index) => (
                             <TouchableOpacity
+                                key={index}
                                 style={[styles.headerItem, styles.settingItem]}
                                 onPress={() => navigation.navigate(item.navigate)}
                             >
@@ -111,8 +112,8 @@ const Setting = ({ navigation }) => {
                         ))}
                     </View>
                     <View style={styles.social}>
-                        {listSocial.map((social) => (
-                            <View style={styles.socialitem}>
+                        {listSocial.map((social, index) => (
+                            <View key={index} style={styles.socialitem}>
                                 <Image source={social.img} />
                                 <Text style={styles.textSocial}>{social.name}</Text>
                             </View>
@@ -135,7 +136,8 @@ const Setting = ({ navigation }) => {
                             width: 332 * WIDTH.widthScale,
                             height: 39 * WIDTH.widthScale,
                         }}
-                        buttonStyleText={{  ...TEXTS.textMedium,fontSize: SIZES.xLarge,}}
+                        onPress={() => navigation.navigate('AuthNavigator')}
+                        buttonStyleText={{ ...TEXTS.textMedium, fontSize: SIZES.xLarge }}
                     />
                 </View>
             </View>

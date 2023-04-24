@@ -30,7 +30,8 @@ const Account = ({ navigation }) => {
                                             colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                             start={{ x: 0, y: 0 }}
                                             end={{ x: 1, y: 1 }}
-                                            locations={[0.3392, 0.9986]}
+                                            ocations={[0.3392, 0.9986]}
+                                            angle={295.36}
                                             style={styles.token}
                                         >
                                             <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -42,7 +43,8 @@ const Account = ({ navigation }) => {
                                             colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                             start={{ x: 0, y: 0 }}
                                             end={{ x: 1, y: 1 }}
-                                            locations={[0.3392, 0.9986]}
+                                            ocations={[0.3392, 0.9986]}
+                                            angle={295.36}
                                             style={styles.token}
                                         >
                                             <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -67,7 +69,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -81,7 +84,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -103,7 +107,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -115,7 +120,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -137,7 +143,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -149,7 +156,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -172,7 +180,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -186,7 +195,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={styles.token}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
@@ -208,7 +218,8 @@ const Account = ({ navigation }) => {
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
-                                        locations={[0.3392, 0.9986]}
+                                        ocations={[0.3392, 0.9986]}
+                                        angle={295.36}
                                         style={{
                                             ...styles.token,
                                             width: 196 * WIDTH.widthScale,
@@ -245,13 +256,13 @@ const styles = StyleSheet.create({
     },
     infoTokenContainer: {
         width: WIDTH.width100,
-        rowGap:  SIZES.xSmall,
+        rowGap: SIZES.xSmall,
         marginTop: 30,
     },
     infoToken: {
         width: 350,
         borderRadius: SIZES.large,
-        padding:  SIZES.xSmall,
+        padding: SIZES.xSmall,
         alignItems: 'center',
     },
     tokenHeading: {
