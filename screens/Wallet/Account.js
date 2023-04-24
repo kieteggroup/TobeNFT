@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const Account = ({ navigation }) => {
     return (
@@ -16,7 +17,7 @@ const Account = ({ navigation }) => {
                     <View style={styles.infoTokenContainer}>
                         <TouchableOpacity onPress={() => navigation.navigate('AccountTwo')}>
                             <LinearGradient
-                                colors={['#361E70CC', '#08021C00']}
+                                colors={['#361E70CC', COLORS.bodyTransp]}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 0 }}
                                 style={styles.infoToken}
@@ -26,7 +27,7 @@ const Account = ({ navigation }) => {
                                     <View style={styles.info}>
                                         <Image source={images.bnb} style={styles.img} />
                                         <LinearGradient
-                                            colors={['#502D9F66', '#08021C00']}
+                                            colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                             start={{ x: 0, y: 0 }}
                                             end={{ x: 1, y: 1 }}
                                             locations={[0.3392, 0.9986]}
@@ -38,7 +39,7 @@ const Account = ({ navigation }) => {
                                     <View style={styles.info}>
                                         <Image source={images.Usdt} style={styles.img} />
                                         <LinearGradient
-                                            colors={['#502D9F66', '#08021C00']}
+                                            colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                             start={{ x: 0, y: 0 }}
                                             end={{ x: 1, y: 1 }}
                                             locations={[0.3392, 0.9986]}
@@ -51,7 +52,7 @@ const Account = ({ navigation }) => {
                             </LinearGradient>
                         </TouchableOpacity>
                         <LinearGradient
-                            colors={['#361E70CC', '#08021C00']}
+                            colors={['#361E70CC', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
@@ -63,7 +64,7 @@ const Account = ({ navigation }) => {
                                     <Text style={styles.tokenName}>Direct</Text>
 
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -77,7 +78,7 @@ const Account = ({ navigation }) => {
                                     <Text style={styles.tokenName}>Indirect</Text>
 
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -89,7 +90,7 @@ const Account = ({ navigation }) => {
                             </View>
                         </LinearGradient>
                         <LinearGradient
-                            colors={['#361E70CC', '#08021C00']}
+                            colors={['#361E70CC', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
@@ -99,7 +100,7 @@ const Account = ({ navigation }) => {
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -111,7 +112,7 @@ const Account = ({ navigation }) => {
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -123,7 +124,7 @@ const Account = ({ navigation }) => {
                             </View>
                         </LinearGradient>
                         <LinearGradient
-                            colors={['#361E70CC', '#08021C00']}
+                            colors={['#361E70CC', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
@@ -133,7 +134,7 @@ const Account = ({ navigation }) => {
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -145,7 +146,7 @@ const Account = ({ navigation }) => {
                                 <View style={styles.info}>
                                     <Image source={images.Usdt} style={styles.img} />
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -157,7 +158,7 @@ const Account = ({ navigation }) => {
                             </View>
                         </LinearGradient>
                         <LinearGradient
-                            colors={['#361E70CC', '#08021C00']}
+                            colors={['#361E70CC', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
@@ -168,7 +169,7 @@ const Account = ({ navigation }) => {
                                     <Image source={images.Usdt} style={styles.img} />
                                     <Text style={styles.tokenName}>Direct</Text>
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -182,7 +183,7 @@ const Account = ({ navigation }) => {
                                     <Text style={styles.tokenName}>System</Text>
 
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -194,7 +195,7 @@ const Account = ({ navigation }) => {
                             </View>
                         </LinearGradient>
                         <LinearGradient
-                            colors={['#361E70CC', '#08021C00']}
+                            colors={['#361E70CC', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
@@ -204,7 +205,7 @@ const Account = ({ navigation }) => {
                                 <View style={{ ...styles.info, flexDirection: 'row' }}>
                                     <Image source={images.bnb} style={styles.img} />
                                     <LinearGradient
-                                        colors={['#502D9F66', '#08021C00']}
+                                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
                                         locations={[0.3392, 0.9986]}
@@ -238,24 +239,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textBold,
+        fontSize: SIZES.xLarge,
         textAlign: 'center',
     },
     infoTokenContainer: {
         width: WIDTH.width100,
-        rowGap: 10,
+        rowGap:  SIZES.xSmall,
         marginTop: 30,
     },
     infoToken: {
-        width: 350 * WIDTH.widthScale,
-        borderRadius: 20,
-        padding: 10,
+        width: 350,
+        borderRadius: SIZES.large,
+        padding:  SIZES.xSmall,
         alignItems: 'center',
     },
     tokenHeading: {
-        fontSize: SIZES.large,
         ...TEXTS.textBold,
+        fontSize: SIZES.large,
     },
     infoContent: {
         flexDirection: 'row',
@@ -265,17 +266,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     img: {
-        width: 50 * WIDTH.widthScale,
-        height: 50 * WIDTH.widthScale,
+        width: 50,
+        height: 50,
     },
     tokenName: {
-        fontSize: 16,
         ...TEXTS.textRegular,
+        fontSize: SIZES.medium,
         marginBottom: 7,
     },
     token: {
         paddingHorizontal: 15,
-        height: 22 * WIDTH.widthScale,
+        height: 22,
         justifyContent: 'center',
         borderRadius: 22.5,
         marginTop: 8,
@@ -286,4 +287,5 @@ const styles = StyleSheet.create({
         color: '#E4C1FE',
     },
 });
+useMultiplyWidthScale(styles);
 export default Account;

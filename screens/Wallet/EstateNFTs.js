@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { FlatList, Image, ImageBackground, StyleSheet, View,Text } from 'react-native';
+import { FlatList, Image, ImageBackground, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { MainContainer, SelectDropdown } from '../../components';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import { Hexagon, HexagonSelect } from '../../assets/imageSvg/ImageSVG';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const listStage = [
     {
@@ -51,7 +52,7 @@ const EstateNFTs = () => {
         <MainContainer>
             <View style={styles.wrapper}>
                 <LinearGradient
-                    colors={['#502D9F66', '#08021C00']}
+                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
                     locations={[0.3392, 0.9986]}
@@ -116,7 +117,13 @@ const EstateNFTs = () => {
                                     <Text style={styles.text}>{item.month}</Text>
                                     <Text style={styles.text}>{item.maxPrice}</Text>
                                 </View>
-                                <Text style={{ fontSize: 20, ...TEXTS.textBold, marginTop: 16 }}>
+                                <Text
+                                    style={{
+                                        ...TEXTS.textBold,
+                                        fontSize: SIZES.large,
+                                        marginTop: 16 * WIDTH.widthScale,
+                                    }}
+                                >
                                     Stage 0{index + 1}
                                 </Text>
                             </View>
@@ -127,23 +134,11 @@ const EstateNFTs = () => {
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         locations={[0.085, 1]}
-                        style={{
-                            height: 5 * WIDTH.widthScale,
-                            width: 103 * WIDTH.widthScale,
-                            borderRadius: 6.5,
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 28,
-                        }}
+                        style={styles.line}
                     ></LinearGradient>
                 </ImageBackground>
                 {!isMintNFT && (
-                    <ButtonCustom
-                        text="MINT NFT"
-                        containerStyle={{ marginTop: 53, marginBottom: 100 }}
-                        buttonStyle={{ width: 183 * WIDTH.widthScale }}
-                        onPress={() => setIsMintNFT(true)}
-                    />
+                    <ButtonCustom text="MINT NFT" buttonStyle={styles.btnMint} onPress={() => setIsMintNFT(true)} />
                 )}
                 {/* MINT NFT */}
                 {isMintNFT && (
@@ -155,10 +150,10 @@ const EstateNFTs = () => {
                             can only be limited amount of each type. Thus, the value of each NFT to be increased for the
                             following timeline and maximum quantity sold whichever comes first.
                         </Text>
-                        <View style={{ ...styles.stageItem, marginTop: 50 }}>
+                        <View style={{ ...styles.stageItem, marginTop: 50 * WIDTH.widthScale }}>
                             <Text style={styles.mintTitle}>Highland Coffee</Text>
                             <Text style={styles.address}>12 Thach Lam, Tan Phu Dist</Text>
-                            <View style={{ flexDirection: 'row', columnGap: 60 }}>
+                            <View style={{ flexDirection: 'row', columnGap: 60 * WIDTH.widthScale }}>
                                 <Text style={styles.positionText}>Lat: 10.76530</Text>
                                 <Text style={styles.positionText}>Lng: 106.67148</Text>
                             </View>
@@ -169,7 +164,7 @@ const EstateNFTs = () => {
                                 backgroundStyle={COLORS.white}
                                 iconColor="#536981"
                                 placeholderColor={{ color: '#536981' }}
-                                  style={styles.input}
+                                style={styles.input}
                             />
                             <SelectDropdown
                                 backgroundStyle={COLORS.white}
@@ -202,7 +197,7 @@ const EstateNFTs = () => {
                                 style={{ ...styles.input, height: 61 * WIDTH.widthScale }}
                             />
                             <LinearGradient
-                                colors={['#502D9F66', '#8F79D966']}
+                                colors={[COLORS.bodyLight, '#8F79D966']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                                 locations={[0.3392, 0.9986]}
@@ -215,28 +210,18 @@ const EstateNFTs = () => {
                             </LinearGradient>
                         </View>
 
-                        <View style={styles.image}>
+                        <View style={styles.imageContent}>
                             <View style={styles.imageItem}>
                                 <Image source={images.mountain} />
                             </View>
                             <View style={styles.imageItem}>
-                                <Image
-                                    style={{ width: '100%', height: '100%', borderRadius: 8 }}
-                                    source={images.tanbinh}
-                                />
+                                <Image style={styles.img} source={images.tanbinh} />
                             </View>
                             <View style={styles.imageItem}>
-                                <Image
-                                    style={{ width: '100%', height: '100%', borderRadius: 8 }}
-                                    source={images.tanbinh}
-                                />
+                                <Image style={styles.img} source={images.tanbinh} />
                             </View>
                         </View>
-                        <ButtonCustom
-                            text="Buy NFT"
-                            containerStyle={{ marginTop: 30, marginBottom: 12 }}
-                            buttonStyle={{ width: 183 * WIDTH.widthScale }}
-                        />
+                        <ButtonCustom text="Buy NFT" buttonStyle={styles.button} />
                     </View>
                 )}
             </View>
@@ -256,28 +241,28 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
         paddingTop: 21,
         paddingBottom: 41.4,
-        height: 258 * WIDTH.widthScale,
+        height: 258,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textBold,
+        fontSize: SIZES.xLarge,
     },
     subTitle: {
         textAlign: 'center',
-        width: 261 * WIDTH.widthScale,
-        fontSize: SIZES.medium,
+        width: 261,
         ...TEXTS.textRegular,
+        fontSize: SIZES.medium,
         color: COLORS.primary,
     },
     progressContainer: {
         width: WIDTH.width100,
-        padding: 20,
+        padding: SIZES.large,
         rowGap: 22,
         alignItems: 'center',
     },
     progress: {
-        height: 18 * WIDTH.widthScale,
-        width: 332 * WIDTH.widthScale,
+        height: 18,
+        width: 332,
         borderRadius: 27.5,
         backgroundColor: '#FFFFFF4D',
         shadowColor: '#000',
@@ -287,7 +272,7 @@ const styles = StyleSheet.create({
     },
     progressBar: {
         position: 'absolute',
-        height: '100%',
+        height: WIDTH.width100,
         borderRadius: 27.5,
     },
     progressText: {
@@ -295,76 +280,98 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     text: {
-        fontSize: 14,
         ...TEXTS.textRegular,
     },
     listStage: {
         flexDirection: 'row',
-        columnGap: 20,
+        columnGap: SIZES.large,
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
     },
     stageItem: {
         alignItems: 'center',
     },
+    line: {
+        height: 5,
+        width: 103,
+        borderRadius: 6.5,
+        position: 'absolute',
+        bottom: 0,
+        left: 28,
+    },
+
+    btnMint: {
+        width: 183,
+        marginTop: 53,
+        marginBottom: 100,
+    },
     mintNFTContainer: {
         alignItems: 'center',
         marginTop: 28,
-        marginBottom: 12,
+        marginBottom: SIZES.small,
         paddingHorizontal: 18,
         width: WIDTH.width100,
     },
     mintTitle: {
-        fontSize: SIZES.large,
         ...TEXTS.textBold,
+        fontSize: SIZES.large,
     },
     mintSubTitle: {
-        fontSize: SIZES.small,
         ...TEXTS.textRegular,
+        fontSize: SIZES.small,
         textAlign: 'center',
     },
     address: {
-        fontSize: SIZES.medium,
         ...TEXTS.textRegular,
+        fontSize: SIZES.medium,
     },
     positionText: {
-        fontSize: SIZES.small,
         ...TEXTS.textBold,
+        fontSize: SIZES.small,
     },
     form: {
         marginTop: 25,
         width: WIDTH.width100,
-        rowGap: 12,
-        width: 337 * WIDTH.widthScale,
+        rowGap: SIZES.small,
+        width: 337,
     },
     input: {
-        height: 38 * WIDTH.widthScale,
+        height: 38,
         width: WIDTH.width100,
         backgroundColor: COLORS.white,
         ...TEXTS.textRegular,
-        fontSize: 14,
         color: '#000',
     },
     ratio: {
         // height: 38,
         borderRadius: 22,
         paddingVertical: SIZES.xSmall,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
     },
-    image: {
+    imageContent: {
         flexDirection: 'row',
-        columnGap: 10,
+        columnGap: SIZES.xSmall,
         marginTop: 25,
     },
     imageItem: {
-        borderWidth: 1,
+        ...BORDER,
         borderColor: COLORS.white,
-        borderStyle: 'solid',
         borderRadius: 9,
         alignItems: 'center',
         justifyContent: 'center',
-        height: 63 * WIDTH.widthScale,
-        width: 63 * WIDTH.widthScale,
+        height: 63,
+        width: 63,
+    },
+    img: {
+        width: WIDTH.width100,
+        height: WIDTH.width100,
+        borderRadius: 8,
+    },
+    button: {
+        width: 183,
+        marginTop: 30,
+        marginBottom: SIZES.small,
     },
 });
+useMultiplyWidthScale(styles);
 export default EstateNFTs;

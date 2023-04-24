@@ -1,9 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View ,Image} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer, Table } from '../../components';
-import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { IconDropDown } from '../../assets/imageSvg/ImageSVG';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const AccountTwo = ({ navigation }) => {
     return (
@@ -46,7 +47,7 @@ const AccountTwo = ({ navigation }) => {
 
                     {/* Total profit */}
                     <LinearGradient
-                        colors={['#502D9F66', '#08021C00']}
+                        colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         locations={[0.3392, 0.9986]}
@@ -110,7 +111,7 @@ const AccountTwo = ({ navigation }) => {
                         </View>
 
                         <LinearGradient
-                            colors={['#FFD70566', '#502D9F66']}
+                            colors={['#FFD70566', COLORS.bodyLight]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             locations={[0.3392, 0.9986]}
@@ -187,12 +188,12 @@ const AccountTwo = ({ navigation }) => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         marginBottom: 17,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textBold,
+        fontSize: SIZES.xLarge,
         textAlign: 'center',
     },
     content: {
@@ -204,11 +205,11 @@ const styles = StyleSheet.create({
     totalCoins: {
         flexDirection: 'row',
         // alignItems: 'center',
-        columnGap: 24,
+        columnGap: SIZES.xLarge,
     },
     coinBox: {
-        width: 153 * WIDTH.widthScale,
-        height: 178 * WIDTH.widthScale,
+        width: 153,
+        height: 178,
         alignItems: 'center',
         borderWidth: 2,
         borderStyle: 'solid',
@@ -219,20 +220,20 @@ const styles = StyleSheet.create({
     boxImg: {
         marginTop: 15,
         marginBottom: 13.56,
-        height: 42.44 * WIDTH.widthScale,
-        width: 42.44 * WIDTH.widthScale,
+        height: 42.44,
+        width: 42.44,
     },
     coin: {
-        fontSize: SIZES.medium,
         ...TEXTS.textBold,
+        fontSize: SIZES.medium,
     },
     text: {
-        fontSize: SIZES.medium,
         ...TEXTS.textRegular,
+        fontSize: SIZES.medium,
         textAlign: 'center',
     },
     coinFooter: {
-        height: 62 * WIDTH.widthScale,
+        height: 62,
         width: WIDTH.width100,
         justifyContent: 'center',
         borderWidth: 2,
@@ -247,8 +248,8 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
-        width: 336 * WIDTH.widthScale,
-        height: 316 * WIDTH.widthScale,
+        width: 336,
+        height: 316,
         overflow: 'hidden',
     },
     totalProfitInfo: {
@@ -257,14 +258,14 @@ const styles = StyleSheet.create({
     },
     profitInfo: {
         width: '50%',
-        // paddingHorizontal: 10,
-        height: 123.5 * WIDTH.widthScale,
+        // paddingHorizontal:  SIZES.xSmall
+        height: 123.5,
         alignItems: 'center',
         justifyContent: 'center',
     },
     profitCoin: {
-        height: 36 * WIDTH.widthScale,
-        width: 147 * WIDTH.widthScale,
+        height: 36,
+        width: 147,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 18,
@@ -273,7 +274,7 @@ const styles = StyleSheet.create({
 
     line1: {
         position: 'absolute',
-        width: '100%',
+        width: WIDTH.width100,
         height: 1,
         backgroundColor: '#F9D6DE33',
         top: '50%',
@@ -281,14 +282,14 @@ const styles = StyleSheet.create({
     line2: {
         position: 'absolute',
         width: 1,
-        height: '100%',
+        height: WIDTH.width100,
         backgroundColor: '#F9D6DE33',
         left: '50%',
     },
 
     profitFooter: {
         flex: 1,
-        paddingHorizontal: 12,
+        paddingHorizontal: SIZES.small,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -299,8 +300,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingRight: 13,
         paddingLeft: 55,
-        width: 305 * WIDTH.widthScale,
-        height: 36 * WIDTH.widthScale,
+        width: 305,
+        height: 36,
     },
     total: {
         alignItems: 'center',
@@ -309,23 +310,22 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
     },
     totalTable: {
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#FFFFFF1A',
         width: WIDTH.width100,
         borderRadius: 18,
         paddingVertical: 3,
         backgroundColor: '#FFFFFF1A',
-        height: 193 * WIDTH.widthScale,
-        width: 336 * WIDTH.widthScale,
+        height: 193,
+        width: 336,
     },
     totalRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 18,
-
-        height: 35 * WIDTH.widthScale,
+        height: 35,
     },
 });
+useMultiplyWidthScale(styles);
 export default AccountTwo;

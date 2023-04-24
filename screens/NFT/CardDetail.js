@@ -1,18 +1,18 @@
-
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer } from '../../components';
-import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import HomeNFT from './HomeNFT';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const CardDetail = () => {
     return (
         <HomeNFT>
             <View style={styles.wrapper}>
                 <LinearGradient
-                    colors={['#502D9F66', '#08021C00']}
+                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     locations={[0.085, 1]}
@@ -20,11 +20,11 @@ const CardDetail = () => {
                 >
                     <Image style={styles.img} source={images.anhlocation} resizeMode="cover" />
                     <View style={styles.body}>
-                        <Text style={{ ...styles.restaurantText, ...TEXTS.textRegular, textAlign: 'right' }}>
+                        <Text style={{ ...TEXTS.textRegular, ...styles.restaurantText, textAlign: 'right' }}>
                             Restaurant
                         </Text>
                         <View style={styles.nameStar}>
-                            <Text style={[styles.name, TEXTS.textMedium]}>Juicy Burger</Text>
+                            <Text style={[TEXTS.textMedium, styles.name]}>Juicy Burger</Text>
                             <View style={styles.restaurant}>
                                 <View style={styles.start}>
                                     <Image style={styles.starImg} source={icons.saovang} />
@@ -35,63 +35,49 @@ const CardDetail = () => {
                                 </View>
                             </View>
                         </View>
-                        <Text style={(styles.restaurantText, TEXTS.textRegular)} numberOfLines={1}>
+                        <Text style={(TEXTS.textRegular, styles.restaurantText)} numberOfLines={1}>
                             158 Ludlow St, New York, NY 10002, United States
                         </Text>
                         <Text style={styles.price}>$1000</Text>
                         <ButtonCustom
                             text="Buy now"
-                            buttonStyle={{
-                                width: WIDTH.width100,
-                                height: 39 * WIDTH.widthScale,
-                                borderWidth: 0,
-                                marginVertical: 15,
-                            }}
+                            buttonStyle={styles.btnBuy}
                             backgroundLinearGradient={['#780D69', '#EC0174']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             buttonStyleText={{ fontFamily: FONTS.bold, fontWeight: 700 }}
                         />
                         <View style={styles.description}>
-                            <Text style={[styles.heading, TEXTS.textBold]}>ABOUT THIS LISTING</Text>
-                            <Text style={[styles.subHeading, TEXTS.textRegular]}>
+                            <Text style={[TEXTS.textBold, styles.heading]}>ABOUT THIS LISTING</Text>
+                            <Text style={[TEXTS.textRegular, styles.subHeading]}>
                                 A gay & straight crowd camps out at this bi-level bar for piano sing-alongs, drag revues
                                 & comedy.
                             </Text>
                         </View>
                         <View style={styles.description}>
-                            <Text style={[styles.heading, TEXTS.textBold]}>NFT Machine</Text>
-                            <Text style={[styles.subHeading, TEXTS.textRegular]}>{`(No NFT Machine)`}</Text>
+                            <Text style={[TEXTS.textBold, styles.heading]}>NFT Machine</Text>
+                            <Text style={[TEXTS.textRegular, styles.subHeading]}>{`(No NFT Machine)`}</Text>
                         </View>
                         <View style={styles.features}>
-                            <Text style={[styles.heading, TEXTS.textBold]}>Features</Text>
+                            <Text style={[TEXTS.textBold, styles.heading]}>Features</Text>
                             <View style={styles.tagContent}>
                                 <LinearGradient
-                                    colors={['#502D9F66', '#08021C00']}
+                                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
                                     locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
-                                    <Text style={[styles.tagText, TEXTS.textRegular]}>Take out</Text>
+                                    <Text style={[TEXTS.textRegular, styles.tagText]}>Take out</Text>
                                 </LinearGradient>
                                 <LinearGradient
-                                    colors={['#502D9F66', '#08021C00']}
+                                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
                                     locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
-                                    <Text style={[styles.tagText, TEXTS.textRegular]}>Delivery</Text>
-                                </LinearGradient>
-                                <LinearGradient
-                                    colors={['#502d9f99', '#09031E15']}
-                                    start={{ x: 0, y: 0 }}
-                                    end={{ x: 1, y: 1 }}
-                                    locations={[0.3392, 0.9986]}
-                                    style={styles.tag}
-                                >
-                                    <Text style={[styles.tagText, TEXTS.textRegular]}>Delivery</Text>
+                                    <Text style={[TEXTS.textRegular, styles.tagText]}>Delivery</Text>
                                 </LinearGradient>
                                 <LinearGradient
                                     colors={['#502d9f99', '#09031E15']}
@@ -100,7 +86,16 @@ const CardDetail = () => {
                                     locations={[0.3392, 0.9986]}
                                     style={styles.tag}
                                 >
-                                    <Text style={[styles.tagText, TEXTS.textRegular]}>Take out</Text>
+                                    <Text style={[TEXTS.textRegular, styles.tagText]}>Delivery</Text>
+                                </LinearGradient>
+                                <LinearGradient
+                                    colors={['#502d9f99', '#09031E15']}
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 1, y: 1 }}
+                                    locations={[0.3392, 0.9986]}
+                                    style={styles.tag}
+                                >
+                                    <Text style={[TEXTS.textRegular, styles.tagText]}>Take out</Text>
                                 </LinearGradient>
                             </View>
                         </View>
@@ -109,11 +104,11 @@ const CardDetail = () => {
 
                 <View style={{ ...styles.card, alignItems: 'flex-start' }}>
                     <View style={styles.reviewHeader}>
-                        <Text style={[styles.heading, TEXTS.textBold]}>Review</Text>
-                        <Text style={[styles.subHeading, TEXTS.textRegular]}>There are no reviews yet</Text>
+                        <Text style={[TEXTS.textBold, styles.heading]}>Review</Text>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]}>There are no reviews yet</Text>
                     </View>
                     <View style={styles.reviewBody}>
-                        <Text style={[styles.reviewTitle, TEXTS.textBold]}>Review your experience</Text>
+                        <Text style={[TEXTS.textBold, styles.reviewTitle]}>Review your experience</Text>
                         <InputCustom
                             style={styles.input}
                             radiusMax
@@ -127,25 +122,21 @@ const CardDetail = () => {
                             placeholder="Message"
                             placeholderColor="#536981"
                         />
-                        <ButtonCustom
-                            text="Login or Register"
-                            containerStyle={{ marginTop: 7, marginBottom: 4, paddingHorizontal: 45 }}
-                            buttonStyle={{ width: 209 * WIDTH.widthScale }}
-                        />
+                        <ButtonCustom text="Login or Register" buttonStyle={styles.btnAuth} />
                     </View>
                 </View>
 
                 <View style={styles.card}>
                     <Image style={styles.img} source={images.anhlocation} />
                     <View style={styles.bodyAddress}>
-                        <Text style={[styles.heading, TEXTS.textBold]}>Juicy Burger</Text>
-                        <Text style={[styles.subHeading, TEXTS.textRegular]} numberOfLines={1}>
+                        <Text style={[TEXTS.textBold, styles.heading]}>Juicy Burger</Text>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]} numberOfLines={1}>
                             158 Ludlow St, New York, NY 10002, United States
                         </Text>
-                        <Text style={[styles.subHeading, TEXTS.textRegular]} numberOfLines={1}>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]} numberOfLines={1}>
                             mrjohn@gmail.com
                         </Text>
-                        <Text style={[styles.subHeading, TEXTS.textRegular]} numberOfLines={1}>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]} numberOfLines={1}>
                             +123456789
                         </Text>
                     </View>
@@ -161,13 +152,13 @@ const CardDetail = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        rowGap: 20,
+        rowGap: SIZES.large,
         // padding: 16
-        marginTop: 20,
+        marginTop: SIZES.large,
     },
     card: {
         flex: 1,
-        width: 327 * WIDTH.widthScale,
+        width: 327,
         maxWidth: WIDTH.width100,
         borderWidth: 2,
         borderStyle: 'solid',
@@ -176,11 +167,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     img: {
-        width: 327 * WIDTH.widthScale,
-        height: 321 * WIDTH.widthScale,
+        width: 327,
+        height: 321,
     },
     body: {
-        padding: 20,
+        padding: SIZES.large,
     },
     restaurantText: {
         fontSize: SIZES.medium,
@@ -198,52 +189,56 @@ const styles = StyleSheet.create({
         columnGap: 5,
     },
     price: {
-        color: COLORS.white,
+        ...TEXTS.textBold,
         fontSize: SIZES.large,
-        fontWeight: '700',
-        fontFamily: FONTS.bold,
         marginTop: 7,
     },
+    btnBuy: {
+        width: WIDTH.width100,
+        height: 39,
+        borderWidth: 0,
+        marginVertical: 15,
+    },
+    btnAuth: {
+        width: 209,
+        marginTop: 7,
+        marginBottom: 4,
+    },
     starImg: {
-        width: 12 * WIDTH.widthScale,
-        height: 12 * WIDTH.widthScale,
+        width: SIZES.small,
+        height: SIZES.small,
     },
 
     description: {
-        marginBottom: 20,
+        marginBottom: SIZES.large,
     },
-    heading: {
-        fontSize: 14,
-    },
+
     subHeading: {
-        fontSize: 14,
         marginTop: 2,
     },
     tagContent: {
-        gap: 10,
+        gap: SIZES.xSmall,
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         flex: 1,
-        marginTop: 10,
+        marginTop: SIZES.xSmall,
     },
     tag: {
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#6a318133',
         borderRadius: 32.5,
-        width: 104 * WIDTH.widthScale,
-        height: 37 * WIDTH.widthScale,
+        width: 104,
+        height: 37,
         alignItems: 'center',
         justifyContent: 'center',
     },
-    tagText: {
-        fontSize: 14,
-    },
+
     reviewHeader: {
         paddingHorizontal: 25,
-        paddingTop: 10,
-        paddingBottom: 20,
+        paddingTop: SIZES.xSmall,
+        paddingBottom: SIZES.large,
         borderBottomWidth: 1,
         borderStyle: 'solid',
         borderColor: '#ffdee333',
@@ -262,10 +257,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         color: '#536981',
         ...TEXTS.textRegular,
-        height: 38 * WIDTH.widthScale,
-        fontSize: 14,
-        borderWidth: 1,
-        borderStyle: 'solid',
+        height: 38,
+        ...BORDER,
         borderColor: '#EAEAEA',
         fontStyle: 'normal',
     },
@@ -275,8 +268,8 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
     },
     footer: {
-        paddingTop: 10,
-        paddingBottom: 20,
+        paddingTop: SIZES.xSmall,
+        paddingBottom: SIZES.large,
         borderTopWidth: 1,
         borderColor: '#ffdee333',
         paddingHorizontal: 28,
@@ -285,9 +278,11 @@ const styles = StyleSheet.create({
         width: WIDTH.width100,
     },
     footerTitle: {
-        fontSize: SIZES.large,
         ...TEXTS.textRegular,
+        fontSize: SIZES.large,
         textAlign: 'left',
     },
 });
+useMultiplyWidthScale(styles);
+
 export default CardDetail;

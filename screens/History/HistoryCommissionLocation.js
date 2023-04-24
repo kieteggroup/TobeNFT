@@ -2,13 +2,14 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer } from '../../components';
-import { COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const HistoryCommissionLocation = () => {
     return (
         <MainContainer>
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
@@ -28,31 +29,28 @@ const HistoryCommissionLocation = () => {
 };
 const styles = StyleSheet.create({
     wrapper: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
+        ...BORDER,
         borderRadius: 18,
         width: WIDTH.width100,
-        height: 294 * WIDTH.widthScale,
+        height: 294,
         alignSelf: 'center',
         marginTop: 17.66,
-        paddingHorizontal: 20,
-        overflow:"hidden"
+        paddingHorizontal: SIZES.large,
+        overflow: 'hidden',
     },
 
     title: {
         ...TEXTS.textBold,
         fontSize: SIZES.medium,
-        marginTop: 10,
+        marginTop: SIZES.xSmall,
     },
 
     thead: {
         flexDirection: 'row',
         // columnGap: 40,
-        height: 23 * WIDTH.widthScale,
-        marginTop: 20,
-        justifyContent:'space-evenly',
-      
+        height: 23,
+        marginTop: SIZES.large,
+        justifyContent: 'space-evenly',
     },
     text: {
         ...TEXTS.textBold,
@@ -62,4 +60,5 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
+useMultiplyWidthScale(styles);
 export default HistoryCommissionLocation;

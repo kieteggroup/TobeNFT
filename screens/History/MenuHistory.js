@@ -3,7 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer } from '../../components';
-import { COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const listMenu = [
     { name: 'Earning free', navigate: 'HistoryEarning' },
@@ -23,7 +24,7 @@ const MenuHistory = ({ navigation }) => {
     return (
         <MainContainer>
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
@@ -40,16 +41,14 @@ const MenuHistory = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
     wrapper: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
+       ...BORDER,
         borderRadius: 18,
-        width: 332 * WIDTH.widthScale,
-        height: 294 * WIDTH.widthScale,
+        width: 332,
+        height: 294,
         rowGap: 25,
         alignSelf: 'center',
         marginTop: 17.66,
-        padding: 20,
+        padding: SIZES.large,
     },
 
     text: {
@@ -60,4 +59,5 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
     },
 });
+useMultiplyWidthScale(styles);
 export default MenuHistory;

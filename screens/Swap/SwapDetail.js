@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import Swap from './Swap';
-import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import MainContainer from '../../components/MainContainer';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const SwapDetail = () => {
     return (
@@ -13,16 +13,16 @@ const SwapDetail = () => {
             <View style={styles.wrapper}>
                 {/* Info */}
                 <LinearGradient
-                    colors={['#502D9F10', '#08021C00']}
+                    colors={['#502D9F10', COLORS.bodyTransp]}
                     start={{ x: 0, y: 1 }}
                     end={{ x: 0, y: 0 }}
                     locations={[0.3392, 0.9986]}
                     style={styles.infoContainer}
                 >
                     <Image source={images.tanbinh} style={styles.img} />
-                    <Text style={[styles.title, TEXTS.textBold]}>LOTTE Mart Tân Bình</Text>
+                    <Text style={[TEXTS.textBold, styles.title]}>LOTTE Mart Tân Bình</Text>
                     <View style={{ alignItems: 'flex-start' }}>
-                        <Text style={[styles.name, TEXTS.textMedium]}>Coffee shop</Text>
+                        <Text style={[TEXTS.textMedium, styles.name]}>Coffee shop</Text>
 
                         <View style={styles.start}>
                             <Image style={styles.starImg} source={icons.saovang} />
@@ -37,20 +37,20 @@ const SwapDetail = () => {
                         </Text>
                         <Text style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>Owner: Kimanhhp09</Text>
 
-                        <Text style={[styles.name, TEXTS.textBold]}>ABOUT THIS LISTING</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>ABOUT THIS LISTING</Text>
                         <Text style={[TEXTS.textRegular, styles.subHeading]}>
                             A gay & straight crowd camps out at this bi-level bar for piano sing-alongs, drag revues &
                             comedy.
                         </Text>
 
-                        <Text style={[styles.name, TEXTS.textBold]}>NFT Machine</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>NFT Machine</Text>
                         <Text style={[TEXTS.textRegular, styles.subHeading]}>{`(No NFT Machine)`}</Text>
 
                         <View style={styles.features}>
-                            <Text style={[styles.name, TEXTS.textBold]}>Features</Text>
+                            <Text style={[TEXTS.textBold, styles.name]}>Features</Text>
                             <View style={styles.tagContent}>
-                                <Text style={[styles.tagText, TEXTS.textRegular]}>Take out</Text>
-                                <Text style={[styles.tagText, TEXTS.textRegular]}>Delivery</Text>
+                                <Text style={[TEXTS.textRegular, styles.tagText]}>Take out</Text>
+                                <Text style={[TEXTS.textRegular, styles.tagText]}>Delivery</Text>
                             </View>
                         </View>
                     </View>
@@ -66,7 +66,7 @@ const SwapDetail = () => {
                 >
                     <Image style={{ height: WIDTH.width100 }} source={images.map} />
                     <View style={{ width: '50%' }}>
-                        <View style={{ padding: 10 }}>
+                        <View style={{ padding: SIZES.xSmall }}>
                             <Text style={styles.mapTitle}>LOTTE Mart Tân Bình</Text>
                             <Text style={{ ...TEXTS.textRegular, ...styles.subHeading, flexWrap: 'wrap' }}>
                                 Tân Bình 20 Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam
@@ -88,7 +88,7 @@ const SwapDetail = () => {
                     style={styles.review}
                 >
                     <View style={styles.reviewHeader}>
-                        <Text style={[styles.name, TEXTS.textBold]}>Review</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>Review</Text>
                         <Text style={[TEXTS.textRegular, styles.subHeading]}>There are no reviews yet</Text>
                     </View>
                     <View style={styles.reviewBody}>
@@ -100,7 +100,7 @@ const SwapDetail = () => {
                             placeholderColor="#536981"
                         />
                         <InputCustom
-                            style={{ ...styles.input, height: 83* WIDTH.widthScale, borderRadius: 13 }}
+                            style={{ ...styles.input, height: 83, borderRadius: 13 }}
                             multiline
                             numberOfLines={4}
                             placeholder="Describe your experience"
@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
         // flex: 1,
-        width: 361 * WIDTH.widthScale,
-        // height: 439 * WIDTH.widthScale,
+        width: 361,
+        // height: 439 ,
         // width: WIDTH.width100,
         maxWidth: WIDTH.width100,
         borderRadius: SIZES.xSmall,
@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
         paddingBottom: SIZES.xSmall,
     },
     img: {
-        width: 317 * WIDTH.widthScale,
-        height: 243 * WIDTH.widthScale,
+        width: 317,
+        height: 243,
     },
     title: {
         fontSize: SIZES.medium,
@@ -160,17 +160,15 @@ const styles = StyleSheet.create({
         fontSize: SIZES.small,
         color: '#989898',
     },
-    owner: {
-        fontSize: SIZES.small,
-    },
+
     start: {
         flexDirection: 'row',
         marginBottom: SIZES.xSmall,
     },
 
     starImg: {
-        width: 14,
-        height: 14,
+        width: SIZES.xMedium,
+        height: SIZES.xMedium,
     },
     tagContent: {
         flexDirection: 'row',
@@ -180,18 +178,17 @@ const styles = StyleSheet.create({
     tagText: {
         fontSize: SIZES.small,
         backgroundColor: '#471A77',
-        borderWidth: 1,
+        ...BORDER,
         borderColor: '#4F1D79',
-        borderStyle: 'solid',
         borderRadius: 4,
-        // height: 14,
+        // height: SIZES.xMedium,
         // width: 50,
         paddingHorizontal: SIZES.xSmall,
         paddingVertical: 1,
     },
     mapContainer: {
         borderRadius: SIZES.xSmall,
-        width: 143 * WIDTH.widthScale,
+        width: 143,
         flexDirection: 'row',
         width: WIDTH.width100,
 
@@ -247,12 +244,13 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#fff',
         ...TEXTS.textRegular,
-        height: 38* WIDTH.widthScale,
-        borderWidth: 1,
-        borderStyle: 'solid',
+        height: 38,
+        ...BORDER,
         borderColor: '#EAEAEA',
         fontStyle: 'normal',
         color: '#000',
     },
 });
+
+useMultiplyWidthScale(styles);
 export default SwapDetail;

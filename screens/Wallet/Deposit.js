@@ -1,11 +1,11 @@
 import { Image, StyleSheet, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
-import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { QrCode } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom } from '../../CustomComponent';
 import { MainContainer } from '../../components';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const Deposit = () => {
     return (
@@ -14,43 +14,25 @@ const Deposit = () => {
                 <View style={styles.card}>
                     <Pressable style={styles.itemCard}>
                         <LinearGradient
-                            colors={['#F4007499', '#08021C00']}
+                            colors={['#F4007499', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             locations={[0.3392, 0.9986]}
                             style={styles.itemCardText}
                         >
-                            <Text
-                                style={{
-                                    fontSize: 16,
-                                    fontFamily: FONTS.regularRoboto,
-                                    color: COLORS.white,
-                                    fontWeight: 400,
-                                }}
-                            >
-                                NOW Token
-                            </Text>
+                            <Text style={styles.token}>NOW Token</Text>
                         </LinearGradient>
                         <Image source={images.bnb} style={styles.itemCardImg} />
                     </Pressable>
                     <Pressable style={styles.itemCard}>
                         <LinearGradient
-                            colors={['#FFFFFF1A', '#08021C00']}
+                            colors={['#FFFFFF1A', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             locations={[0.3392, 0.9986]}
                             style={{ ...styles.itemCardText, borderWidth: 0 }}
                         >
-                            <Text
-                                style={{
-                                    fontSize: 16,
-                                    fontFamily: FONTS.regularRoboto,
-                                    color: COLORS.white,
-                                    fontWeight: 400,
-                                }}
-                            >
-                                USDT.BEP 20
-                            </Text>
+                            <Text style={styles.token}>USDT.BEP 20</Text>
                         </LinearGradient>
                         <Image source={images.Usdt} style={styles.itemCardImg} />
                     </Pressable>
@@ -88,7 +70,7 @@ const Deposit = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         marginVertical: 30,
         alignItems: 'center',
     },
@@ -96,7 +78,7 @@ const styles = StyleSheet.create({
     card: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        columnGap: 12,
+        columnGap: SIZES.small,
     },
     itemCard: {
         flexDirection: 'row',
@@ -105,20 +87,26 @@ const styles = StyleSheet.create({
     itemCardImg: {
         position: 'absolute',
         left: 0,
-        width: 50 * WIDTH.widthScale,
-        height: 50 * WIDTH.widthScale,
+        width: 50,
+        height: 50,
     },
     itemCardText: {
         alignItems: 'flex-end',
         paddingHorizontal: SIZES.xSmall,
         justifyContent: 'center',
-        width: 159 * WIDTH.widthScale,
-        height: 35 * WIDTH.widthScale,
-        borderWidth: 1,
+        width: 159,
+        height: 35,
+        ...BORDER,
         borderColor: '#6A3181',
-        borderStyle: 'solid',
         borderRadius: 18,
-        paddingLeft: 60,
+        // paddingLeft: 60,
+        paddingHorizontal: SIZES.small,
+    },
+    token: {
+        fontSize: SIZES.medium,
+        fontFamily: FONTS.regularRoboto,
+        color: COLORS.white,
+        fontWeight: '400',
     },
     content: {
         alignItems: 'center',
@@ -154,13 +142,14 @@ const styles = StyleSheet.create({
         columnGap: 15,
     },
     buttonQR: {
-        width: 150 * WIDTH.widthScale,
-        height: 45 * WIDTH.widthScale,
+        width: 150,
+        height: 45,
         borderColor: '#FFFFFF29',
     },
     description: {
-        marginTop: 20,
+        marginTop: SIZES.large,
         ...TEXTS.textRegular,
     },
 });
+useMultiplyWidthScale(styles);
 export default Deposit;

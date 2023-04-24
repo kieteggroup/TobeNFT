@@ -40,7 +40,7 @@ const MyLocation = () => {
                             <ButtonCustom
                                 text="SELL"
                                 buttonStyle={styles.buttonSell}
-                                buttonStyleText={{ fontSize: 14, ...TEXTS.textBold}}
+                                buttonStyleText={{ ...TEXTS.textBold}}
                                 backgroundLinearGradient={['#780D69', '#EC0174']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
@@ -65,18 +65,18 @@ const styles = StyleSheet.create({
     },
     productItem: {
         alignItems: 'center',
-        width: 147.22 * WIDTH.widthScale,
-        height: 169 * WIDTH.widthScale,
+        width: 147.22,
+        height: 169,
         backgroundColor: '#08021CCC',
-        borderRadius: 16,
+        borderRadius : SIZES.medium,
         padding: 4,
         marginHorizontal: 18.78 / 2,
         marginBottom:18.78 / 2
     },
     img: {
         width: WIDTH.width100,
-        borderRadius: 10,
-        height: 89 * WIDTH.widthScale,
+        borderRadius:  SIZES.xSmall,
+        height: 89,
     },
     name: {
         ...TEXTS.textBold,
@@ -92,14 +92,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonSell: {
-        width: 87 * WIDTH.widthScale,
-        height: 19 * WIDTH.widthScale,
+        width: 87,
+        height: 19,
         marginTop: 8,
         borderWidth: 0,
     },
     empty_data: {
-        width: 222 * WIDTH.widthScale,
-        height: 148 * WIDTH.widthScale,
+        width: 222,
+        height: 148,
     },
 });
 export default MyLocation;

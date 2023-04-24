@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
         width: 334 * WIDTH.widthScale,
         maxWidth: WIDTH.width100,
         height: 50 * WIDTH.widthScale,
-        borderRadius: 10,
+        borderRadius: SIZES.xSmall,
         backgroundColor: '#FFFFFF33',
         paddingHorizontal: SIZES.small,
-        // paddingVertical: 16,
+        // paddingVertical : SIZES.medium,
         borderColor: '#ffffff29',
-        fontSize: SIZES.small,
         ...TEXTS.textRegular,
+        fontSize: SIZES.small,
     },
 });
 

@@ -2,7 +2,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { COLORS, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
+import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
+import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
 const ButtonCustom = ({
     onPress,
     text,
@@ -38,23 +39,22 @@ const ButtonCustom = ({
 
 const styles = StyleSheet.create({
     button: {
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#FFFFFF29',
         borderRadius: 74,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 259 * WIDTH.widthScale,
-        height: 42 * WIDTH.widthScale,
-        maxWidth: '100%',
+        width: 259,
+        height: 42,
+        maxWidth: WIDTH.width100,
         flexDirection: 'row',
         overflow: 'hidden',
         paddingHorizontal: SIZES.small,
     },
     buttonText: {
-        fontSize: SIZES.medium,
         ...TEXTS.textMedium,
+        fontSize: SIZES.medium,
     },
 });
-
+useMultiplyWidthScale(styles);
 export default ButtonCustom;

@@ -1,7 +1,8 @@
-import { View, ScrollView, Image, Text, FlatList, StyleSheet ,TouchableOpacity} from 'react-native';
+import { View, ScrollView, Image, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { images, icons, TEXTS, SIZES, WIDTH, FONTS } from '../../../constants';
+import { images, icons, TEXTS, SIZES, WIDTH, FONTS, BORDER } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
+import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
 
 const dataNFT = [
     {
@@ -25,10 +26,7 @@ const MyMarketPlace = () => {
                     data={dataNFT}
                     keyExtractor={(item) => item.name}
                     renderItem={({ item }) => (
-                        <TouchableOpacity
-                            style={styles.wrapperItem}
-                            key={item}
-                        >
+                        <TouchableOpacity style={styles.wrapperItem} key={item}>
                             <View style={styles.left}>
                                 <Image style={styles.img} source={images.locationnho} />
                                 <View style={styles.restaurant}>
@@ -47,12 +45,12 @@ const MyMarketPlace = () => {
                                 <Text
                                     style={{
                                         ...TEXTS.textMedium,
-                                        fontSize:SIZES.medium
+                                        fontSize: SIZES.medium,
                                     }}
                                 >
                                     {item.name}
                                 </Text>
-                                <Text numberOfLines={1} style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
+                                <Text numberOfLines={1} style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>
                                     {item.address}
                                 </Text>
                                 <Text
@@ -63,13 +61,12 @@ const MyMarketPlace = () => {
                                 >
                                     {item.price}
                                 </Text>
-                                
                             </View>
                         </TouchableOpacity>
                     )}
                 />
             ) : (
-                <View style={{alignItems:'center'}} >
+                <View style={{ alignItems: 'center' }}>
                     <Image source={images.empty_data} style={styles.empty_data} />
                     <Text style={styles.title}>(Empty Data)</Text>
                 </View>
@@ -81,21 +78,20 @@ const MyMarketPlace = () => {
 const styles = StyleSheet.create({
     dataList: {
         paddingHorizontal: 17,
-        rowGap: 10,
+        rowGap: SIZES.xSmall,
     },
     wrapperItem: {
-        width: 331 * WIDTH.widthScale,
-        height: 102 * WIDTH.widthScale,
+        width: 331,
+        height: 102,
         flexDirection: 'row',
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#F4007433',
         borderRadius: 18,
         backgroundColor: '#140E2580',
     },
 
     img: {
-        width: 101 * WIDTH.widthScale,
+        width: 101,
         height: WIDTH.width100,
     },
     restaurant: {
@@ -106,13 +102,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#140E2580',
-        height: 34 * WIDTH.widthScale,
-        borderTopLeftRadius: 14,
-        borderTopRightRadius: 14,
+        height: 34,
+        borderTopLeftRadius: SIZES.xMedium,
+        borderTopRightRadius: SIZES.xMedium,
     },
     textRestaurant: {
-        fontSize: SIZES.small,
         ...TEXTS.textRegular,
+        fontSize: SIZES.small,
     },
     star: {
         flexDirection: 'row',
@@ -124,8 +120,9 @@ const styles = StyleSheet.create({
         rowGap: 5,
     },
     empty_data: {
-        width: 222 * WIDTH.widthScale,
-        height: 148 * WIDTH.widthScale,
+        width: 222,
+        height: 148,
     },
 });
+useMultiplyWidthScale(styles);
 export default MyMarketPlace;

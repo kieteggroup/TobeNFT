@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View, Dimensions, ImageBackground, 
 
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from '../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
-const { width, height } = Dimensions.get('window');
 const NewPassword = (props) => {
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(false);
@@ -49,15 +49,14 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal : SIZES.large,
     },
     logo: {
         marginTop: 36,
-        // marginTop: 36,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textMedium,
+        fontSize: SIZES.xLarge,
     },
     form: {
         alignItems: 'center',
@@ -72,8 +71,9 @@ const styles = StyleSheet.create({
     showPass: {
         position: 'absolute',
         right: 0,
-        padding: 10,
+        padding:  SIZES.xSmall
     },
 });
 
+useMultiplyWidthScale(styles)
 export default NewPassword;

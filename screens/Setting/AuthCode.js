@@ -5,13 +5,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { SIZES, TEXTS, WIDTH, images } from '../../constants';
+import { BORDER, SIZES, TEXTS, WIDTH, images } from '../../constants';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const AuthCode = ({ navigation }) => {
     return (
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
@@ -28,7 +29,6 @@ const AuthCode = ({ navigation }) => {
     );
 };
 
-const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#6A318133',
         borderRadius: 18,
-        width: 332 * WIDTH.widthScale,
-        height: 169 * WIDTH.widthScale,
-        paddingHorizontal: 20,
+        width: 332,
+        height: 169,
+        paddingHorizontal: SIZES.large,
     },
     close: {
         position: 'absolute',
@@ -51,24 +51,24 @@ const styles = StyleSheet.create({
         padding: 9,
     },
     text: {
-        fontSize: SIZES.medium,
         ...TEXTS.textBold,
+        fontSize: SIZES.medium,
         marginTop: 15,
     },
     input: {
         backgroundColor: 'transparent',
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#FFFFFF80',
-        height: 40 * WIDTH.widthScale,
-        fontSize: 14,
+        height: 40,
+        fontSize: SIZES.xMedium,
         marginTop: 15,
         marginBottom: 28,
     },
     button: {
-        height: 38.44 * WIDTH.widthScale,
-        width: 153.12 * WIDTH.widthScale,
+        height: 38.44,
+        width: 153.12,
         marginBottom: 7,
     },
 });
+useMultiplyWidthScale(styles);
 export default AuthCode;

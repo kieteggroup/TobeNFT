@@ -35,15 +35,15 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal : SIZES.large,
     },
     logo: {
         marginTop: 36,
         // marginTop: 36,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textMedium,
+        fontSize: SIZES.xLarge,
     },
     form: {
         alignItems: 'center',

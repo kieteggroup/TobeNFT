@@ -2,7 +2,8 @@ import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { FONTS, SIZES, TEXTS, WIDTH } from '../constants';
+import { BORDER, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
+import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
 
 const Table = ({ heading, leftIcon, rightIcon }) => {
     return (
@@ -43,12 +44,11 @@ const Table = ({ heading, leftIcon, rightIcon }) => {
 
 const styles = StyleSheet.create({
     table: {
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#FFFFFF1A',
         borderRadius: 18,
-        height: 320 * WIDTH.widthScale,
-        width: 343 * WIDTH.widthScale,
+        height: 320,
+        width: 343,
         backgroundColor: '#FFFFFF1A',
         overflow: 'hidden',
         width: WIDTH.width100,
@@ -67,31 +67,31 @@ const styles = StyleSheet.create({
         fontSize: SIZES.medium,
     },
     thead: {
-        height: 40.88 * WIDTH.widthScale,
+        height: 40.88,
         alignItems: 'center',
         // justifyContent: 'space-around',
         paddingHorizontal: 30,
-        columnGap: 20,
+        columnGap: SIZES.large,
         flexDirection: 'row',
         width: WIDTH.width100,
     },
     theadText: {
         ...TEXTS.textRegular,
-        fontSize: 14,
     },
     row: {
-        height: 37 * WIDTH.widthScale,
+        height: 37,
         borderBottomWidth: 1,
         borderStyle: 'solid',
         borderColor: '#FFFFFF1A',
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 30,
-        columnGap: 20,
+        columnGap: SIZES.large,
     },
     name: {
-        fontSize: SIZES.medium,
         ...TEXTS.textBold,
+        fontSize: SIZES.medium,
     },
 });
+useMultiplyWidthScale(styles);
 export default Table;

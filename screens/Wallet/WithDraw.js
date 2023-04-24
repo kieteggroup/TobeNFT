@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const WithDraw = () => {
     const [is2FA, setIs2FA] = useState(false);
@@ -32,14 +33,14 @@ const WithDraw = () => {
                             text="Enabled 2FA"
                             buttonStyle={styles.button2FA}
                             onPress={() => setIs2FA(!is2FA)}
-                            buttonStyleText={{ fontSize: 11 }}
+                            buttonStyleText={{ fontSize: 11 * WIDTH.widthScale }}
                         />
                     )}
 
                     <ButtonCustom
                         text="Withdraw"
                         backgroundLinearGradient={!is2FA && ['#AAAAAA', '#A9A9A952']}
-                        buttonStyle={{ width: 176 * WIDTH.widthScale, marginTop: 4, marginBottom: 2 }}
+                        buttonStyle={styles.btnWithdraw}
                     />
                 </View>
             </View>
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        marginHorizontal: 20,
+        marginHorizontal: SIZES.large,
         marginVertical: 36,
     },
     title: {
@@ -64,24 +65,32 @@ const styles = StyleSheet.create({
         rowGap: 18,
         width: WIDTH.width100,
     },
-    input: { height: 36 * WIDTH.widthScale, fontSize: 14 },
+    input: {
+        height: 36,
+        fontSize: SIZES.xMedium,
+    },
 
     formNote: {
-        marginTop: 10,
+        marginTop: SIZES.xSmall,
     },
     noteText: {
         ...TEXTS.textRegular,
-        fontSize: 14,
     },
     button2FA: {
-        width: 98 * WIDTH.widthScale,
+        width: 98,
         marginTop: 4,
         marginBottom: 2,
-        height: 25 * WIDTH.widthScale,
+        height: 25,
+    },
+    btnWithdraw: {
+        width: 176,
+        marginTop: 4,
+        marginBottom: 2,
     },
     usdt: {
         ...TEXTS.textBold,
         color: COLORS.primary,
     },
 });
+useMultiplyWidthScale(styles);
 export default WithDraw;

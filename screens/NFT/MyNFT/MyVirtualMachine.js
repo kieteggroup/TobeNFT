@@ -1,7 +1,8 @@
 import { View, ScrollView, Image, Text, FlatList, StyleSheet } from 'react-native';
 
-import { images, icons, TEXTS, SIZES, WIDTH, FONTS } from '../../../constants';
+import { images, icons, TEXTS, SIZES, WIDTH, FONTS, BORDER } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
+import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
 
 const dataNFT = [
     {
@@ -34,26 +35,26 @@ const MyVirtualMachine = () => {
         <>
             {dataNFT.length > 0 ? (
                 <FlatList
-                    style={{ width: WIDTH.width100, marginTop: 40 }}
-                    contentContainerStyle={{
-                        paddingHorizontal: 20,
-                        paddingVertical: 5,
-                        columnGap: 18,
-                    }}
+                    style={{ width: WIDTH.width100 }}
+                    contentContainerStyle={styles.listData}
                     showsHorizontalScrollIndicator={false}
                     horizontal
                     snapToInterval={100}
                     data={dataNFT}
                     renderItem={({ item }) => (
                         <View style={styles.virtualItem}>
-                            <Image source={item.img} style={styles.img}/>
+                            <Image source={item.img} style={styles.img} />
                             <View style={styles.info}>
                                 <Text style={styles.name}>{item.name}</Text>
                                 <Text style={styles.price}>${item.price}</Text>
                                 <Text style={styles.description}>{item.description}</Text>
                                 <ButtonCustom
                                     text="BUY NOW"
-                                    buttonStyle={{ height: 30 * WIDTH.widthScale, width: 110 * WIDTH.widthScale, borderWidth: 0 }}
+                                    buttonStyle={{
+                                        height: 30 * WIDTH.widthScale,
+                                        width: 110 * WIDTH.widthScale,
+                                        borderWidth: 0,
+                                    }}
                                     buttonStyleText={{ fontFamily: FONTS.bold }}
                                     backgroundLinearGradient={['#780D69', '#EC0174']}
                                     start={{ x: 0, y: 0 }}
@@ -65,7 +66,7 @@ const MyVirtualMachine = () => {
                     )}
                 />
             ) : (
-                <View style={{alignItems:'center'}} >
+                <View style={{ alignItems: 'center' }}>
                     <Image source={images.empty_data} style={styles.empty_data} />
                     <Text style={styles.title}>(Empty Data)</Text>
                 </View>
@@ -75,46 +76,53 @@ const MyVirtualMachine = () => {
 };
 
 const styles = StyleSheet.create({
+    listData: {
+        paddingHorizontal: SIZES.large,
+        paddingVertical: 5,
+        columnGap: 18,
+        marginTop: 40,
+    },
     virtualItem: {
         flexDirection: 'row',
         backgroundColor: '#140E2582',
         borderRadius: 18,
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#F4007433',
         // padding:10
-        height: 169 * WIDTH.widthScale,
-        width: 333 * WIDTH.widthScale,
+        height: 169,
+        width: 333,
         alignItems: 'center',
         justifyContent: 'space-around',
         shadowColor: '#FFFFFF66',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.4,
-        shadowRadius: 20,
+        shadowRadius: SIZES.large,
     },
     info: {
         alignItems: 'center',
     },
     name: {
-        fontSize: SIZES.medium,
         ...TEXTS.textBold,
+        fontSize: SIZES.medium,
     },
     price: {
-        fontSize: SIZES.large,
         ...TEXTS.textBold,
+        fontSize: SIZES.large,
     },
     image: {
-        width: 85.51 * WIDTH.widthScale,
-        height: 154.66 * WIDTH.widthScale,
+        width: 85.51,
+        height: 154.66,
     },
     description: {
         ...TEXTS.textRegular,
-        marginTop: 10,
-        marginBottom: 16,
+        marginTop: SIZES.xSmall,
+        marginBottom: SIZES.medium,
     },
     empty_data: {
-        width: 222 * WIDTH.widthScale,
-        height: 148 * WIDTH.widthScale,
+        width: 222,
+        height: 148,
     },
 });
+
+useMultiplyWidthScale(styles);
 export default MyVirtualMachine;

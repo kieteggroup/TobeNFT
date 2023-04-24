@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet ,TouchableOpacity} from 'react-native';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { MainContainer } from '../../components';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const listSetting = [
     {
@@ -88,28 +89,14 @@ const Setting = ({ navigation }) => {
                         </View>
                     </View>
 
-                    <View style={styles.button}>
+                    <View style={styles.buttonContent}>
                         <ButtonCustom
                             text="Referral link"
                             backgroundColorBtn="#E8127C"
-                            buttonStyle={{
-                                width: 150 * WIDTH.widthScale,
-                                height: 36 * WIDTH.widthScale,
-                                borderRadius: 5,
-                                borderWidth: 0,
-                            }}
+                            buttonStyle={styles.button}
                             onPress={() => navigation.navigate('ShareLink')}
                         />
-                        <ButtonCustom
-                            text="Referral code"
-                            backgroundColorBtn="#E8127C"
-                            buttonStyle={{
-                                width: 150 * WIDTH.widthScale,
-                                height: 36 * WIDTH.widthScale,
-                                borderRadius: 5,
-                                borderWidth: 0,
-                            }}
-                        />
+                        <ButtonCustom text="Referral code" backgroundColorBtn="#E8127C" buttonStyle={styles.button} />
                     </View>
 
                     <View style={styles.listSetting}>
@@ -148,7 +135,7 @@ const Setting = ({ navigation }) => {
                             width: 332 * WIDTH.widthScale,
                             height: 39 * WIDTH.widthScale,
                         }}
-                        buttonStyleText={{ fontSize: SIZES.xLarge, ...TEXTS.textRegular, fontWeight: 500 }}
+                        buttonStyleText={{  ...TEXTS.textMedium,fontSize: SIZES.xLarge,}}
                     />
                 </View>
             </View>
@@ -159,7 +146,7 @@ const Setting = ({ navigation }) => {
 const styles = StyleSheet.create({
     wrapper: {
         marginVertical: 30,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         width: WIDTH.width100,
         height: WIDTH.width100,
     },
@@ -167,12 +154,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textBold,
+        fontSize: SIZES.xLarge,
         alignSelf: 'center',
     },
     header: {
-        marginTop: 20,
+        marginTop: SIZES.large,
         marginBottom: 40,
         paddingHorizontal: 30,
         rowGap: 30,
@@ -186,28 +173,34 @@ const styles = StyleSheet.create({
         fontSize: 18,
         ...TEXTS.textRegular,
     },
-    button: {
+    buttonContent: {
         flexDirection: 'row',
         justifyContent: 'center',
         columnGap: 27,
         marginBottom: 50,
+    },
+    button: {
+        width: 150,
+        height: 36,
+        borderRadius: 5,
+        borderWidth: 0,
     },
     listSetting: {
         marginBottom: 70,
         paddingHorizontal: 30,
     },
     settingItem: {
-        height: 47 * WIDTH.widthScale,
+        height: 47,
         borderBottomWidth: 1,
         borderColor: '#FFFFFF',
         borderStyle: 'solid',
     },
     social: {
         paddingHorizontal: 30,
-        marginBottom: 10,
+        marginBottom: SIZES.xSmall,
     },
     socialitem: {
-        height: 50 * WIDTH.widthScale,
+        height: 50,
         alignItems: 'center',
         flexDirection: 'row',
         borderBottomWidth: 1,
@@ -217,8 +210,8 @@ const styles = StyleSheet.create({
     textSocial: {
         ...TEXTS.textRegular,
 
-        marginLeft: 10,
+        marginLeft: SIZES.xSmall,
     },
 });
-
+useMultiplyWidthScale(styles);
 export default Setting;

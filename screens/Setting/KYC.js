@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableOpacity, View ,ImageBackground} from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const genderList = ['Male', 'Female', 'Other'];
 const KYC = ({ navigation }) => {
@@ -13,7 +14,7 @@ const KYC = ({ navigation }) => {
     return (
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
@@ -37,17 +38,17 @@ const KYC = ({ navigation }) => {
                         ))}
                     </View>
                     <View style={styles.upload}>
-                        <LinearGradient colors={["#FFFFFF13","#8F79D939"]} style={styles.uploadItem}>
-                            <Text  style={styles.radioText}>Upload a photo of ID card (Front)</Text>
-                            <Image source={icons.plus}/>
+                        <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
+                            <Text style={styles.radioText}>Upload a photo of ID card (Front)</Text>
+                            <Image source={icons.plus} />
                         </LinearGradient>
-                        <LinearGradient colors={["#FFFFFF13","#8F79D939"]} style={styles.uploadItem}>
-                            <Text  style={styles.radioText}>Upload a photo of ID card (Back)</Text>
-                            <Image source={icons.plus}/>
+                        <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
+                            <Text style={styles.radioText}>Upload a photo of ID card (Back)</Text>
+                            <Image source={icons.plus} />
                         </LinearGradient>
-                        <LinearGradient colors={["#FFFFFF13","#8F79D939"]} style={styles.uploadItem}>
-                            <Text  style={styles.radioText}>Upload a full face photo</Text>
-                            <Image source={icons.plus}/>
+                        <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
+                            <Text style={styles.radioText}>Upload a full face photo</Text>
+                            <Image source={icons.plus} />
                         </LinearGradient>
                     </View>
                     <ButtonCustom text="SEND" buttonStyle={styles.button} />
@@ -57,7 +58,6 @@ const KYC = ({ navigation }) => {
     );
 };
 
-const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         borderColor: '#6A318133',
         borderRadius: 18,
         width: 332 * WIDTH.widthScale,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
     },
     close: {
         position: 'absolute',
@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
         padding: 9,
     },
     text: {
-        fontSize: SIZES.medium,
         ...TEXTS.textBold,
+        fontSize: SIZES.medium,
         marginTop: 15,
     },
     form: {
@@ -89,11 +89,10 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: 'transparent',
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#FFFFFF80',
         height: 40,
-        fontSize: 14,
+        fontSize: SIZES.xMedium,
     },
     button: {
         height: 38.44,
@@ -105,8 +104,8 @@ const styles = StyleSheet.create({
     // radio
     gender: {
         flexDirection: 'row',
-        columnGap: 20,
-        marginTop:10
+        columnGap: SIZES.large,
+        marginTop: SIZES.xSmall,
     },
     radioItem: {
         flexDirection: 'row',
@@ -117,11 +116,10 @@ const styles = StyleSheet.create({
     radio: {
         width: 8,
         height: 8,
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#fff',
         borderRadius: 100,
-        marginTop:2
+        marginTop: 2,
     },
     radioCheck: {
         borderWidth: 0,
@@ -129,19 +127,19 @@ const styles = StyleSheet.create({
     },
     radioText: {
         ...TEXTS.textRegular,
-        fontSize: 14,
     },
-    upload:{
-        marginTop:15,
-        rowGap:11
+    upload: {
+        marginTop: 15,
+        rowGap: 11,
     },
-uploadItem:{
-    flexDirection: 'row',
-    justifyContent:'space-between',
-    alignItems:'center',
-    paddingHorizontal:18,
-    height:36,
-    borderRadius:18
-},
+    uploadItem: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 18,
+        height: 36,
+        borderRadius: 18,
+    },
 });
+useMultiplyWidthScale(styles);
 export default KYC;

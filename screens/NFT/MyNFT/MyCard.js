@@ -2,6 +2,7 @@ import { View, ScrollView, Image, Text, FlatList, StyleSheet } from 'react-nativ
 
 import { images, icons, TEXTS, SIZES, WIDTH, FONTS } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
+import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
 
 const dataNFT = [
     {
@@ -28,7 +29,7 @@ const MyCard = () => {
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
                             <Image source={item.card} style={styles.image} />
-                            <View style={{ position: 'absolute', right: 16, top: 129 * WIDTH.widthScale }}>
+                            <View style={styles.buttonContent}>
                                 <ButtonCustom
                                     text="BUY NOW"
                                     buttonStyle={styles.button}
@@ -55,28 +56,34 @@ const MyCard = () => {
 
 const styles = StyleSheet.create({
     dataList: {
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         paddingTop: 17,
-        columnGap: 14,
+        columnGap: SIZES.xMedium,
         flexDirection: 'row',
     },
     image: {
-        width: 308.3 * WIDTH.widthScale,
-        height: 194.23 * WIDTH.widthScale,
+        width: 308.3 ,
+        height: 194.23 ,
+    },
+    buttonContent: {
+        position: 'absolute',
+        right: SIZES.medium,
+        top: 129 ,
     },
     button: {
-        height: 28 * WIDTH.widthScale,
-        width: 105.85 * WIDTH.widthScale,
+        height: 28 ,
+        width: 105.85 ,
         borderWidth: 0,
     },
     cardText: {
-        fontSize: SIZES.large,
-        marginTop: 14,
+        marginTop: SIZES.xMedium,
         ...TEXTS.textBold,
+        fontSize: SIZES.large,
     },
     empty_data: {
-        width: 222 * WIDTH.widthScale,
-        height: 148 * WIDTH.widthScale,
+        width: 222 ,
+        height: 148 ,
     },
 });
+useMultiplyWidthScale(styles)
 export default MyCard;

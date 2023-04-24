@@ -1,4 +1,3 @@
-
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -6,6 +5,7 @@ import { COLORS, FONTS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import Table from '../../components/Table';
 import HomeNFT from './HomeNFT';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const dataCard = [
     {
@@ -22,14 +22,14 @@ const Card = () => {
     return (
         <View style={styles.wrapper}>
             {/* Title */}
-            <View style={{ paddingHorizontal: 20, alignItems: 'center' }}>
-                <View style={{ height: 52, marginTop: 23 }}>
-                    <Text style={[styles.title, TEXTS.textBold]}>NFT CARD</Text>
+            <View style={{ paddingHorizontal: SIZES.large, alignItems: 'center' }}>
+                <View style={styles.titleContent}>
+                    <Text style={[ TEXTS.textBold,styles.title,]}>NFT CARD</Text>
                 </View>
                 <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
             </View>
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
@@ -40,18 +40,13 @@ const Card = () => {
                     horizontal
                     snapToInterval={100}
                     // pagingEnabled
-                    contentContainerStyle={{
-                        paddingHorizontal: 20,
-                        paddingTop: 17,
-                        columnGap: 14,
-                        flexDirection: 'row',
-                    }}
+                    contentContainerStyle={styles.listCard}
                     data={dataCard}
                     keyExtractor={(item) => item.name}
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
                             <Image source={item.card} style={styles.img} />
-                            <View style={{ position: 'absolute', right: 16, top: 129 * WIDTH.widthScale }}>
+                            <View style={{ position: 'absolute', right: SIZES.medium, top: 129 * WIDTH.widthScale }}>
                                 <ButtonCustom
                                     text="BUY NOW"
                                     buttonStyle={styles.button}
@@ -68,21 +63,14 @@ const Card = () => {
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                                 locations={[0.3392, 0.9986]}
-                                style={{
-                                    height: 5 * WIDTH.widthScale,
-                                    width: 103 * WIDTH.widthScale,
-                                    borderRadius: 6.5,
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 7,
-                                }}
+                                style={styles.line}
                             ></LinearGradient>
                         </View>
                     )}
                 ></FlatList>
             </LinearGradient>
 
-            <View style={{ paddingHorizontal: 22, paddingTop: 22, width: WIDTH.width100 }}>
+            <View style={styles.history}>
                 <Table heading="History Commission" />
             </View>
         </View>
@@ -94,6 +82,10 @@ const styles = StyleSheet.create({
         marginTop: 45,
         width: WIDTH.width100,
     },
+    titleContent: {
+        height: 52,
+        marginTop: 23,
+    },
     title: {
         fontSize: SIZES.xLarge,
         alignItems: 'center',
@@ -104,7 +96,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     cardContainer: {
-        height: 280 * WIDTH.widthScale,
+        height: 280,
         borderTopWidth: 2,
         borderBottomWidth: 2,
         borderStyle: 'solid',
@@ -112,20 +104,41 @@ const styles = StyleSheet.create({
         marginTop: SIZES.xLarge,
         width: WIDTH.width100,
     },
-    card: {},
+    listCard: {
+        paddingHorizontal: SIZES.large,
+        paddingTop: 17,
+        columnGap: SIZES.xMedium,
+        flexDirection: 'row',
+    },
     cardText: {
-        fontSize: SIZES.large,
-        marginTop: 14,
+        marginTop: SIZES.xMedium,
         ...TEXTS.textBold,
+        fontSize: SIZES.large,
     },
     img: {
-        width: 308.3 * WIDTH.widthScale,
-        height: 194.23 * WIDTH.widthScale,
+        width: 308.3,
+        height: 194.23,
     },
     button: {
-        height: 27.75 * WIDTH.widthScale,
-        width: 105.85 * WIDTH.widthScale,
+        height: 27.75,
+        width: 105.85,
         borderWidth: 0,
     },
+    line: {
+        height: 5,
+        width: 103,
+        borderRadius: 6.5,
+        position: 'absolute',
+        bottom: 0,
+        left: 7,
+    },
+    history: {
+        paddingHorizontal: 22,
+        paddingTop: 22,
+        width: WIDTH.width100,
+    },
 });
+
+useMultiplyWidthScale(styles);
+
 export default Card;

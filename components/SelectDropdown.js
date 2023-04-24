@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
 import { IconDropDown } from '../assets/imageSvg/ImageSVG';
+import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
 
 const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle, iconColor }) => {
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
@@ -41,7 +42,7 @@ const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle
                                 setSelectCurrency(item);
                             }}
                         >
-                            <Image source={icons.bnb} style={{ width: 30, height: 30 }} />
+                            <Image source={images.bnb} style={styles.img} />
                             <Text style={{ ...TEXTS.textRegular }}>{item}</Text>
                         </TouchableOpacity>
                     )}
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
         zIndex: 999,
     },
     dropdown: {
-        height: 38 * WIDTH.widthScale,
+        height: 38,
         borderRadius: 18,
         flexDirection: 'row',
         alignItems: 'center',
@@ -66,19 +67,18 @@ const styles = StyleSheet.create({
     },
     dropdownText: {
         ...TEXTS.textRegular,
-        fontSize: 14,
     },
     dropdownArea: {
         width: WIDTH.width100,
         height: 'auto',
-        maxHeight: 300 * WIDTH.widthScale,
-        borderRadius: 10,
-        // marginTop: 10,
+        maxHeight: 300,
+        borderRadius: SIZES.xSmall,
+
         backgroundColor: '#FFFFFF1A',
         alignSelf: 'center',
         position: 'absolute',
         top: 50,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
     },
     dataItem: {
         width: WIDTH.width100,
@@ -87,9 +87,14 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         alignItems: 'center',
         flexDirection: 'row',
-        columnGap: 10,
+        columnGap: SIZES.xSmall,
         paddingVertical: SIZES.xSmall,
         // backgroundColor:"#ccc"
     },
+    img: {
+        width: 30,
+        height: 30,
+    },
 });
+useMultiplyWidthScale(styles);
 export default SelectDropdown;

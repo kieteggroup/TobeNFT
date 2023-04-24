@@ -2,9 +2,9 @@ import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { IconProfile, IconSetting, IconSwap, IconWallet } from '../assets/imageSvg/ImageSVG';
+import { IconNFT, IconProfile, IconSetting, IconSwap, IconWallet } from '../assets/imageSvg/ImageSVG';
 
-import { FONTS, SIZES, WIDTH, icons } from '../constants';
+import { BORDER, FONTS, SIZES, WIDTH, icons } from '../constants';
 import { ButtonCustom } from '../CustomComponent';
 import { NFTNavigator, WalletNavigator, SwapNavigator } from '../navigations';
 
@@ -72,7 +72,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
                                 <ButtonCustom
                                     leftIcon={IconTab()}
                                     text={label}
-                                    buttonStyleText={{ marginLeft: 14, fontFamily: FONTS.regular }}
+                                    buttonStyleText={{ marginLeft: SIZES.xMedium, fontFamily: FONTS.regular }}
                                 />
                             )}
                         </TouchableOpacity>
@@ -103,7 +103,7 @@ const ScreenBottomTab = () => {
                 name="NFT"
                 component={NFTNavigator}
                 options={{
-                    tabBarIcon: () => <Image source={icons.iconNFT} />,
+                    tabBarIcon: () => <IconNFT />,
                 }}
             />
             <Tab.Screen
@@ -127,14 +127,13 @@ const ScreenBottomTab = () => {
 const styles = {
     gradient: {
         position: 'absolute',
-        right: 20,
-        left: 20,
-        bottom: 20,
+        right: SIZES.large,
+        left: SIZES.large,
+        bottom: SIZES.large,
         alignItems: 'center',
         borderRadius: 50,
+        ...BORDER,
         borderWidth: 2,
-        borderStyle: 'solid',
-        borderColor: '#6A318133',
     },
     container: {
         flexDirection: 'row',

@@ -2,8 +2,9 @@ import { View, Image, Text, TouchableOpacity, StyleSheet, FlatList } from 'react
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
-import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const dataNFT = [
     {
@@ -33,15 +34,15 @@ const Marketplace = () => {
     return (
         <View style={styles.wrapper}>
             {/* Title */}
-            <View style={{ paddingHorizontal: 20, alignItems: 'center' }}>
-                <View style={{ height: 52 * WIDTH.widthScale, marginTop: 23 }}>
+            <View style={styles.contentTitle}>
+                <View style={{ height: 52 * WIDTH.widthScale, marginTop: 23 * WIDTH.widthScale }}>
                     <Text style={styles.title}>NFT MARKETPLACE</Text>
                 </View>
                 <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
             </View>
             {/* Search */}
             <LinearGradient
-                colors={['#502D9F66', '#08021C00']}
+                colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.085, 1]}
@@ -54,7 +55,7 @@ const Marketplace = () => {
                 <ButtonCustom
                     text="Search"
                     leftIcon={<Image source={icons.search} />}
-                    buttonStyle={{ borderWidth: 0, marginBottom: 16, width: 292 * WIDTH.widthScale }}
+                    buttonStyle={styles.buttonSearch}
                     buttonStyleText={{ fontFamily: FONTS.regular }}
                     backgroundLinearGradient={['#502D9F', '#F40074']}
                     start={{ x: 0, y: 0 }}
@@ -86,7 +87,7 @@ const Marketplace = () => {
 
                         <View style={styles.right}>
                             <Text style={styles.name}>{item.name}</Text>
-                            <Text numberOfLines={1} style={{ fontSize: SIZES.small, ...TEXTS.textRegular }}>
+                            <Text numberOfLines={1} style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>
                                 {item.address}
                             </Text>
                             <Text
@@ -102,7 +103,6 @@ const Marketplace = () => {
                                 buttonStyle={styles.button}
                                 buttonStyleText={{
                                     ...TEXTS.textBold,
-                                    fontSize: 14,
                                 }}
                                 backgroundLinearGradient={['#780D69', '#EC0174']}
                                 start={{ x: 0, y: 0 }}
@@ -130,48 +130,53 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         marginTop: 23,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         width: WIDTH.width100,
     },
-
-    title: {
-        fontSize: SIZES.xLarge,
+    contentTitle: {
+        paddingHorizontal: SIZES.large,
         alignItems: 'center',
+    },
+    title: {
+        textAlign: 'center',
         ...TEXTS.textBold,
+        fontSize: SIZES.xLarge,
     },
     subtitle: {
-        fontSize: SIZES.medium,
         ...TEXTS.textMedium,
+        fontSize: SIZES.medium,
         textAlign: 'center',
         marginBottom: 27,
     },
 
     formSearch: {
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#6a318133',
+        ...BORDER,
         borderRadius: 18,
         rowGap: 15,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         paddingTop: 25,
         width: WIDTH.width100,
         alignItems: 'center',
     },
     input: {
-        height: 36 * WIDTH.widthScale,
+        height: 36,
         width: WIDTH.width100,
         ...TEXTS.textMedium,
+    },
+    buttonSearch: {
+        borderWidth: 0,
+        marginBottom: 16,
+        width: 292,
     },
     listRestaurant: {
         marginTop: 29,
         rowGap: 23,
     },
     wrapperItem: {
-        width: 331 * WIDTH.widthScale,
-        height: 159 * WIDTH.widthScale,
+        width: 331,
+        height: 159,
         flexDirection: 'row',
-        borderWidth: 1,
-        borderStyle: 'solid',
+        ...BORDER,
         borderColor: '#F4007433',
         borderRadius: 18,
         backgroundColor: '#140E2580',
@@ -184,25 +189,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#140E2580',
-        height: 34 * WIDTH.widthScale,
+        height: 34,
         borderTopLeftRadius: 18,
         borderTopRightRadius: 18,
     },
     img: {
-        width: 160 * WIDTH.widthScale,
+        width: 160,
         height: WIDTH.width100,
         overflow: 'hidden',
     },
     textRestaurant: {
-        fontSize: SIZES.small,
         ...TEXTS.textRegular,
+        fontSize: SIZES.small,
     },
     star: {
         flexDirection: 'row',
     },
     right: {
         flex: 1,
-        paddingHorizontal: 16,
+        paddingHorizontal: SIZES.medium,
         alignItems: 'flex-start',
         rowGap: 5,
     },
@@ -212,10 +217,11 @@ const styles = StyleSheet.create({
         marginTop: 23,
     },
     button: {
-        height: 30 * WIDTH.widthScale,
+        height: 30,
         borderWidth: 0,
-        marginTop: 12,
-        width: 138 * WIDTH.widthScale,
+        marginTop: SIZES.small,
+        width: 138,
     },
 });
+useMultiplyWidthScale(styles);
 export default Marketplace;

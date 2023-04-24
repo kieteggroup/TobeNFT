@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const SignUp = (props) => {
     const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const SignUp = (props) => {
     return (
         <ImageBackground source={images.signup} style={styles.wrapper}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{ paddingHorizontal: 20, alignItems: 'center', ...styles.wrapper }}>
+                <View style={{ paddingHorizontal: SIZES.large, alignItems: 'center', ...styles.wrapper }}>
                     <Text style={styles.title}>Sign Up</Text>
                     <View style={styles.form}>
                         <View style={styles.formGroup}>
@@ -51,7 +52,7 @@ const SignUp = (props) => {
                         </View>
                         <View style={styles.formGroup}>
                             <InputCustom
-                                style={{ paddingRight: 40 }}
+                                style={{ paddingRight: 40 * WIDTH.widthScale }}
                                 placeholder="Login password"
                                 showPass={!showPass}
                                 value={password}
@@ -59,12 +60,12 @@ const SignUp = (props) => {
                                 placeholderTextColor="#fff"
                             />
                             <TouchableOpacity style={styles.showPass} onPress={() => setShowPass(!showPass)}>
-                                <Image source={showPass ? icons.viewPass : icons.hiddenPass} />
+                                <Image source={showPass ? icons.viewPass : icons.hiddenPass} style={styles.imgEye} />
                             </TouchableOpacity>
                         </View>
                         <View style={styles.formGroup}>
                             <InputCustom
-                                style={{ paddingRight: 40 }}
+                                style={{ paddingRight: 40 * WIDTH.widthScale }}
                                 placeholder="Confirm Login password"
                                 showPass={!showPass}
                                 value={password}
@@ -72,7 +73,7 @@ const SignUp = (props) => {
                                 placeholderTextColor="#fff"
                             />
                             <TouchableOpacity style={styles.showPass} onPress={() => setShowPass(!showPass)}>
-                                <Image source={showPass ? icons.viewPass : icons.hiddenPass} />
+                                <Image source={showPass ? icons.viewPass : icons.hiddenPass} style={styles.imgEye} />
                             </TouchableOpacity>
                         </View>
 
@@ -127,10 +128,10 @@ const SignUp = (props) => {
                             <Text style={styles.footerLeftTitle}>Or Sign Up with</Text>
                             <View style={styles.social}>
                                 <TouchableOpacity onPress={() => Linking.openURL('https://google.com/')}>
-                                    <Image source={icons.iconGoogle} />
+                                    <Image source={icons.iconGoogle} style={styles.imgSocial} />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => Linking.openURL('https://facebook.com/')}>
-                                    <Image source={icons.iconFacebook} />
+                                    <Image source={icons.iconFacebook} style={styles.imgSocial} />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -153,8 +154,8 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 40,
-        fontSize: SIZES.xLarge,
         ...TEXTS.textMedium,
+        fontSize: SIZES.xLarge,
     },
     form: {
         marginTop: 40,
@@ -162,27 +163,31 @@ const styles = StyleSheet.create({
     },
     formGroup: {
         width: WIDTH.width100,
-        marginBottom: 14,
+        marginBottom: SIZES.xMedium,
         justifyContent: 'center',
     },
 
     showPass: {
         position: 'absolute',
         right: 0,
-        padding: 10,
+        padding: SIZES.xSmall,
+    },
+    imgEye: {
+        width: 19.09,
+        height: 18,
     },
     checkboxContainer: {
         alignItems: 'center',
         justifyContent: 'flex-start',
         flexDirection: 'row',
-        height: 54 * WIDTH.widthScale,
+        height: 54,
     },
 
     textCheckbox: {
         marginLeft: 15.87,
-        width: 310 * WIDTH.widthScale,
-        fontSize: SIZES.small,
+        width: 310,
         ...TEXTS.textRegular,
+        fontSize: SIZES.small,
     },
     textLink: {
         ...TEXTS.textBold,
@@ -190,8 +195,8 @@ const styles = StyleSheet.create({
     },
 
     footer: {
-        marginTop: 24,
-        width: '100%',
+        marginTop: SIZES.xLarge,
+        width: WIDTH.width100,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
@@ -199,29 +204,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     footerLeftTitle: {
-        color: COLORS.white,
+        ...TEXTS.textRegular,
         fontSize: SIZES.small,
-        fontFamily: FONTS.regular,
     },
     social: {
         flexDirection: 'row',
         marginTop: 10.05,
     },
+    imgSocial: {
+        width: 37,
+        height: 36,
+    },
     footerRight: {
         alignItems: 'center',
     },
     footerRightTitle: {
-        color: COLORS.white,
+        ...TEXTS.textMedium,
         fontSize: SIZES.small,
-        fontFamily: FONTS.medium,
-        fontWeight: 500,
     },
     footerRightLogin: {
-        color: COLORS.primary,
-        fontFamily: FONTS.bold,
-        fontWeight: 700,
+        ...TEXTS.textBold,
         marginTop: 5,
+        fontSize: SIZES.small,
+        color: COLORS.primary,
     },
 });
-
+useMultiplyWidthScale(styles);
 export default SignUp;

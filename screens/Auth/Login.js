@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 import Logo from '../../assets/imageSvg/ImageSVG';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
-const { width, height } = Dimensions.get('window');
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,11 +41,11 @@ const Login = (props) => {
                             placeholderTextColor="#fff"
                         />
                         <TouchableOpacity style={styles.showPass} onPress={() => setShowPass(!showPass)}>
-                            <Image source={showPass ? icons.viewPass : icons.hiddenPass} />
+                            <Image source={showPass ? icons.viewPass : icons.hiddenPass} style={styles.imgEye} />
                         </TouchableOpacity>
                     </View>
                     <ButtonCustom
-                        style={{ marginTop: 21.5 }}
+                        style={{ marginTop: 21.5 * WIDTH.widthScale }}
                         text="Login"
                         onPress={() => navigation.navigate('ScreenBottomTab')}
                     />
@@ -70,7 +70,7 @@ const Login = (props) => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
         // height: height,
     },
     logo: {
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
         // marginTop: 36,
     },
     title: {
-        fontSize: SIZES.xLarge,
         ...TEXTS.textMedium,
+        fontSize: SIZES.xLarge,
     },
     form: {
         alignItems: 'center',
@@ -94,10 +94,14 @@ const styles = StyleSheet.create({
     showPass: {
         position: 'absolute',
         right: 0,
-        padding: 10,
+        padding:  SIZES.xSmall
+    },
+    imgEye: {
+        width: 19.09,
+        height: 18,
     },
     textForgot: {
-        color: COLORS.white,
+        ...TEXTS.textRegular,
         marginTop: 23,
     },
     noAccount: {
@@ -107,13 +111,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     noAccountText: {
-        color: '#6F6D6D',
+        ...TEXTS.textMedium,
         fontSize: SIZES.medium,
-        fontWeight: 600,
+        color: '#6F6D6D',
     },
     sign: {
         color: COLORS.white,
     },
 });
-
+useMultiplyWidthScale(styles);
 export default Login;

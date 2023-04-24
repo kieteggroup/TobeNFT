@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { images } from '../constants';
+import { SIZES, WIDTH, images } from '../constants';
 import Logo from '../assets/imageSvg/ImageSVG';
 
 const Welcome = () => {
@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         flex: 1,
-        paddingHorizontal: 20,
+        paddingHorizontal: SIZES.large,
     },
     logo: {
-        marginTop: 204,
+        marginTop: 204 * WIDTH.widthScale,
     },
 });
 export default Welcome;

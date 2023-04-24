@@ -7,6 +7,7 @@ import MyLocation from './MyLocation';
 import MyVirtualMachine from './MyVirtualMachine';
 import MyCard from './MyCard';
 import MyMarketPlace from './MyMarketPlace';
+import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
 
 const myNFTType = ['My NFT Location', 'My NFT Virtual Machine', 'My NFT Card', 'NFT MARKETPLACE'];
 
@@ -62,7 +63,7 @@ const MyNFT = ({ title, renderItem }) => {
             <ButtonCustom
                 text="Buy more"
                 buttonStyle={styles.button}
-                buttonStyleText={{ fontSize: 14, ...TEXTS.textBold }}
+                buttonStyleText={{  ...TEXTS.textBold }}
                 backgroundLinearGradient={['#780D69', '#EC0174']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
@@ -79,10 +80,10 @@ const styles = StyleSheet.create({
     navBar: {
         flexDirection: 'row',
         paddingHorizontal: 5,
-        height: 25 * WIDTH.widthScale,
+        height: 25 ,
         alignItems: 'center',
         justifyContent: 'center',
-        columnGap: 10,
+        columnGap:  SIZES.xSmall,
         width: WIDTH.width100,
     },
     navBarItem: {
@@ -95,11 +96,11 @@ const styles = StyleSheet.create({
     banner: {
         width: WIDTH.width100,
         // alignItems: 'center',
-        height: 135 * WIDTH.widthScale,
+        height: 135 ,
     },
     bannerContent: {
         position: 'absolute',
-        bottom: 10,
+        bottom:  SIZES.xSmall,
         width: WIDTH.width100,
         alignItems: 'center',
     },
@@ -118,12 +119,14 @@ const styles = StyleSheet.create({
 
     button: {
         position: 'absolute',
-        width: 105.85 * WIDTH.widthScale,
-        height: 27.75 * WIDTH.widthScale,
+        width: 105.85 ,
+        height: 27.75 ,
         right: 16.15,
         bottom: 110,
         borderWidth: 0,
     },
    
 });
+
+useMultiplyWidthScale(styles)
 export default MyNFT;

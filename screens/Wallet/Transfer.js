@@ -4,13 +4,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer, Table } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
+import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
 
 const Transfer = () => {
     return (
-        <MainContainer >
+        <MainContainer>
             <View style={styles.wrapper}>
                 <LinearGradient
-                    colors={['#502D9F66', '#08021C00']}
+                    colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                     start={{ x: 1, y: 1 }}
                     end={{ x: 0, y: 0 }}
                     locations={[0.3392, 0.9986]}
@@ -20,19 +21,19 @@ const Transfer = () => {
                     <View style={styles.form}>
                         <View style={styles.formGroup}>
                             <Text style={styles.formLabel}>Receiver</Text>
-                            <InputCustom radiusMax style={{ height: 36, fontSize: 14 }} />
+                            <InputCustom radiusMax style={styles.input} />
                         </View>
                         <View style={styles.formGroup}>
                             <Text style={styles.formLabel}>Choice</Text>
-                            <InputCustom radiusMax style={{ height: 36, fontSize: 14 }} />
-                            <View style={{ flexDirection: 'row', position: 'absolute', left: 10, bottom: 7 }}>
-                                <Image source={images.Usdt} style={{ width: 23, height: 23, marginRight: 10 }} />
+                            <InputCustom radiusMax style={styles.input} />
+                            <View style={{ flexDirection: 'row', position: 'absolute', left: SIZES.xSmall, bottom: 7 }}>
+                                <Image source={images.Usdt} style={styles.img} />
                                 <Text style={styles.noteText}>USDT</Text>
                             </View>
                         </View>
                         <View style={styles.formGroup}>
                             <Text style={styles.formLabel}>Amount of USDT</Text>
-                            <InputCustom radiusMax style={{ height: 36, fontSize: 14 }} />
+                            <InputCustom radiusMax style={styles.input} />
                         </View>
 
                         <View style={styles.formNote}>
@@ -46,13 +47,9 @@ const Transfer = () => {
                             <Text style={styles.noteText}>Estimated completion time: 2 minutes</Text>
                         </View>
 
-                        <InputCustom
-                            radiusMax
-                            style={{ height: 36, fontSize: 14, }}
-                            placeholder="2FA"
-                        />
+                        <InputCustom radiusMax style={styles.input} placeholder="2FA" />
 
-                        <ButtonCustom text="SEND" buttonStyle={{ width: 176, height: 39, marginTop: 10 }} />
+                        <ButtonCustom text="SEND" buttonStyle={styles.btnSend} />
                     </View>
                 </LinearGradient>
                 <View style={styles.history}>
@@ -84,22 +81,29 @@ const styles = StyleSheet.create({
     },
     form: {
         marginTop: 15,
-        rowGap: 10,
-        paddingHorizontal: 20,
-        width: WIDTH.width100
+        rowGap: SIZES.xSmall,
+        paddingHorizontal: SIZES.large,
+        width: WIDTH.width100,
     },
     formLabel: {
-        fontSize: 14,
         ...TEXTS.textRegular,
-        marginLeft: 10,
+        marginLeft: SIZES.xSmall,
         marginBottom: 5,
+    },
+    input: {
+        height: 36,
+        fontSize: SIZES.xMedium,
+    },
+    img: {
+        width: 23,
+        height: 23,
+        marginRight:  SIZES.xSmall,
     },
     formNote: {
         marginBottom: 15,
     },
     noteText: {
         ...TEXTS.textRegular,
-        fontSize: 14,
     },
     usdt: {
         ...TEXTS.textBold,
@@ -109,7 +113,14 @@ const styles = StyleSheet.create({
         rowGap: 22,
         width: WIDTH.width100,
         padding: 22,
-        paddingBottom: 10,
+        paddingBottom: SIZES.xSmall,
+    },
+    btnSend: {
+        width: 176,
+        height: 39,
+        marginTop: SIZES.xSmall,
     },
 });
+
+useMultiplyWidthScale(styles);
 export default Transfer;

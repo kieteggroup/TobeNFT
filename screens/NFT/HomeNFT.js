@@ -45,8 +45,8 @@ const HomeNFT = ({ children, route }) => {
                                         onPress={() => setActiveType(item)}
                                         backgroundLinearGradient={
                                             activeType === item
-                                                ? ['#F4007499', '#08021C00']
-                                                : ['#FFFFFF1A', '#08021C00']
+                                                ? ['#F4007499', COLORS.bodyTransp]
+                                                : ['#FFFFFF1A', COLORS.bodyTransp]
                                         }
                                         start={{ x: 0, y: 0 }}
                                         end={{ x: 1, y: 1 }}
@@ -66,15 +66,15 @@ const HomeNFT = ({ children, route }) => {
                                     columnGap: SIZES.xSmall,
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    paddingHorizontal: 20,
+                                    paddingHorizontal: SIZES.large,
                                 }}
-                                style={{ marginTop: 14 }}
+                                style={{ marginTop: SIZES.xMedium }}
                             />
                             {displayTabContent()}
                         </>
                     )}
                 </View>
-                <View style={{ height: 100 }}></View>
+                <View style={{ height: 94 * WIDTH.widthScale }}></View>
             </ImageBackground>
         </ScrollView>
     );
