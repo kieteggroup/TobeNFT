@@ -5,16 +5,18 @@ import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { Children, useState } from 'react';
 import { MainContainer, SelectDropdown } from '../../components';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
-
+import LanguageProvider, { useLanguage } from '../../contexts/LanguageContext';
 const currency = ['NOW', 'USDT', 'NOW (EARING)'];
 const Swap = ({ navigation }) => {
+    const { t } = useLanguage();
+
     const [selectCurrency, setSelectCurrency] = useState('Select a currency');
     const [isSelect, setIsSelect] = useState(false);
     return (
         <MainContainer borderBackground>
             <View style={styles.wrapper}>
-                <Text style={styles.title}>Swap</Text>
-                <Text style={styles.subtitle}>Trade tokens in an instant</Text>
+                <Text style={styles.title}>{t('bottomTabSwap')}</Text>
+                <Text style={styles.subtitle}>{t('subTitleSwap')}</Text>
 
                 <SelectDropdown data={currency} />
 
@@ -22,7 +24,7 @@ const Swap = ({ navigation }) => {
                 <SelectDropdown data={currency} />
 
                 <ButtonCustom
-                    text="Swap"
+                    text={t('bottomTabSwap')}
                     containerStyle={{ marginTop: 27 * WIDTH.widthScale }}
                     buttonStyle={{ height: 39 * WIDTH.widthScale, width: 176 * WIDTH.widthScale }}
                     onPress={() => navigation.navigate('SwapDetail')}
@@ -34,7 +36,7 @@ const Swap = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        paddingHorizontal : SIZES.large,
+        paddingHorizontal: SIZES.large,
         paddingBottom: 30,
         width: WIDTH.width100,
     },
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
         marginBottom: SIZES.xxLarge,
     },
     img: {
-        marginVertical:  SIZES.xSmall,
+        marginVertical: SIZES.xSmall,
         alignSelf: 'center',
         width: 37.37,
         height: 37.37,

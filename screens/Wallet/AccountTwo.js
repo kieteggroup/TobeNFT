@@ -5,15 +5,19 @@ import { MainContainer, Table } from '../../components';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { IconDropDown } from '../../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const AccountTwo = ({ navigation }) => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer leftIcon={images.logongang} noBackgroundFooter>
             <View style={styles.wrapper}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={icons.back} style={{ marginTop: 10 }} />
+                <Image source={icons.back} style={{ padding: 10 * WIDTH.widthScale,marginTop: 10 * WIDTH.widthScale }} />
+
                 </TouchableOpacity>
-                <Text style={styles.title}>Account</Text>
+                <Text style={styles.title}>{t('titleAccount')}</Text>
                 <View style={styles.content}>
                     {/* totalCoins */}
                     <View style={styles.totalCoins}>
@@ -27,7 +31,7 @@ const AccountTwo = ({ navigation }) => {
                                 locations={[0.3392, 0.9986]}
                                 style={styles.coinFooter}
                             >
-                                <Text style={styles.text}>Total free earning coins</Text>
+                                <Text style={styles.text}>{t('totalFreeCoins')}</Text>
                             </LinearGradient>
                         </View>
                         <View style={styles.coinBox}>
@@ -40,7 +44,7 @@ const AccountTwo = ({ navigation }) => {
                                 locations={[0.3392, 0.9986]}
                                 style={styles.coinFooter}
                             >
-                                <Text style={styles.text}>Total profit and commission coins</Text>
+                                <Text style={styles.text}>{t('totalProfitAndCommission')}</Text>
                             </LinearGradient>
                         </View>
                     </View>
@@ -64,7 +68,7 @@ const AccountTwo = ({ navigation }) => {
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </LinearGradient>
-                                <Text style={styles.text}>System commission</Text>
+                                <Text style={styles.text}>{t('systemCommission')}</Text>
                             </View>
 
                             <View style={styles.profitInfo}>
@@ -77,7 +81,7 @@ const AccountTwo = ({ navigation }) => {
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </LinearGradient>
-                                <Text style={styles.text}>Net profit</Text>
+                                <Text style={styles.text}>{t('netProfit')}</Text>
                             </View>
 
                             <View style={styles.profitInfo}>
@@ -90,7 +94,7 @@ const AccountTwo = ({ navigation }) => {
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </LinearGradient>
-                                <Text style={styles.text}>Personal sales</Text>
+                                <Text style={styles.text}>{t('personalSales')}</Text>
                             </View>
 
                             <View style={styles.profitInfo}>
@@ -103,7 +107,7 @@ const AccountTwo = ({ navigation }) => {
                                 >
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </LinearGradient>
-                                <Text style={styles.text}>System sales</Text>
+                                <Text style={styles.text}>{t('systemSales')}</Text>
                             </View>
 
                             <View style={styles.line1}></View>
@@ -125,7 +129,7 @@ const AccountTwo = ({ navigation }) => {
                                 style={styles.totalProfit}
                             >
                                 <View style={styles.total}>
-                                    <Text style={styles.text}>System sales</Text>
+                                    <Text style={styles.text}>{t('totalProfit')}</Text>
                                     <Text style={styles.coin}>1 986 086.06</Text>
                                 </View>
                                 <Image
@@ -138,7 +142,7 @@ const AccountTwo = ({ navigation }) => {
 
                     <View style={styles.totalTable}>
                         <View style={styles.totalRow}>
-                            <Text style={styles.text}>Total member</Text>
+                            <Text style={styles.text}>{t('totalNumber')}</Text>
                             <Text style={styles.coin}>12 578 688</Text>
                         </View>
                         <LinearGradient
@@ -148,11 +152,11 @@ const AccountTwo = ({ navigation }) => {
                             locations={[0.3392, 0.6809]}
                             style={{ ...styles.totalRow, height: 40.88 * WIDTH.widthScale }}
                         >
-                            <Text style={styles.text}>Total locations purchased</Text>
+                            <Text style={styles.text}>{t('totalPurchased')}</Text>
                             <Text style={styles.coin}>436 785</Text>
                         </LinearGradient>
                         <View style={styles.totalRow}>
-                            <Text style={styles.text}>Total NFT card</Text>
+                            <Text style={styles.text}>{t('totalCard')}</Text>
                             <Text style={styles.coin}>12</Text>
                         </View>
                         <LinearGradient
@@ -162,11 +166,11 @@ const AccountTwo = ({ navigation }) => {
                             locations={[0.3392, 0.6809]}
                             style={{ ...styles.totalRow, height: 40.88 * WIDTH.widthScale }}
                         >
-                            <Text style={styles.text}>Total Virtual Machine</Text>
+                            <Text style={styles.text}>{t('totalVirtualMachine')}</Text>
                             <Text style={styles.coin}>97</Text>
                         </LinearGradient>
                         <View style={styles.totalRow}>
-                            <Text style={styles.text}>Total locations earned</Text>
+                            <Text style={styles.text}>{t('totalEarned')}</Text>
                             <Text style={styles.coin}>865</Text>
                         </View>
                     </View>
@@ -174,10 +178,8 @@ const AccountTwo = ({ navigation }) => {
                     {/* History Commission */}
                     <View style={{ width: WIDTH.width100 }}>
                         <Table
-                            heading="History Commission"
-                            rightIcon={
-                                <IconDropDown height="15" width="15" style={{ transform: [{ rotate: '-90deg' }] }} />
-                            }
+                            heading={t('titleHistoryCommission')}
+                            rightIcon={<IconDropDown style={styles.iconDown} />}
                         />
                     </View>
                 </View>
@@ -324,6 +326,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 18,
         height: 35,
+    },
+    iconDown: {
+        transform: [{ rotate: '-90deg' }],
+        height: 15,
+        width: 15,
     },
 });
 useMultiplyWidthScale(styles);

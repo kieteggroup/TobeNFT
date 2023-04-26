@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const dataNFT = [
     {
@@ -30,15 +31,15 @@ const dataNFT = [
 ];
 const Marketplace = () => {
     const navigation = useNavigation();
-
+    const { t } = useLanguage();
     return (
         <View style={styles.wrapper}>
             {/* Title */}
             <View style={styles.contentTitle}>
                 <View style={{ height: 52 * WIDTH.widthScale, marginTop: 23 * WIDTH.widthScale }}>
-                    <Text style={styles.title}>NFT MARKETPLACE</Text>
+                    <Text style={styles.title}>{t('titleNFTMarketplace')}</Text>
                 </View>
-                <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
+                <Text style={styles.subtitle}>{t('nftDescription')}</Text>
             </View>
             {/* Search */}
             <LinearGradient
@@ -48,12 +49,12 @@ const Marketplace = () => {
                 locations={[0.085, 1]}
                 style={styles.formSearch}
             >
-                <InputCustom style={styles.input} placeholder="Enter keyword" radiusMax />
-                <InputCustom style={styles.input} placeholder="Nation" radiusMax />
-                <InputCustom style={styles.input} placeholder="Province" radiusMax />
-                <InputCustom style={styles.input} placeholder="Category" radiusMax />
+                <InputCustom style={styles.input} placeholder={t('placeholderEnterKeyword')} radiusMax />
+                <InputCustom style={styles.input} placeholder={t('placeholderNation')} radiusMax />
+                <InputCustom style={styles.input} placeholder={t('placeholderProvince')} radiusMax />
+                <InputCustom style={styles.input} placeholder={t('placeholderCategory')} radiusMax />
                 <ButtonCustom
-                    text="Search"
+                    text={t('search')}
                     leftIcon={<Image source={icons.search} />}
                     buttonStyle={styles.buttonSearch}
                     buttonStyleText={{ fontFamily: FONTS.regular }}
@@ -74,7 +75,7 @@ const Marketplace = () => {
                         <View style={styles.left}>
                             <Image style={styles.img} source={images.locationnho} />
                             <View style={styles.restaurant}>
-                                <Text style={styles.textRestaurant}>Restaurant</Text>
+                                <Text style={styles.textRestaurant}>{t('restaurant')}</Text>
                                 <View style={styles.star}>
                                     <Image source={icons.saovang} />
                                     <Image source={icons.saovang} />
@@ -99,7 +100,7 @@ const Marketplace = () => {
                                 ${item.price}
                             </Text>
                             <ButtonCustom
-                                text="Buy now"
+                                text={t('buyNow')}
                                 buttonStyle={styles.button}
                                 buttonStyleText={{
                                     ...TEXTS.textBold,
@@ -141,6 +142,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         ...TEXTS.textBold,
         fontSize: SIZES.xLarge,
+        textTransform: 'uppercase',
     },
     subtitle: {
         ...TEXTS.textMedium,

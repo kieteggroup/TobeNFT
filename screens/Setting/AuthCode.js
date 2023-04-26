@@ -5,10 +5,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { BORDER, SIZES, TEXTS, WIDTH, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const AuthCode = ({ navigation }) => {
+    const { t } = useLanguage();
+
     return (
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
@@ -22,9 +25,9 @@ const AuthCode = ({ navigation }) => {
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>
                     <IconX />
                 </TouchableOpacity>
-                <Text style={styles.text}>Authenticator Code</Text>
+                <Text style={styles.text}>{t('authCode')}</Text>
                 <InputCustom style={styles.input} radiusMax />
-                <ButtonCustom text="Enabled 2FA" buttonStyle={styles.button} />
+                <ButtonCustom  text={t('enabled') + ' 2FA'} buttonStyle={styles.button} />
             </LinearGradient>
         </ImageBackground>
     );

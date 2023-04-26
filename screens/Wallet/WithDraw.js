@@ -5,32 +5,31 @@ import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const WithDraw = () => {
     const [is2FA, setIs2FA] = useState(false);
+
+    const { t } = useLanguage();
     return (
         <MainContainer>
             <View style={styles.wrapper}>
-                <Text style={styles.title}>Withdraw</Text>
+                <Text style={styles.title}>{t('titleWithdraw')}</Text>
                 <View style={styles.form}>
-                    <InputCustom radiusMax style={styles.input} placeholder="Wallet USDT.BEP20 - Note *" />
+                    <InputCustom radiusMax style={styles.input} placeholder={t('noteWallet')} />
                     <InputCustom radiusMax style={styles.input} placeholder="USDT" />
-                    <InputCustom radiusMax style={styles.input} placeholder="Amount of USDT.BEP20" />
+                    <InputCustom radiusMax style={styles.input} placeholder={t('placeholderAmount')} />
                     <View style={styles.formNote}>
                         <Text style={styles.noteText}>
-                            Max available:<Text style={styles.usdt}> 0 USDT</Text>
+                            {t('maxAvailable')}:<Text style={styles.usdt}> 0 USDT</Text>
                         </Text>
-                        <Text style={styles.noteText}>
-                            The overhead fees are not fixed, subject to change depending on the state of the blockchain
-                            networks
-                        </Text>
-                        <Text style={styles.noteText}>Estimated completion time: 2 minutes</Text>
+                        <Text style={styles.noteText}>{t('depositWithdraw')}</Text>
                     </View>
                     {is2FA ? (
                         <InputCustom radiusMax style={styles.input} placeholder="2FA" />
                     ) : (
                         <ButtonCustom
-                            text="Enabled 2FA"
+                            text={t('enabled') + ' 2FA'}
                             buttonStyle={styles.button2FA}
                             onPress={() => setIs2FA(!is2FA)}
                             buttonStyleText={{ fontSize: 11 * WIDTH.widthScale }}
@@ -38,7 +37,7 @@ const WithDraw = () => {
                     )}
 
                     <ButtonCustom
-                        text="Withdraw"
+                        text={t('titleWithdraw')}
                         backgroundLinearGradient={!is2FA && ['#AAAAAA', '#A9A9A952']}
                         buttonStyle={styles.btnWithdraw}
                     />

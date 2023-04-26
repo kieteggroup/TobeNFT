@@ -9,10 +9,10 @@ import { AuthNavigator } from './navigations';
 import Welcome from './screens/Welcome';
 import * as SplashScreen from 'expo-splash-screen';
 import { ScreenBottomTab } from './components';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 const Stack = createNativeStackNavigator();
 SplashScreen.preventAutoHideAsync();
-import './languages/i18n';
 
 function App() {
     const isDarkMode = useColorScheme() === 'light';
@@ -39,21 +39,23 @@ function App() {
                 backgroundColor="transparent"
                 translucent
             />
-            <NavigationContainer>
-                <Stack.Navigator
-                    initialRouteName="Welcome"
-                    screenOptions={{
-                        contentStyle: {
-                            backgroundColor: '#08021C',
-                        },
-                        headerShown: false,
-                    }}
-                >
-                    <Stack.Screen name="Welcome" component={Welcome} />
-                    <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
-                    <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
-                </Stack.Navigator>
-            </NavigationContainer>
+            <LanguageProvider>
+                <NavigationContainer>
+                    <Stack.Navigator
+                        initialRouteName="Welcome"
+                        screenOptions={{
+                            contentStyle: {
+                                backgroundColor: '#08021C',
+                            },
+                            headerShown: false,
+                        }}
+                    >
+                        <Stack.Screen name="Welcome" component={Welcome} />
+                        <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
+                        <Stack.Screen name="ScreenBottomTab" component={ScreenBottomTab} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </LanguageProvider>
         </SafeAreaView>
     );
 }

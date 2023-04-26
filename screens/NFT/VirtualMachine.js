@@ -1,47 +1,49 @@
-import { FlatList, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { BORDER, COLORS, FONTS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import Table from '../../components/Table';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const dataVirtual = [
     {
-        name: 'Virtual Silver',
+        name: 'virtualSilver',
         price: 300,
-        description: '36 months - Growth: 5%',
+        growth: '5%',
         img: images.virtualSilver,
     },
     {
-        name: 'Virtual Gold',
+        name: 'virtualGold',
         price: 500,
-        description: '36 months - Growth: 10%',
+        growth: '10%',
         img: images.virtualGold,
     },
     {
-        name: 'Virtual Platinum',
+        name: 'virtualPlatinum',
         price: 700,
-        description: '36 months - Growth: 15%',
+        growth: '15%',
         img: images.virtualPlatinum,
     },
     {
-        name: 'Virtual VIP',
+        name: 'virtualVIP',
         price: 1000,
-        description: '36 months - Growth: 20%',
+        growth: '20%',
         img: images.virtualVip,
     },
 ];
 
 const VirtualMachine = () => {
+    const { t } = useLanguage();
     return (
         <View style={styles.wrapper}>
             {/* Title */}
             <View style={{ paddingHorizontal: SIZES.large, alignItems: 'center' }}>
                 <View style={styles.titleContent}>
-                    <Text style={styles.title}>VIRTUAL MACHINE</Text>
+                    <Text style={styles.title}>{t('titleNFTVirtualMachine')}</Text>
                 </View>
-                <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
+                <Text style={styles.subtitle}>{t('nftDescription')}</Text>
             </View>
             {/* List Virtual */}
 
@@ -50,13 +52,15 @@ const VirtualMachine = () => {
                     <View key={index} style={styles.virtualItem}>
                         <Image source={item.img} style={styles.img} />
                         <View style={styles.info}>
-                            <Text style={styles.name}>{item.name}</Text>
+                            <Text style={styles.name}>{t(item.name)}</Text>
                             <Text style={styles.price}>${item.price}</Text>
-                            <Text style={styles.description}>{item.description}</Text>
+                            <Text style={styles.description}>
+                                36 {t('months')} - {t('growth')}: {item.growth}
+                            </Text>
                             <ButtonCustom
-                                text="BUY NOW"
+                                text={t('buyNow')}
                                 buttonStyle={styles.btnNow}
-                                buttonStyleText={{ fontFamily: FONTS.bold }}
+                                buttonStyleText={{ fontFamily: FONTS.bold, textTransform: 'uppercase' }}
                                 backgroundLinearGradient={['#780D69', '#EC0174']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
         ...TEXTS.textBold,
         fontSize: SIZES.xLarge,
         alignItems: 'center',
+        textTransform: 'uppercase',
     },
     subtitle: {
         ...TEXTS.textRegular,

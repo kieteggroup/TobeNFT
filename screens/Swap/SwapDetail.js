@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { BORDER, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import MainContainer from '../../components/MainContainer';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const SwapDetail = () => {
+    const { t } = useLanguage();
     return (
         <MainContainer noBackgroundFooter>
             <View style={styles.wrapper}>
@@ -35,22 +37,22 @@ const SwapDetail = () => {
                         <Text style={(TEXTS.textRegular, styles.subHeading)} numberOfLines={1}>
                             Tân Bình 20 Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam
                         </Text>
-                        <Text style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>Owner: Kimanhhp09</Text>
+                        <Text style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>{t('owner')}: Kimanhhp09</Text>
 
-                        <Text style={[TEXTS.textBold, styles.name]}>ABOUT THIS LISTING</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>{t('aboutListing')}</Text>
                         <Text style={[TEXTS.textRegular, styles.subHeading]}>
                             A gay & straight crowd camps out at this bi-level bar for piano sing-alongs, drag revues &
                             comedy.
                         </Text>
 
-                        <Text style={[TEXTS.textBold, styles.name]}>NFT Machine</Text>
-                        <Text style={[TEXTS.textRegular, styles.subHeading]}>{`(No NFT Machine)`}</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>{t('nftMachine')}</Text>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]}>({t('noNFTMachine')})</Text>
 
                         <View style={styles.features}>
-                            <Text style={[TEXTS.textBold, styles.name]}>Features</Text>
+                            <Text style={[TEXTS.textBold, styles.name]}>{t('placeholderFeatures')}</Text>
                             <View style={styles.tagContent}>
-                                <Text style={[TEXTS.textRegular, styles.tagText]}>Take out</Text>
-                                <Text style={[TEXTS.textRegular, styles.tagText]}>Delivery</Text>
+                                <Text style={[TEXTS.textRegular, styles.tagText]}>WiFi</Text>
+                                <Text style={[TEXTS.textRegular, styles.tagText]}>{t('delivery')}</Text>
                             </View>
                         </View>
                     </View>
@@ -64,17 +66,17 @@ const SwapDetail = () => {
                     end={{ x: 1, y: 1 }}
                     style={styles.mapContainer}
                 >
-                    <Image style={{ height: WIDTH.width100 }} source={images.map} />
+                    <Image style={{ height: WIDTH.width100 ,width:161 *WIDTH.widthScale }} source={images.map} />
                     <View style={{ width: '50%' }}>
                         <View style={{ padding: SIZES.xSmall }}>
                             <Text style={styles.mapTitle}>LOTTE Mart Tân Bình</Text>
                             <Text style={{ ...TEXTS.textRegular, ...styles.subHeading, flexWrap: 'wrap' }}>
                                 Tân Bình 20 Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh, Việt Nam
                             </Text>
-                            <Text style={[TEXTS.textRegular]}>null</Text>
+                            <Text style={[TEXTS.textRegular]}>{t('null')}</Text>
                         </View>
                         <View style={styles.footer}>
-                            <Text style={styles.footerTitle}>Opening Hours</Text>
+                            <Text style={styles.footerTitle}>{t('openHours')}</Text>
                         </View>
                     </View>
                 </LinearGradient>
@@ -88,22 +90,26 @@ const SwapDetail = () => {
                     style={styles.review}
                 >
                     <View style={styles.reviewHeader}>
-                        <Text style={[TEXTS.textBold, styles.name]}>Review</Text>
-                        <Text style={[TEXTS.textRegular, styles.subHeading]}>There are no reviews yet</Text>
+                        <Text style={[TEXTS.textBold, styles.name]}>{t('review')}</Text>
+                        <Text style={[TEXTS.textRegular, styles.subHeading]}>{t('noReview')}</Text>
                     </View>
                     <View style={styles.reviewBody}>
-                        <Text style={[styles.reviewTitle]}>Review your experience</Text>
+                        <Text style={[styles.reviewTitle]}>{t('yourReview')}</Text>
                         <InputCustom
                             style={styles.input}
                             radiusMax
-                            placeholder="Beautiful place!"
+                            placeholder={t('placeBeautiful')}
                             placeholderColor="#536981"
                         />
                         <InputCustom
-                            style={{ ...styles.input, height: 83, borderRadius: 13 }}
+                            style={{
+                                ...styles.input,
+                                height: 83 * WIDTH.widthScale,
+                                borderRadius: 13 * WIDTH.widthScale,
+                            }}
                             multiline
                             numberOfLines={4}
-                            placeholder="Describe your experience"
+                            placeholder={t('experience')}
                             placeholderColor="#536981"
                         />
                         <View style={styles.start}>
@@ -114,9 +120,10 @@ const SwapDetail = () => {
                             <Image style={styles.starImg} source={icons.saotrang} />
                         </View>
                         <ButtonCustom
-                            text="SEND REVIEW"
-                            containerStyle={{ marginTop: 5 }}
+                            text={t('sendReview')}
+                            containerStyle={{ marginTop: 5 * WIDTH.widthScale }}
                             buttonStyle={{ width: 'auto' }}
+                            buttonStyleText={{ textTransform: 'uppercase' }}
                         />
                     </View>
                 </LinearGradient>

@@ -4,25 +4,31 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const HistoryCommissionMachine = () => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                 start={{ x: 0, y: 0 }}
+                start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
                 angle={295.36}
                 style={styles.wrapper}
             >
-                <Text style={styles.title}>History Comission Machine</Text>
+                <Text style={styles.title}>
+                    {t('history')} {t('commissionMachine')}
+                </Text>
+
                 <View style={styles.thead}>
                     <Text style={styles.text}>#</Text>
-                    <Text style={styles.text}>Price</Text>
-                    <Text style={styles.text}>Speed</Text>
-                    <Text style={styles.text}>Duration</Text>
-                    <Text style={styles.text}>Time</Text>
+                    <Text style={styles.text}>{t('price')}</Text>
+                    <Text style={styles.text}>{t('speed')}</Text>
+                    <Text style={styles.text}>{t('duration')}</Text>
+                    <Text style={styles.text}>{t('time')}</Text>
                 </View>
                 <View style={styles.row}></View>
             </LinearGradient>
@@ -34,26 +40,25 @@ const styles = StyleSheet.create({
         ...BORDER,
         borderRadius: 18,
         width: WIDTH.width100,
-        height: 294 ,
+        height: 294,
         alignSelf: 'center',
         marginTop: 17.66,
-        paddingHorizontal : SIZES.large,
-        overflow:"hidden"
+        paddingHorizontal: SIZES.large,
+        overflow: 'hidden',
     },
 
     title: {
         ...TEXTS.textBold,
         fontSize: SIZES.medium,
-        marginTop:  SIZES.xSmall
+        marginTop: SIZES.xSmall,
     },
 
     thead: {
         flexDirection: 'row',
         // columnGap: 40,
-        height: 23 ,
-        marginTop : SIZES.large,
-        justifyContent:'space-evenly',
-      
+        height: 23,
+        marginTop: SIZES.large,
+        justifyContent: 'space-evenly',
     },
     text: {
         ...TEXTS.textBold,

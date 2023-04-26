@@ -6,30 +6,40 @@ import { ButtonCustom } from '../../CustomComponent';
 import Table from '../../components/Table';
 import HomeNFT from './HomeNFT';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { IconDropDown } from '../../assets/imageSvg/ImageSVG';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const dataCard = [
     {
-        name: 'Classic NFT Card',
+        typeCard: 'classic',
+        name: 'classicCard',
         card: images.cardclassic,
+        price: 500,
+        monthly: 11,
     },
     {
-        name: 'Gold NFT Card',
+        typeCard: 'gol',
+        name: 'golCard',
         card: images.cardgold,
+        price: 3000,
+        monthly: 14,
     },
 ];
 const Card = () => {
+    const { t } = useLanguage();
+
     return (
         <View style={styles.wrapper}>
             {/* Title */}
             <View style={{ paddingHorizontal: SIZES.large, alignItems: 'center' }}>
                 <View style={styles.titleContent}>
-                    <Text style={[TEXTS.textBold, styles.title]}>NFT CARD</Text>
+                    <Text style={styles.title}>{t('titleNFTCard')}</Text>
                 </View>
-                <Text style={styles.subtitle}>Earn your NFT items and trade them on the marketplace to make money</Text>
+                <Text style={styles.subtitle}>{t('nftDescription')}</Text>
             </View>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                 start={{ x: 0, y: 0 }}
+                start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
                 angle={295.36}
@@ -46,18 +56,38 @@ const Card = () => {
                     renderItem={({ item }) => (
                         <View style={styles.card} key={item.name}>
                             <Image source={item.card} style={styles.img} />
+
+                            <View style={styles.infoCard}>
+                                <View style={{ rowGap: 3 * WIDTH.widthScale }}>
+                                    <Text style={styles.typeCard}>{t(item.typeCard)}</Text>
+                                    <Text style={styles.typeCard}>${item.price}</Text>
+                                </View>
+                                <View style={{ rowGap: 7 * WIDTH.widthScale }}>
+                                    <Text style={styles.monthly}>
+                                        <IconDropDown style={styles.iconDown} />
+                                        {'  '}
+                                        {item.monthly}% / {t('monthly')}
+                                    </Text>
+                                    <Text style={styles.monthly}>
+                                        <IconDropDown style={styles.iconDown} />
+                                        {'  '}
+                                        24 {t('months')}
+                                    </Text>
+                                </View>
+                            </View>
+
                             <View style={styles.buttonPosition}>
                                 <ButtonCustom
-                                    text="BUY NOW"
+                                    text={t('buyNow')}
                                     buttonStyle={styles.button}
-                                    buttonStyleText={{ fontFamily: FONTS.bold }}
+                                    buttonStyleText={{ fontFamily: FONTS.bold, textTransform: 'uppercase' }}
                                     backgroundLinearGradient={['#780D69', '#EC0174']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
                                     locations={[0.25, 0.75]}
                                 />
                             </View>
-                            <Text style={styles.cardText}>{item.name}</Text>
+                            <Text style={styles.cardText}>{t(item.name)}</Text>
                             <LinearGradient
                                 colors={['#502D9F', '#E30370']}
                                 start={{ x: 0, y: 0 }}
@@ -71,7 +101,7 @@ const Card = () => {
             </LinearGradient>
 
             <View style={styles.history}>
-                <Table heading="History Commission" />
+                <Table heading={t('titleHistoryCommission')} />
             </View>
         </View>
     );
@@ -87,8 +117,10 @@ const styles = StyleSheet.create({
         marginTop: 23,
     },
     title: {
+        ...TEXTS.textBold,
         fontSize: SIZES.xLarge,
         alignItems: 'center',
+        textTransform: 'uppercase',
     },
     subtitle: {
         ...TEXTS.textRegular,
@@ -119,11 +151,34 @@ const styles = StyleSheet.create({
         width: 308.3,
         height: 194.23,
     },
+    infoCard: {
+        position: 'absolute',
+        top: 19,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        right: 17.47,
+        left: 30,
+    },
+    typeCard: {
+        ...TEXTS.textBold,
+        fontSize: SIZES.large,
+    },
+    monthly: {
+        ...TEXTS.textRegular,
+        fontSize: SIZES.small,
+        alignItems: 'center',
+    },
+    iconDown: {
+        transform: [{ rotate: '-90deg' }],
+        width: 6,
+        height: 6,
+    },
     buttonPosition: {
         position: 'absolute',
         right: SIZES.medium,
         top: 129,
     },
+
     button: {
         height: 27.75,
         width: 105.85,

@@ -6,13 +6,16 @@ import { QrCode } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom } from '../../CustomComponent';
 import { MainContainer } from '../../components';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Deposit = () => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer>
             <View style={styles.wrapper}>
                 <View style={styles.card}>
-                    <Pressable style={styles.itemCard}>
+                    <View style={styles.itemCard}>
                         <LinearGradient
                             colors={['#F4007499', COLORS.bodyTransp]}
                             start={{ x: 0, y: 0 }}
@@ -23,7 +26,7 @@ const Deposit = () => {
                             <Text style={styles.token}>NOW Token</Text>
                         </LinearGradient>
                         <Image source={images.bnb} style={styles.itemCardImg} />
-                    </Pressable>
+                    </View>
                     <Pressable style={styles.itemCard}>
                         <LinearGradient
                             colors={['#FFFFFF1A', COLORS.bodyTransp]}
@@ -39,8 +42,8 @@ const Deposit = () => {
                 </View>
                 {/* Content QRCode */}
                 <View style={styles.content}>
-                    <Text style={styles.title}>Deposit BNB WALLET</Text>
-                    <Text style={styles.subTitle}>Please send USDT.BEP20</Text>
+                    <Text style={styles.title}>{t('titleDeposit')}</Text>
+                    <Text style={styles.subTitle}>{t('subTitleDeposit')}</Text>
                     <View style={styles.qrCodeContainer}>
                         <View style={styles.qrCode}>
                             <QrCode />
@@ -49,19 +52,16 @@ const Deposit = () => {
                         <Text style={styles.code}>bnb136ns6lfw4zs5hg4n85vdth</Text>
                     </View>
                     <View style={styles.qrCodeBtn}>
-                        <ButtonCustom text="Copy Address" buttonStyle={styles.buttonQR} />
+                        <ButtonCustom text={t('btnCopyAddress')} buttonStyle={styles.buttonQR} />
                         <ButtonCustom
-                            text="Save OR Code"
+                            text={t('btnSaveQR')}
                             backgroundColorBtn="#ffffff33"
                             buttonStyle={styles.buttonQR}
                         />
                     </View>
                 </View>
 
-                <Text style={styles.description}>
-                    Your transaction will be completed once it is confirmed by the blockchain network.{'\n'}
-                    Confirmation time can vary and depends on the fee transaction.
-                </Text>
+                <Text style={styles.description}>{t('depositDescription')}</Text>
             </View>
         </MainContainer>
     );

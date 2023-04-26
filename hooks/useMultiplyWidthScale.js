@@ -1,6 +1,6 @@
 import { SIZES, WIDTH } from '../constants';
 
-function useMultiplyWidthScale(style) {
+function useMultiplyWidthScale(style={}) {
     Object.keys(style).forEach((key) => {
         if (typeof style[key] === 'object') {
             useMultiplyWidthScale(style[key]);

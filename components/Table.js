@@ -4,8 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { BORDER, FONTS, SIZES, TEXTS, WIDTH } from '../constants';
 import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Table = ({ heading, leftIcon, rightIcon }) => {
+    const { t } = useLanguage();
+
     return (
         <View style={styles.table}>
             <View style={styles.header}>
@@ -23,9 +26,9 @@ const Table = ({ heading, leftIcon, rightIcon }) => {
                 <Text numberOfLines={1} style={styles.theadText}>
                     #
                 </Text>
-                <Text style={styles.theadText}> Username</Text>
+                <Text style={styles.theadText}>{t('placeholderUsername')}</Text>
                 <Text numberOfLines={1} style={styles.theadText}>
-                    Description ...
+                {t('description')} ...
                 </Text>
             </LinearGradient>
             <FlatList

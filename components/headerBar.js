@@ -20,7 +20,7 @@ const HeaderScreenLeft = ({ src, goBack, goHome }) => {
     return (
         <TouchableOpacity onPress={() => handelNavigator()}>
             {goHome && <LogoHorizontal />}
-            {goBack && <Image source={icons.back} />}
+            {goBack && <Image source={icons.back} style={styles.back}/>}
         </TouchableOpacity>
     );
 };
@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
         marginLeft: 7,
         fontSize: SIZES.xMedium,
     },
+    back:{
+        width:26,
+        height:26,
+    }
 });
 
 useMultiplyWidthScale(styles);

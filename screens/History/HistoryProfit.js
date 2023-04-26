@@ -4,8 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const HistoryProfit = () => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer>
             <LinearGradient
@@ -16,12 +19,12 @@ const HistoryProfit = () => {
                 angle={295.36}
                 style={styles.wrapper}
             >
-                <Text style={styles.title}>History Profit</Text>
+                <Text style={styles.title}>{t('titleHistoryProfit')}</Text>
                 <View style={styles.thead}>
                     <Text style={styles.text}>#</Text>
-                    <Text style={styles.text}>Name</Text>
-                    <Text style={styles.text}>Time</Text>
-                    <Text style={styles.text}> Amount</Text>
+                    <Text style={styles.text}>{t('name')}</Text>
+                    <Text style={styles.text}>{t('time')}</Text>
+                    <Text style={styles.text}>{t('amount')}</Text>
                 </View>
                 <View style={styles.row}></View>
             </LinearGradient>

@@ -3,34 +3,37 @@ import { View, ScrollView, Image, Text, FlatList, StyleSheet } from 'react-nativ
 import { images, icons, TEXTS, SIZES, WIDTH, FONTS, BORDER } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
 import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 const dataNFT = [
     {
-        name: 'Virtual Silver',
+        name: 'virtualSilver',
         price: 300,
-        description: '36 months - Growth: 5%',
+        growth: '5%',
         img: images.virtualSilver,
     },
     {
-        name: 'Virtual Gold',
+        name: 'virtualGold',
         price: 500,
-        description: '36 months - Growth: 10%',
+        growth: '10%',
         img: images.virtualGold,
     },
     {
-        name: 'Virtual Platinum',
+        name: 'virtualPlatinum',
         price: 700,
-        description: '36 months - Growth: 15%',
+        growth: '15%',
         img: images.virtualPlatinum,
     },
     {
-        name: 'Virtual VIP',
+        name: 'virtualVIP',
         price: 1000,
-        description: '36 months - Growth: 20%',
+        growth: '20%',
         img: images.virtualVip,
     },
 ];
 const MyVirtualMachine = () => {
+    const { t } = useLanguage();
+
     return (
         <>
             {dataNFT.length > 0 ? (
@@ -45,17 +48,20 @@ const MyVirtualMachine = () => {
                         <View style={styles.virtualItem}>
                             <Image source={item.img} style={styles.img} />
                             <View style={styles.info}>
-                                <Text style={styles.name}>{item.name}</Text>
+                                <Text style={styles.name}>{t(item.name)}</Text>
                                 <Text style={styles.price}>${item.price}</Text>
-                                <Text style={styles.description}>{item.description}</Text>
+                                <Text style={styles.description}>
+                                    36 {t('months')} - {t('growth')}: {item.growth}
+                                </Text>
+
                                 <ButtonCustom
-                                    text="BUY NOW"
+                                    text={t('buyNow')}
                                     buttonStyle={{
                                         height: 30 * WIDTH.widthScale,
                                         width: 110 * WIDTH.widthScale,
                                         borderWidth: 0,
                                     }}
-                                    buttonStyleText={{ fontFamily: FONTS.bold }}
+                                    buttonStyleText={{ fontFamily: FONTS.bold, textTransform: 'uppercase' }}
                                     backgroundLinearGradient={['#780D69', '#EC0174']}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
@@ -68,7 +74,7 @@ const MyVirtualMachine = () => {
             ) : (
                 <View style={{ alignItems: 'center' }}>
                     <Image source={images.empty_data} style={styles.empty_data} />
-                    <Text style={styles.title}>(Empty Data)</Text>
+                    <Text style={styles.title}>({t('empty')})</Text>
                 </View>
             )}
         </>
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
         ...TEXTS.textBold,
         fontSize: SIZES.large,
     },
-    image: {
+    img: {
         width: 85.51,
         height: 154.66,
     },

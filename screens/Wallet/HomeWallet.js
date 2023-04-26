@@ -7,26 +7,28 @@ import { IconDeposit, IconTransfer, IconWithdraw, LogoOnly, MultiHexagon } from 
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const listDataPost = [
     {
-        name: 'NFT Virtual Machine',
-        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        name: 'titleNFTVirtualMachine',
+        description: 'nftDescription',
         img: images.to_earn02,
     },
     {
-        name: 'NFT Card',
-        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        name: 'titleNFTCard',
+        description: 'nftDescription',
         img: images.to_earn01,
     },
     {
-        name: 'NFT Card',
-        description: 'Earn your NFT items and trade them on the marketplace to make money',
+        name: 'titleNFTCard',
+        description: 'nftDescription',
         img: images.to_earn01,
     },
 ];
 
 const HomeWallet = ({ navigation }) => {
+    const { t } = useLanguage();
     return (
         <MainContainer>
             <View style={styles.wrapper}>
@@ -37,10 +39,10 @@ const HomeWallet = ({ navigation }) => {
                             <LogoOnly />
                             <Text style={{ ...TEXTS.textBold, fontSize: SIZES.xxLarge }}>1 986 086.06</Text>
                             <Text style={{ ...TEXTS.textRegular, fontSize: SIZES.small }}>
-                                Available ~ <Text style={{ ...TEXTS.textMedium }}>$6900</Text>
+                                {t('available')} ~ <Text style={{ ...TEXTS.textMedium }}>$6900</Text>
                             </Text>
                             <ButtonCustom
-                                text="Detail Balance"
+                                text={t('detailBalance')}
                                 backgroundColorBtn="#FFFFFF33"
                                 onPress={() => navigation.navigate('Account')}
                                 buttonStyle={styles.button}
@@ -66,19 +68,19 @@ const HomeWallet = ({ navigation }) => {
                             <LinearGradient colors={[COLORS.primary, '#7D0D6A']} style={styles.actionIcon}>
                                 <IconDeposit />
                             </LinearGradient>
-                            <Text style={styles.actionText}>Deposit</Text>
+                            <Text style={styles.actionText}>{t('titleActionDeposit')}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.action} onPress={() => navigation.navigate('WithDraw')}>
                             <LinearGradient colors={[COLORS.primary, '#7D0D6A']} style={styles.actionIcon}>
                                 <IconWithdraw />
                             </LinearGradient>
-                            <Text style={styles.actionText}>Withdraw</Text>
+                            <Text style={styles.actionText}>{t('titleWithdraw')}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.action} onPress={() => navigation.navigate('Transfer')}>
                             <LinearGradient colors={[COLORS.primary, '#7D0D6A']} style={styles.actionIcon}>
                                 <IconTransfer />
                             </LinearGradient>
-                            <Text style={styles.actionText}>Transfer</Text>
+                            <Text style={styles.actionText}>{t('titleTransfer')}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -87,13 +89,13 @@ const HomeWallet = ({ navigation }) => {
                     <Image source={images.Shutterstock} style={styles.img} />
                     <View style={{ padding: SIZES.medium, position: 'absolute' }}>
                         <Text style={{ ...TEXTS.textMedium, fontSize: SIZES.xLarge }}>
-                            Claim {'\n'}
+                            {t('claim')} {'\n'}
                             <Text style={{ ...TEXTS.textBold, fontSize: SIZES.xxLarge }}>500 token</Text> {'\n'}
-                            It’s free!
+                            {t('itFree')}
                         </Text>
 
                         <ButtonCustom
-                            text="Start Earning NOW"
+                            text={[t('btnEarningNow')]}
                             buttonStyle={styles.buttonStart}
                             onPress={() => navigation.navigate('EstateNFTs')}
                         />
@@ -101,11 +103,9 @@ const HomeWallet = ({ navigation }) => {
                 </View>
 
                 <View style={styles.share}>
-                    <Text style={{ ...TEXTS.textMedium, fontSize: SIZES.medium, flex: 1 }}>
-                        Share your link NOW and Let’s grow together!
-                    </Text>
+                    <Text style={{ ...TEXTS.textMedium, fontSize: SIZES.medium, flex: 1 }}>{t('shareLink')}</Text>
                     <ButtonCustom
-                        text="Get NOW"
+                        text={t('btnGetNow')}
                         onPress={() => navigation.navigate('ShareLink')}
                         backgroundLinearGradient={['#FFFFFF33', '#FFFFFF00']}
                         buttonStyle={{ ...styles.button, marginTop: 0, height: 30 * WIDTH.widthScale }}
@@ -133,9 +133,9 @@ const HomeWallet = ({ navigation }) => {
                 <View style={styles.marKetplace}>
                     <Image source={images.freepik} style={styles.img} />
                     <View style={{ padding: SIZES.medium, position: 'absolute', alignItems: 'center' }}>
-                        <Text style={{ ...TEXTS.textBold, fontSize: SIZES.large }}>NFT Marketplace</Text>
+                        <Text style={{ ...TEXTS.textBold, fontSize: SIZES.large }}>{t('titleNFTMarketplace')}</Text>
                         <ButtonCustom
-                            text="Go to Shop"
+                            text={t('gotoShop')}
                             onPress={() => navigation.navigate('NFT')}
                             backgroundColorBtn="#FFFFFF33"
                             buttonStyle={styles.buttonShop}
@@ -165,10 +165,10 @@ const HomeWallet = ({ navigation }) => {
                                 <Image source={item.img} style={{ ...styles.postImage }} />
                                 <View style={styles.postTextContent}>
                                     <Text style={styles.postTitle} numberOfLines={2}>
-                                        {item.name}
+                                        {t(item.name)}
                                     </Text>
                                     <Text style={styles.postText} numberOfLines={4}>
-                                        {item.description}
+                                        {t(item.description)}
                                     </Text>
                                 </View>
 
@@ -227,7 +227,9 @@ const styles = StyleSheet.create({
         marginTop: SIZES.xSmall,
     },
     buttonStart: {
-        width: 176,
+        minWidth: 176,
+        width:"auto",
+        paddingHorizontal: 15,
         height: 39,
         marginTop: SIZES.xSmall,
     },
@@ -263,7 +265,7 @@ const styles = StyleSheet.create({
     share: {
         marginTop: SIZES.xLarge,
         backgroundColor: '#08021C80',
-        height: 79,
+        minHeight: 79,
         width: 337,
         borderRadius: 11,
         flexDirection: 'row',

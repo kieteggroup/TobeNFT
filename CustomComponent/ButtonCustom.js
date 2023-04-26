@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         maxWidth: WIDTH.width100,
         flexDirection: 'row',
         overflow: 'hidden',
-        paddingHorizontal: SIZES.small,
+        paddingHorizontal: SIZES.xSmall,
     },
     buttonText: {
         ...TEXTS.textMedium,

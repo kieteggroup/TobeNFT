@@ -5,16 +5,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const listMenu = [
-    { name: 'Earning free', navigate: 'HistoryEarning' },
-    { name: 'Earning Card', navigate: 'HistoryProfit' },
-    { name: 'Commission referral', navigate: 'HistoryCommissionReferral' },
-    { name: 'Commission Location', navigate: 'HistoryCommissionLocation' },
-    { name: 'Commission Machine', navigate: 'HistoryCommissionMachine' },
+    { name: 'earningFree', navigate: 'HistoryEarning' },
+    { name: 'earningCard', navigate: 'HistoryProfit' },
+    { name: 'commissionReferral', navigate: 'HistoryCommissionReferral' },
+    { name: 'commissionLocation', navigate: 'HistoryCommissionLocation' },
+    { name: 'commissionMachine', navigate: 'HistoryCommissionMachine' },
 ];
 const MenuHistory = ({ navigation }) => {
-    const [selectHistory, setSelectHistory] = useState('Earning free');
+    const [selectHistory, setSelectHistory] = useState('earningFree');
+    const { t } = useLanguage();
 
     const handlerSelectMenu = (item) => {
         setSelectHistory(item.name);
@@ -33,7 +35,7 @@ const MenuHistory = ({ navigation }) => {
             >
                 {listMenu.map((item) => (
                     <TouchableOpacity style={styles.menu} onPress={() => handlerSelectMenu(item)}>
-                        <Text style={[styles.text, selectHistory === item.name && styles.check]}>{item.name}</Text>
+                        <Text style={[styles.text, selectHistory === item.name && styles.check]}>{t(item.name)}</Text>
                     </TouchableOpacity>
                 ))}
             </LinearGradient>

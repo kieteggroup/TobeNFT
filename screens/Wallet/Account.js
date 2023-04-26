@@ -4,15 +4,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MainContainer } from '../../components';
 import { COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Account = ({ navigation }) => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer leftIcon={images.logongang} noBackgroundFooter>
             <View style={styles.wrapper}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image source={icons.back} style={{ marginTop: 10 }} />
+                    <Image source={icons.back} style={{ padding: 10 * WIDTH.widthScale,marginTop: 10 * WIDTH.widthScale }} />
                 </TouchableOpacity>
-                <Text style={styles.title}>Account</Text>
+                <Text style={styles.title}>{t('titleAccount')}</Text>
                 <View style={styles.content}>
                     <View style={styles.infoTokenContainer}>
                         <TouchableOpacity onPress={() => navigation.navigate('AccountTwo')}>
@@ -22,7 +25,7 @@ const Account = ({ navigation }) => {
                                 end={{ x: 1, y: 0 }}
                                 style={styles.infoToken}
                             >
-                                <Text style={styles.tokenHeading}>Wallet</Text>
+                                <Text style={styles.tokenHeading}>{t('bottomTabWallet')}</Text>
                                 <View style={styles.infoContent}>
                                     <View style={styles.info}>
                                         <Image source={images.bnb} style={styles.img} />
@@ -59,11 +62,11 @@ const Account = ({ navigation }) => {
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
                         >
-                            <Text style={styles.tokenHeading}>Commission</Text>
+                            <Text style={styles.tokenHeading}>{t('headingCommissionAccount')}</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
-                                    <Text style={styles.tokenName}>Direct</Text>
+                                    <Text style={styles.tokenName}>{t('directAccount')}</Text>
 
                                     <LinearGradient
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
@@ -78,7 +81,7 @@ const Account = ({ navigation }) => {
                                 </View>
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
-                                    <Text style={styles.tokenName}>Indirect</Text>
+                                    <Text style={styles.tokenName}>{t('indirectAccount')}</Text>
 
                                     <LinearGradient
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
@@ -99,7 +102,7 @@ const Account = ({ navigation }) => {
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
                         >
-                            <Text style={styles.tokenHeading}>Balance</Text>
+                            <Text style={styles.tokenHeading}>{t('headingBalanceAccount')}</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
@@ -135,7 +138,7 @@ const Account = ({ navigation }) => {
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
                         >
-                            <Text style={styles.tokenHeading}>Interest</Text>
+                            <Text style={styles.tokenHeading}>{t('indirectAccount')}</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
                                     <Image source={images.bnb} style={styles.img} />
@@ -171,11 +174,11 @@ const Account = ({ navigation }) => {
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
                         >
-                            <Text style={styles.tokenHeading}>Sale</Text>
+                            <Text style={styles.tokenHeading}>{t('headingSaleAccount')}</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.info}>
                                     <Image source={images.Usdt} style={styles.img} />
-                                    <Text style={styles.tokenName}>Direct</Text>
+                                    <Text style={styles.tokenName}>{t('directAccount')}</Text>
                                     <LinearGradient
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
                                         start={{ x: 0, y: 0 }}
@@ -189,7 +192,7 @@ const Account = ({ navigation }) => {
                                 </View>
                                 <View style={styles.info}>
                                     <Image source={images.Usdt} style={styles.img} />
-                                    <Text style={styles.tokenName}>System</Text>
+                                    <Text style={styles.tokenName}>{t('systemAccount')}</Text>
 
                                     <LinearGradient
                                         colors={[COLORS.bodyLight, COLORS.bodyTransp]}
@@ -210,7 +213,7 @@ const Account = ({ navigation }) => {
                             end={{ x: 1, y: 0 }}
                             style={styles.infoToken}
                         >
-                            <Text style={styles.tokenHeading}>NOW</Text>
+                            <Text style={styles.tokenHeading}>{t('headingNOWAccount')}</Text>
                             <View style={styles.infoContent}>
                                 <View style={{ ...styles.info, flexDirection: 'row' }}>
                                     <Image source={images.bnb} style={styles.img} />
@@ -220,13 +223,13 @@ const Account = ({ navigation }) => {
                                         end={{ x: 1, y: 1 }}
                                         ocations={[0.3392, 0.9986]}
                                         angle={295.36}
-                                        style={{
+                                        style={useMultiplyWidthScale({
                                             ...styles.token,
-                                            width: 196 * WIDTH.widthScale,
-                                            height: 27 * WIDTH.widthScale,
+                                            width: 196,
+                                            height: 27,
                                             marginTop: 0,
                                             marginLeft: 8,
-                                        }}
+                                        })}
                                     >
                                         <Text style={styles.tokenPrice}>1 986 086.06</Text>
                                     </LinearGradient>

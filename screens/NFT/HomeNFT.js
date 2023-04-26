@@ -6,21 +6,23 @@ import { ButtonCustom } from '../../CustomComponent';
 import Marketplace from './Marketplace';
 import Card from './Card';
 import VirtualMachine from './VirtualMachine';
-
-const nftType = ['NFT Marketplace', 'NFT Card', 'Virtual Machine'];
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const HomeNFT = ({ children, route }) => {
-    const [activeType, setActiveType] = useState('NFT Marketplace');
+    const { t } = useLanguage();
+    const nftType = [t('titleNFTMarketplace'), t('titleNFTCard'), t('titleNFTVirtualMachine')];
+
+    const [activeType, setActiveType] = useState(t('titleNFTMarketplace'));
 
     const displayTabContent = () => {
         switch (activeType) {
-            case 'NFT Marketplace':
+            case t('titleNFTMarketplace'):
                 return <Marketplace />;
                 break;
-            case 'NFT Card':
+            case t('titleNFTCard'):
                 return <Card />;
                 break;
-            case 'Virtual Machine':
+            case t('titleNFTVirtualMachine'):
                 return <VirtualMachine />;
                 break;
 
@@ -37,7 +39,6 @@ const HomeNFT = ({ children, route }) => {
                     ) : (
                         <>
                             <FlatList
-                            
                                 data={nftType}
                                 renderItem={({ item, index }) => (
                                     <ButtonCustom
@@ -60,7 +61,7 @@ const HomeNFT = ({ children, route }) => {
                                         buttonStyleText={{ fontFamily: FONTS.regularRoboto }}
                                     />
                                 )}
-                                 keyExtractor={(item, index) => `key-${index}`}
+                                keyExtractor={(item, index) => `key-${index}`}
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                                 contentContainerStyle={styles.listType}

@@ -16,16 +16,14 @@ import { COLORS, FONTS, SIZES, TEXTS, WIDTH, icons, images } from '../../constan
 import { InputCustom, ButtonCustom } from './../../CustomComponent';
 import Logo from '../../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Login = () => {
-    const { t } = useTranslation();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(false);
     const navigation = useNavigation();
-
+    const { t } = useLanguage();
     const handleLogin = () => {
         navigation.dispatch(StackActions.replace('ScreenBottomTab'));
     };
@@ -36,12 +34,12 @@ const Login = () => {
                     <Logo />
                 </View>
 
-                <Text style={styles.title}>{t('titleAuth')}</Text>
+                <Text style={styles.title}>{t('titleLogin')}</Text>
                 <View style={styles.form}>
                     <View style={styles.formGroup}>
                         <InputCustom
                             style={styles.input}
-                            placeholder="Email address"
+                            placeholder={t('placeholderEmail')}
                             keyboardType="email-address"
                             value={email}
                             autoCapitalize="none"
@@ -52,7 +50,7 @@ const Login = () => {
                     <View style={styles.formGroup}>
                         <InputCustom
                             style={{ ...styles.input, paddingRight: 45 }}
-                            placeholder="Password"
+                            placeholder={t('placeholderPass')}
                             showPass={!showPass}
                             value={password}
                             onChangeText={setPassword}
@@ -65,14 +63,14 @@ const Login = () => {
                     <ButtonCustom style={{ marginTop: 21.5 * WIDTH.widthScale }} text="Login" onPress={handleLogin} />
                 </View>
                 <Text style={styles.textForgot} onPress={() => navigation.navigate('ForgotPassword')}>
-                    Forgot password?
+                    {t('titleForgotPass')}
                 </Text>
 
                 <View style={styles.noAccount}>
                     <Text style={styles.noAccountText}>
-                        Don’t have an account?{' '}
+                        {t('noAccount')}{' '}
                         <Text style={styles.sign} onPress={() => navigation.navigate('SignUp')}>
-                            Sign Up
+                            {t('titleSignUp')}
                         </Text>
                     </Text>
                 </View>

@@ -2,6 +2,8 @@ import { View, ScrollView, Image, Text, FlatList, StyleSheet } from 'react-nativ
 
 import { images, icons, TEXTS, SIZES, WIDTH } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
+import { useLanguage } from '../../../contexts/LanguageContext';
+import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
 
 const dataNFT = [
     {
@@ -14,9 +16,10 @@ const dataNFT = [
         address: '294 Khuông Việt, Phường phú trung,Quận Tân Phú, Hồ Chí Minh',
         img: images.tanbinh,
     },
-   
 ];
 const MyLocation = () => {
+    const { t } = useLanguage();
+
     return (
         <>
             {dataNFT.length > 0 ? (
@@ -38,9 +41,9 @@ const MyLocation = () => {
                                 <Image source={icons.saovang} />
                             </View>
                             <ButtonCustom
-                                text="SELL"
+                                text={t('sell')}
                                 buttonStyle={styles.buttonSell}
-                                buttonStyleText={{ ...TEXTS.textBold}}
+                                buttonStyleText={{ ...TEXTS.textBold }}
                                 backgroundLinearGradient={['#780D69', '#EC0174']}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
@@ -50,9 +53,9 @@ const MyLocation = () => {
                     )}
                 />
             ) : (
-                <View style={{alignItems:'center'}} >
+                <View style={{ alignItems: 'center' }}>
                     <Image source={images.empty_data} style={styles.empty_data} />
-                    <Text style={styles.title}>(Empty Data)</Text>
+                    <Text style={styles.title}>({t('empty')})</Text>
                 </View>
             )}
         </>
@@ -68,14 +71,14 @@ const styles = StyleSheet.create({
         width: 147.22,
         height: 169,
         backgroundColor: '#08021CCC',
-        borderRadius : SIZES.medium,
+        borderRadius: SIZES.medium,
         padding: 4,
         marginHorizontal: 18.78 / 2,
-        marginBottom:18.78 / 2
+        marginBottom: 18.78 / 2,
     },
     img: {
         width: WIDTH.width100,
-        borderRadius:  SIZES.xSmall,
+        borderRadius: SIZES.xSmall,
         height: 89,
     },
     name: {
@@ -102,4 +105,5 @@ const styles = StyleSheet.create({
         height: 148,
     },
 });
+useMultiplyWidthScale(styles)
 export default MyLocation;

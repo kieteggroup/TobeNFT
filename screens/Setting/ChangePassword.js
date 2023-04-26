@@ -2,18 +2,20 @@ import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { MainContainer } from '../../components';
 import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
-import { BORDER, SIZES, TEXTS, WIDTH, images } from '../../constants';
+import { BORDER, COLORS, SIZES, TEXTS, WIDTH, images } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const ChangePassword = ({ navigation }) => {
+    const { t } = useLanguage();
+
     return (
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                 start={{ x: 0, y: 0 }}
+                start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
                 angle={295.36}
@@ -22,13 +24,13 @@ const ChangePassword = ({ navigation }) => {
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>
                     <IconX />
                 </TouchableOpacity>
-                <Text style={styles.text}>Change Password</Text>
+                <Text style={styles.text}>{t('changePass')}</Text>
                 <View style={styles.form}>
-                    <InputCustom style={styles.input} radiusMax placeholder="Old password" />
-                    <InputCustom style={styles.input} radiusMax placeholder="New password" />
-                    <InputCustom style={styles.input} radiusMax placeholder="Retype password" />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('oldPass')} />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('newPass')} />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('retypePass')} />
                     <ButtonCustom
-                        text="Enabled 2FA"
+                        text={t('accept')}
                         buttonStyle={styles.button}
                         onPress={() => navigation.navigate('AuthCode')}
                     />

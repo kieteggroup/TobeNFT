@@ -3,6 +3,7 @@ import { View, ScrollView, Image, Text, FlatList, StyleSheet, TouchableOpacity }
 import { images, icons, TEXTS, SIZES, WIDTH, FONTS, BORDER } from '../../../constants';
 import { ButtonCustom } from '../../../CustomComponent';
 import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 const dataNFT = [
     {
@@ -17,6 +18,8 @@ const dataNFT = [
     },
 ];
 const MyMarketPlace = () => {
+    const { t } = useLanguage();
+
     return (
         <>
             {dataNFT.length > 0 ? (
@@ -30,7 +33,7 @@ const MyMarketPlace = () => {
                             <View style={styles.left}>
                                 <Image style={styles.img} source={images.locationnho} />
                                 <View style={styles.restaurant}>
-                                    <Text style={styles.textRestaurant}>Restaurant</Text>
+                                    <Text style={styles.textRestaurant}>{t('restaurant')}</Text>
                                     <View style={styles.star}>
                                         <Image source={icons.saovang} />
                                         <Image source={icons.saovang} />
@@ -68,7 +71,8 @@ const MyMarketPlace = () => {
             ) : (
                 <View style={{ alignItems: 'center' }}>
                     <Image source={images.empty_data} style={styles.empty_data} />
-                    <Text style={styles.title}>(Empty Data)</Text>
+                    <Text style={styles.title}>({t('empty')})</Text>
+
                 </View>
             )}
         </>

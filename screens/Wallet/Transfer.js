@@ -5,8 +5,11 @@ import { MainContainer, Table } from '../../components';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Transfer = () => {
+    const { t } = useLanguage();
+
     return (
         <MainContainer>
             <View style={styles.wrapper}>
@@ -17,44 +20,51 @@ const Transfer = () => {
                     locations={[0.3392, 0.9986]}
                     style={styles.transfer}
                 >
-                    <Text style={styles.title}>Transfer</Text>
+                    <Text style={styles.title}>{t('titleTransfer')}</Text>
                     <View style={styles.form}>
                         <View style={styles.formGroup}>
-                            <Text style={styles.formLabel}>Receiver</Text>
+                            <Text style={styles.formLabel}>{t('receiver')}</Text>
                             <InputCustom radiusMax style={styles.input} />
                         </View>
                         <View style={styles.formGroup}>
-                            <Text style={styles.formLabel}>Choice</Text>
+                            <Text style={styles.formLabel}>{t('choice')}</Text>
                             <InputCustom radiusMax style={styles.input} />
-                            <View style={{ flexDirection: 'row', position: 'absolute', left: SIZES.xSmall, bottom: 7 }}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    position: 'absolute',
+                                    left: SIZES.xSmall,
+                                    bottom: 7 * WIDTH.widthScale,
+                                }}
+                            >
                                 <Image source={images.Usdt} style={styles.img} />
                                 <Text style={styles.noteText}>USDT</Text>
                             </View>
                         </View>
                         <View style={styles.formGroup}>
-                            <Text style={styles.formLabel}>Amount of USDT</Text>
+                            <Text style={styles.formLabel}>{t('placeholderAmount')}</Text>
                             <InputCustom radiusMax style={styles.input} />
                         </View>
 
                         <View style={styles.formNote}>
                             <Text style={styles.noteText}>
-                                Max available:<Text style={styles.usdt}> 0 USDT</Text>
+                                {t('maxAvailable')}:<Text style={styles.usdt}> 0 USDT</Text>
                             </Text>
-                            <Text style={styles.noteText}>
-                                The overhead fees are not fixed, subject to change depending on the state of the
-                                blockchain networks
-                            </Text>
-                            <Text style={styles.noteText}>Estimated completion time: 2 minutes</Text>
+                            <Text style={styles.noteText}>{t('depositWithdraw')}</Text>
                         </View>
 
                         <InputCustom radiusMax style={styles.input} placeholder="2FA" />
 
-                        <ButtonCustom text="SEND" buttonStyle={styles.btnSend} />
+                        <ButtonCustom
+                            text={t('send')}
+                            buttonStyle={styles.btnSend}
+                            buttonStyleText={{ textTransform: 'uppercase' }}
+                        />
                     </View>
                 </LinearGradient>
                 <View style={styles.history}>
-                    <Table heading="History Transfer" />
-                    <Table heading="History Receiver" />
+                    <Table heading={t('titleHistoryTransfer')} />
+                    <Table heading={t('titleHistoryReceiver')} />
                 </View>
             </View>
         </MainContainer>
@@ -96,7 +106,7 @@ const styles = StyleSheet.create({
     img: {
         width: 23,
         height: 23,
-        marginRight:  SIZES.xSmall,
+        marginRight: SIZES.xSmall,
     },
     formNote: {
         marginBottom: 15,

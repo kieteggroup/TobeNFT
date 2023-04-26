@@ -7,6 +7,7 @@ import { IconNFT, IconProfile, IconSetting, IconSwap, IconWallet } from '../asse
 import { BORDER, FONTS, SIZES, WIDTH, icons } from '../constants';
 import { ButtonCustom } from '../CustomComponent';
 import { NFTNavigator, WalletNavigator, SwapNavigator } from '../navigations';
+import { useLanguage } from '../contexts/LanguageContext';
 
 import SettingNavigator from '../navigations/SettingNavigator';
 
@@ -84,6 +85,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 };
 
 const ScreenBottomTab = () => {
+    const { t } = useLanguage();
     return (
         <Tab.Navigator
             screenOptions={{
@@ -93,14 +95,14 @@ const ScreenBottomTab = () => {
             tabBar={(props) => <MyTabBar {...props} />}
         >
             <Tab.Screen
-                name="Wallet"
+                name={t('bottomTabWallet')}
                 component={WalletNavigator}
                 options={{
                     tabBarIcon: () => <IconWallet />,
                 }}
             />
             <Tab.Screen
-                name="NFT"
+                name={t('bottomTabNFT')}
                 component={NFTNavigator}
                 options={{
                     tabBarIcon: () => <IconNFT />,
@@ -110,7 +112,7 @@ const ScreenBottomTab = () => {
                 name="SwapNavigator"
                 component={SwapNavigator}
                 options={{
-                    tabBarLabel: 'Swap',
+                    tabBarLabel: t('bottomTabSwap'),
                     tabBarIcon: () => <IconSwap />,
                 }}
             />
@@ -118,7 +120,7 @@ const ScreenBottomTab = () => {
                 name="SettingNavigator"
                 component={SettingNavigator}
                 options={{
-                    tabBarLabel: 'Setting',
+                    tabBarLabel: t('bottomTabSetting'),
                     tabBarIcon: () => <IconSetting />,
                 }}
             />

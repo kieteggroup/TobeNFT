@@ -7,6 +7,7 @@ import { MainContainer, SelectDropdown } from '../../components';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import { Hexagon, HexagonSelect } from '../../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const listStage = [
     {
@@ -47,7 +48,7 @@ const listStage = [
 ];
 const EstateNFTs = () => {
     const [isMintNFT, setIsMintNFT] = useState(false);
-
+    const { t } = useLanguage();
     return (
         <MainContainer>
             <View style={styles.wrapper}>
@@ -58,10 +59,8 @@ const EstateNFTs = () => {
                     locations={[0.3392, 0.9986]}
                     style={styles.header}
                 >
-                    <Text style={styles.title}>Real Estate NFTs</Text>
-                    <Text style={styles.subTitle}>
-                        (to be sold as Real Estate NFT with exact longitude and latitude)
-                    </Text>
+                    <Text style={styles.title}>{t('titleNFTEstate')}</Text>
+                    <Text style={styles.subTitle}>{t('subTitleEstate')}</Text>
                     <View style={styles.progressContainer}>
                         <View>
                             <View style={styles.progress}>
@@ -74,8 +73,10 @@ const EstateNFTs = () => {
                                 ></LinearGradient>
                             </View>
                             <View style={styles.progressText}>
-                                <Text style={styles.text}>2 days</Text>
-                                <Text style={styles.text}>TOTAL: 60 days</Text>
+                                <Text style={styles.text}>2 {t('days')}</Text>
+                                <Text style={styles.text}>
+                                    {t('totalDay')}: 60 {t('days')}
+                                </Text>
                             </View>
                         </View>
                         <View>
@@ -90,7 +91,7 @@ const EstateNFTs = () => {
                             </View>
                             <View style={styles.progressText}>
                                 <Text style={styles.text}>10 NFT</Text>
-                                <Text style={styles.text}>MAX 1000</Text>
+                                <Text style={styles.text}>{t('max')} 1000</Text>
                             </View>
                         </View>
                     </View>
@@ -103,7 +104,7 @@ const EstateNFTs = () => {
                 >
                     <FlatList
                         data={listStage}
-                         keyExtractor={(item, index) => `key-${index}`}
+                        keyExtractor={(item, index) => `key-${index}`}
                         contentContainerStyle={styles.listStage}
                         horizontal
                         showsHorizontalScrollIndicator={false}
@@ -113,7 +114,9 @@ const EstateNFTs = () => {
                                 <View
                                     style={{ position: 'absolute', top: 62 * WIDTH.widthScale, alignItems: 'center' }}
                                 >
-                                    <Text style={{ fontSize: 30, ...TEXTS.textBold }}>${item.price}</Text>
+                                    <Text style={{ fontSize: 30 * WIDTH.widthScale, ...TEXTS.textBold }}>
+                                        ${item.price}
+                                    </Text>
                                     <Text style={styles.text}>{item.month}</Text>
                                     <Text style={styles.text}>{item.maxPrice}</Text>
                                 </View>
@@ -124,7 +127,7 @@ const EstateNFTs = () => {
                                         marginTop: 16 * WIDTH.widthScale,
                                     }}
                                 >
-                                    Stage 0{index + 1}
+                                    {t('stage')} 0{index + 1}
                                 </Text>
                             </View>
                         )}
@@ -143,18 +146,13 @@ const EstateNFTs = () => {
                 {/* MINT NFT */}
                 {isMintNFT && (
                     <View style={styles.mintNFTContainer}>
-                        <Text style={styles.mintTitle}>Mint a new location NFT</Text>
-                        <Text style={styles.mintSubTitle}>
-                            NFT are unique in terms of their traits, making them perfect for representing rare items
-                            such as real properties. It cannot be divided, duplicated, or increased in quantity. There
-                            can only be limited amount of each type. Thus, the value of each NFT to be increased for the
-                            following timeline and maximum quantity sold whichever comes first.
-                        </Text>
+                        <Text style={styles.mintTitle}>{t('newMint')}</Text>
+                        <Text style={styles.mintSubTitle}>{t('newMintDescription')}</Text>
                         <View style={{ ...styles.stageItem, marginTop: 50 * WIDTH.widthScale }}>
                             <Text style={styles.mintTitle}>Highland Coffee</Text>
                             <Text style={styles.address}>12 Thach Lam, Tan Phu Dist</Text>
                             <View style={{ flexDirection: 'row', columnGap: 60 * WIDTH.widthScale }}>
-                                <Text style={styles.positionText}>Lat: 10.76530</Text>
+                                <Text style={styles.positionText}>{t('lat')}: 10.76530</Text>
                                 <Text style={styles.positionText}>Lng: 106.67148</Text>
                             </View>
                         </View>
@@ -179,19 +177,19 @@ const EstateNFTs = () => {
                                 style={styles.input}
                             />
                             <InputCustom
-                                placeholder="Features"
+                                placeholder={t('placeholderFeatures')}
                                 radiusMax
                                 placeholderColor="#536981"
                                 style={styles.input}
                             />
                             <InputCustom
-                                placeholder="Address"
+                                placeholder={t('placeholderAddress')}
                                 radiusMax
                                 placeholderColor="#536981"
                                 style={styles.input}
                             />
                             <InputCustom
-                                placeholder="Description"
+                                placeholder={t('description')}
                                 radiusMax
                                 placeholderColor="#536981"
                                 style={{ ...styles.input, height: 61 * WIDTH.widthScale }}
@@ -204,7 +202,7 @@ const EstateNFTs = () => {
                                 style={styles.ratio}
                             >
                                 <Text style={styles.address}>
-                                    1 Location NFT ={' '}
+                                    {t('oneLocation')} ={' '}
                                     <Text style={{ ...TEXTS.textBold, color: COLORS.primary }}>200</Text> USDT
                                 </Text>
                             </LinearGradient>
@@ -221,7 +219,7 @@ const EstateNFTs = () => {
                                 <Image style={styles.img} source={images.tanbinh} />
                             </View>
                         </View>
-                        <ButtonCustom text="Buy NFT" buttonStyle={styles.button} />
+                        <ButtonCustom text={t('buyNFT')} buttonStyle={styles.button} />
                     </View>
                 )}
             </View>

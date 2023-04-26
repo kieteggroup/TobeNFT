@@ -7,15 +7,18 @@ import { IconX } from '../../assets/imageSvg/ImageSVG';
 import { ButtonCustom, InputCustom } from '../../CustomComponent';
 import { BORDER, COLORS, SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../contexts/LanguageContext';
 
-const genderList = ['Male', 'Female', 'Other'];
+const genderList = ['male', 'female', 'other'];
 const KYC = ({ navigation }) => {
-    const [selectGender, setSelectGender] = useState('Male');
+    const [selectGender, setSelectGender] = useState('male');
+    const { t } = useLanguage();
+
     return (
         <ImageBackground source={images.login} style={styles.wrapper}>
             <LinearGradient
                 colors={[COLORS.bodyLight, COLORS.bodyTransp]}
-                 start={{ x: 0, y: 0 }}
+                start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
                 locations={[0.3392, 0.9986]}
                 angle={295.36}
@@ -24,35 +27,43 @@ const KYC = ({ navigation }) => {
                 <TouchableOpacity style={styles.close} onPress={() => navigation.goBack()}>
                     <IconX />
                 </TouchableOpacity>
-                <Text style={styles.text}>KYC</Text>
+                <Text style={styles.text}>{t('kyc')}</Text>
                 <View style={styles.form}>
-                    <InputCustom style={styles.input} radiusMax placeholder="Firstname" />
-                    <InputCustom style={styles.input} radiusMax placeholder="Lastname" />
-                    <InputCustom style={styles.input} radiusMax placeholder="Country" />
-                    <InputCustom style={styles.input} radiusMax placeholder="Passport" />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('placeholderFirstname')} />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('placeholderLastname')} />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('placeholderCountry')} />
+                    <InputCustom style={styles.input} radiusMax placeholder={t('placeholderPassport')} />
                     <View style={styles.gender}>
                         {genderList.map((gender) => (
-                            <TouchableOpacity style={styles.radioItem} onPress={() => setSelectGender(gender)}>
+                            <TouchableOpacity
+                                key={gender}
+                                style={styles.radioItem}
+                                onPress={() => setSelectGender(gender)}
+                            >
                                 <View style={[styles.radio, gender === selectGender && styles.radioCheck]}></View>
-                                <Text style={styles.radioText}>{gender}</Text>
+                                <Text style={styles.radioText}>{t(gender)}</Text>
                             </TouchableOpacity>
                         ))}
                     </View>
                     <View style={styles.upload}>
                         <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
-                            <Text style={styles.radioText}>Upload a photo of ID card (Front)</Text>
-                            <Image source={icons.plus} />
+                            <Text style={styles.radioText}>{t('uploadFront')}</Text>
+                            <Image source={icons.plus} style={styles.plus} />
                         </LinearGradient>
                         <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
-                            <Text style={styles.radioText}>Upload a photo of ID card (Back)</Text>
-                            <Image source={icons.plus} />
+                            <Text style={styles.radioText}>{t('uploadBack')}</Text>
+                            <Image source={icons.plus} style={styles.plus} />
                         </LinearGradient>
                         <LinearGradient colors={['#FFFFFF13', '#8F79D939']} style={styles.uploadItem}>
-                            <Text style={styles.radioText}>Upload a full face photo</Text>
-                            <Image source={icons.plus} />
+                            <Text style={styles.radioText}>{t('uploadFace')}</Text>
+                            <Image source={icons.plus} style={styles.plus} />
                         </LinearGradient>
                     </View>
-                    <ButtonCustom text="SEND" buttonStyle={styles.button} />
+                    <ButtonCustom
+                        text={t('send')}
+                        buttonStyle={styles.button}
+                        buttonStyleText={{ textTransform: 'uppercase' }}
+                    />
                 </View>
             </LinearGradient>
         </ImageBackground>
@@ -64,13 +75,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 22,
+        // paddingHorizontal: 22,/
     },
     content: {
         ...BORDER,
         borderWidth: 2,
         borderRadius: 18,
-        width: 332 * WIDTH.widthScale,
+        width: 332 ,
         paddingHorizontal: SIZES.large,
     },
     close: {
@@ -93,6 +104,10 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF80',
         height: 40,
         fontSize: SIZES.xMedium,
+    },
+    plus: {
+        width:SIZES.large,
+        height: 21,
     },
     button: {
         height: 38.44,
@@ -127,6 +142,7 @@ const styles = StyleSheet.create({
     },
     radioText: {
         ...TEXTS.textRegular,
+        paddingRight: SIZES.xSmall,
     },
     upload: {
         marginTop: 15,
@@ -137,8 +153,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 18,
-        height: 36,
+        minHeight: 36,
+        width: 289,
         borderRadius: 18,
+        padding: 7,
     },
 });
 useMultiplyWidthScale(styles);

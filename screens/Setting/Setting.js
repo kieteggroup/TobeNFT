@@ -1,46 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { MainContainer } from '../../components';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../../constants';
 import { ButtonCustom } from '../../CustomComponent';
 import useMultiplyWidthScale from '../../hooks/useMultiplyWidthScale';
+import { StackActions } from '@react-navigation/native';
+import useChangeLanguage from '../../hooks/useChangeLanguage';
+import { useLanguage } from '../../contexts/LanguageContext';
+import ModalLanguage from './ModalLanguage';
 
 const listSetting = [
     {
-        name: 'Promotion',
+        name: 'promotion',
         navigate: 'Promotion',
     },
     {
-        name: 'Listing',
+        name: 'listing',
         navigate: 'Listing',
     },
     {
-        name: 'History',
+        name: 'history',
         navigate: 'MenuHistory',
     },
     {
-        name: 'Security',
+        name: 'security',
         navigate: 'Security',
     },
     {
-        name: 'Security 12 Characters',
+        name: 'characters',
         navigate: 'SecurityCharacters',
     },
     {
-        name: 'Security 2FA',
+        name: 'security2fa',
         navigate: 'Security2FA',
     },
     {
-        name: 'Change Password',
+        name: 'changePass',
         navigate: 'ChangePassword',
     },
     {
-        name: 'KYC',
+        name: 'kyc',
         navigate: 'KYC',
     },
     {
-        name: 'Language',
+        name: 'language',
         navigate: 'Language',
     },
 ];
@@ -72,41 +76,59 @@ const listSocial = [
 ];
 
 const Setting = ({ navigation }) => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const { t } = useLanguage();
+
+    const handleLogOut = () => {
+        navigation.dispatch(StackActions.replace('AuthNavigator'));
+    };
+
+   
+
     return (
         <MainContainer noBackgroundFooter>
             <View style={styles.wrapper}>
                 <Image source={icons.quaylai} />
                 <View style={styles.main}>
-                    <Text style={styles.title}>SETTING</Text>
+                    <Text style={styles.title}>{t('bottomTabSetting')}</Text>
                     <View style={styles.header}>
                         <View style={styles.headerItem}>
-                            <Text style={styles.text}>Pre-sale ICO SWB</Text>
+                            <Text style={styles.text}>{t('preSale')}</Text>
                             <Image source={icons.continueicon} />
                         </View>
                         <View style={styles.headerItem}>
-                            <Text style={styles.text}>Wellcome DEMO5</Text>
+                            <Text style={styles.text}>{t('welcome')}</Text>
                             <Image source={icons.continueicon} />
                         </View>
                     </View>
 
                     <View style={styles.buttonContent}>
                         <ButtonCustom
-                            text="Referral link"
+                            text={t('referralLink')}
                             backgroundColorBtn="#E8127C"
                             buttonStyle={styles.button}
                             onPress={() => navigation.navigate('ShareLink')}
                         />
-                        <ButtonCustom text="Referral code" backgroundColorBtn="#E8127C" buttonStyle={styles.button} />
+                        <ButtonCustom
+                            text={t('referralCode')}
+                            backgroundColorBtn="#E8127C"
+                            buttonStyle={styles.button}
+                        />
                     </View>
 
                     <View style={styles.listSetting}>
-                        {listSetting.map((item,index) => (
+                        {listSetting.map((item, index) => (
                             <TouchableOpacity
                                 key={index}
                                 style={[styles.headerItem, styles.settingItem]}
-                                onPress={() => navigation.navigate(item.navigate)}
+                                onPress={() => {
+                                    return item.name === 'language'
+                                        ? setModalOpen(!modalOpen)
+                                        : navigation.navigate(item.navigate);
+                                }}
                             >
-                                <Text style={styles.text}>{item.name}</Text>
+                                <Text style={styles.text}>{t(item.name)}</Text>
                                 <Image source={icons.continueicon} />
                             </TouchableOpacity>
                         ))}
@@ -121,26 +143,28 @@ const Setting = ({ navigation }) => {
                     </View>
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headerItem}>
-                            <Text style={styles.text}>Help Center</Text>
+                            <Text style={styles.text}>{t('help')}</Text>
                             <Image source={icons.continueicon} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.headerItem} onPress={() => navigation.navigate('Contact')}>
-                            <Text style={styles.text}>About US</Text>
+                            <Text style={styles.text}>{t('about')}</Text>
                             <Image source={icons.continueicon} />
                         </TouchableOpacity>
                     </View>
 
                     <ButtonCustom
-                        text="LOGOUT"
+                        text={t('logOut')}
                         buttonStyle={{
                             width: 332 * WIDTH.widthScale,
                             height: 39 * WIDTH.widthScale,
                         }}
-                        onPress={() => navigation.navigate('AuthNavigator')}
+                        onPress={handleLogOut}
                         buttonStyleText={{ ...TEXTS.textMedium, fontSize: SIZES.xLarge }}
                     />
                 </View>
             </View>
+            
+            <ModalLanguage isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         </MainContainer>
     );
 };
@@ -186,6 +210,7 @@ const styles = StyleSheet.create({
         height: 36,
         borderRadius: 5,
         borderWidth: 0,
+        paddingHorizontal: 5,
     },
     listSetting: {
         marginBottom: 70,

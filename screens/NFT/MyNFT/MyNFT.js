@@ -8,24 +8,25 @@ import MyVirtualMachine from './MyVirtualMachine';
 import MyCard from './MyCard';
 import MyMarketPlace from './MyMarketPlace';
 import useMultiplyWidthScale from '../../../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
-const myNFTType = ['My NFT Location', 'My NFT Virtual Machine', 'My NFT Card', 'NFT MARKETPLACE'];
+const myNFTType = ['titleMyNFTLocation', 'titleMyNFTVirtualMachine', 'titleMyNFTCard', 'titleMyNFTMarketplace'];
 
 const MyNFT = ({ title, renderItem }) => {
-    const [activeType, setActiveType] = useState('My NFT Location');
-
+    const [activeType, setActiveType] = useState('titleMyNFTLocation');
+    const { t } = useLanguage();
     const displayTabContent = () => {
         switch (activeType) {
-            case 'My NFT Location':
+            case 'titleMyNFTLocation':
                 return <MyLocation />;
 
-            case 'My NFT Virtual Machine':
+            case 'titleMyNFTVirtualMachine':
                 return <MyVirtualMachine />;
 
-            case 'My NFT Card':
+            case 'titleMyNFTCard':
                 return <MyCard />;
 
-            case 'NFT MARKETPLACE':
+            case 'titleMyNFTMarketplace':
                 return <MyMarketPlace />;
 
             default:
@@ -44,7 +45,7 @@ const MyNFT = ({ title, renderItem }) => {
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => setActiveType(item)}>
                             <Text style={[styles.navBarItem, activeType === item && styles.navBarItemCheck]}>
-                                {item}
+                                {t(item)}
                             </Text>
                         </TouchableOpacity>
                     )}
@@ -52,18 +53,18 @@ const MyNFT = ({ title, renderItem }) => {
 
                 <ImageBackground style={styles.banner} source={images.freepik_4}>
                     <View style={styles.bannerContent}>
-                        <Text style={styles.title}>{activeType}</Text>
+                        <Text style={styles.title}>{t(activeType)}</Text>
                         <Text style={styles.description}>
-                            Earn your NFT items and trade them on the marketplace to make money
+                            {t('nftDescription')}
                         </Text>
                     </View>
                 </ImageBackground>
                 <View style={styles.dataNFT}>{displayTabContent()}</View>
             </ScrollView>
             <ButtonCustom
-                text="Buy more"
+                text={t('buyMore')}
                 buttonStyle={styles.button}
-                buttonStyleText={{  ...TEXTS.textBold }}
+                buttonStyleText={{ ...TEXTS.textBold }}
                 backgroundLinearGradient={['#780D69', '#EC0174']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
@@ -80,11 +81,11 @@ const styles = StyleSheet.create({
     navBar: {
         flexDirection: 'row',
         paddingHorizontal: 5,
-        height: 25 ,
+        height: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        columnGap:  SIZES.xSmall,
-        width: WIDTH.width100,
+        columnGap: SIZES.xSmall,
+        // width: WIDTH.width100,
     },
     navBarItem: {
         ...TEXTS.textBold,
@@ -96,11 +97,11 @@ const styles = StyleSheet.create({
     banner: {
         width: WIDTH.width100,
         // alignItems: 'center',
-        height: 135 ,
+        height: 135,
     },
     bannerContent: {
         position: 'absolute',
-        bottom:  SIZES.xSmall,
+        bottom: SIZES.xSmall,
         width: WIDTH.width100,
         alignItems: 'center',
     },
@@ -119,14 +120,13 @@ const styles = StyleSheet.create({
 
     button: {
         position: 'absolute',
-        width: 105.85 ,
-        height: 27.75 ,
+        width: 105.85,
+        height: 27.75,
         right: 16.15,
         bottom: 110,
         borderWidth: 0,
     },
-   
 });
 
-useMultiplyWidthScale(styles)
+useMultiplyWidthScale(styles);
 export default MyNFT;

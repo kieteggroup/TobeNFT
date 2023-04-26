@@ -5,10 +5,16 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { SIZES, TEXTS, WIDTH, icons, images } from '../constants';
 import { IconDropDown } from '../assets/imageSvg/ImageSVG';
 import useMultiplyWidthScale from '../hooks/useMultiplyWidthScale';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle, iconColor }) => {
-    const [selectCurrency, setSelectCurrency] = useState('Select a currency');
+    const { t } = useLanguage();
+
+
+    const [selectCurrency, setSelectCurrency] = useState('selectCurrency');
     const [isSelect, setIsSelect] = useState(false);
+
+
     return (
         <TouchableOpacity onPress={() => setIsSelect(!isSelect)} style={styles.wrapper}>
             <LinearGradient
@@ -22,7 +28,7 @@ const SelectDropdown = ({ data, placeholderColor, dropdownStyle, backgroundStyle
                 <Text style={[styles.dropdownText, placeholderColor]}>0.0</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{ ...styles.dropdownText, marginRight: 15, ...placeholderColor }}>
-                        {selectCurrency}
+                    {t('selectCurrency')}
                     </Text>
                     {isSelect ? (
                         <IconDropDown style={{ transform: [{ rotate: '180deg' }] }} color={iconColor} />
