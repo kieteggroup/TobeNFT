@@ -23,7 +23,7 @@ function App() {
         Roboto_Regular: require('./assets/fonts/Roboto-Regular.ttf'),
         Roboto_Bold: require('./assets/fonts/Roboto-Bold.ttf'),
     });
-
+// eqwewq
     const onLayoutRootView = useCallback(async () => {
         if (fontsLoaded) {
             await SplashScreen.hideAsync();
